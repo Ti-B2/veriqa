@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nova Stream</title>
+  <!-- The ?v suffix changes whenever app.js or styles.css does. The server sends them with
+       Cache-Control: no-cache, but a proxy in front may rewrite that header — a tunnel's edge did,
+       and the television then ran yesterday's app.js against today's page. A new name is the one
+       thing no cache in between can serve stale. -->
+  <link rel="stylesheet" href="styles.css?v=7">
+</head>
+<body>
+  <!-- One page, four screens. Which one is on is decided in app.js from /api/session; nothing here
+       is rendered on the server, so the same page works on a television and on a desktop browser. -->
+  <div id="app" class="app" aria-live="polite">
+
+    <!-- [1] Splash: nobody is signed in. -->
+    <section id="screen-splash" class="screen screen-splash" hidden>
+      <div class="splash-inner">
+        <p class="brand brand-xl">NOVA STREAM</p>
+        <p class="tagline">Sign in to watch anywhere</p>
+        <a class="button button-primary" data-focusable href="/signin">Sign in</a>
+        <p class="hint">Sign in happens in the messenger you already use — no password, no e-mail form.</p>
+      </div>
+    </section>
+
+    <!-- [2] Welcome: the first time this person signs in. -->
+    <section id="screen-welcome" class="screen screen-welcome" hidden>
+      <div class="welcome-inner">
+        <p class="welcome-kicker">Welcome to</p>
+        <p class="brand brand-l">NOVA STREAM</p>
+        <p class="welcome-registered" id="welcome-registered"></p>
+        <div class="card">
+          <div class="card-avatar" id="welcome-avatar"></div>
+          <div class="card-fields" id="welcome-fields"></div>
+        </div>
+        <div class="welcome-actions">
+          <button class="button button-primary" data-focusable type="button" id="welcome-continue">Go to catalog</button>
+          <!-- A placeholder: a real service would take a new viewer through its setup (profiles,
+               language, parental control) here. The sample has none, so the button does nothing. -->
+          <button class="button" data-focusable type="button" id="welcome-setup">Continue setup</button>
+        </div>
+      </div>
+    </section>
+
+    <!-- [3] Catalogue. -->
+    <section id="screen-catalog" class="screen screen-catalog" hidden>
+      <header class="top-bar">
+        <p class="brand brand-s">NOVA STREAM</p>
+        <div class="top-bar-right">
+          <span class="viewer" id="catalog-viewer"></span>
+          <div class="top-bar-avatar" id="catalog-avatar"></div>
+          <a class="button button-ghost" data-focusable href="/signout">Sign out</a>
+        </div>
+      </header>
+      <div class="grid" id="catalog-grid" data-focus-region></div>
+      <p class="hint hint-bottom">Arrows move, Enter selects, Backspace goes back. Press F for full screen.</p>
+    </section>
+
+  </div>
+
+  <!-- [4] Purchase confirmation, over the catalogue. Not a &lt;dialog&gt; element: television
+       browsers on Tizen 5.5 and webOS 5 do not have one. -->
+  <div id="modal" class="modal" hidden role="dialog" aria-modal="true" aria-labelledby="modal-title">
+    <div class="modal-box">
+      <p class="modal-title" id="modal-title"></p>
+      <div class="modal-body">
+        <div class="modal-qr" id="modal-qr"></div>
+        <div class="modal-copy">
+          <p class="modal-status" id="modal-status"></p>
+        </div>
+      </div>
+      <div class="modal-actions" id="modal-actions"></div>
+    </div>
+  </div>
+
+  <script src="app.js?v=8"></script>
+</body>
+</html>

@@ -1,0 +1,175 @@
+# Veriqa Core — Sample Docker Compose
+#
+# WARNING: This file is intended for on-premise demonstration ONLY.
+# For production deployment use Kubernetes or another orchestrator
+# with proper secrets management (Vault, Kubernetes Secrets, AWS Secrets Manager).
+#
+# Prerequisites:
+#   1. Create a .env file in this directory (see .env.example)
+#   2. Generate certificates for Nginx (self-signed or CA-issued)
+#   3. Create a certs/ directory with the files: server.crt, server.key
+#   4. Start: docker compose up -d
+#   5. The Auth Server is available at: https://localhost (Nginx reverse proxy)
+
+name: veriqa-demo
+
+services:
+
+  # ── Auth Server ────────────────────────────────────────────────────────────
+  authserver:
+    build:
+      context: ../..
+      dockerfile: Dockerfile
+    image: veriqa-authserver:latest
+    restart: unless-stopped
+    depends_on:
+      postgres:
+        condition: service_healthy
+      redis:
+        condition: service_healthy
+      rabbitmq:
+        condition: service_healthy
+    environment:
+      ASPNETCORE_ENVIRONMENT: Production
+      ASPNETCORE_URLS: http://+:8080
+
+      # OpenIddict DB
+      Veriqa__OpenIddict__Database__Provider: PostgreSQL
+      Veriqa__OpenIddict__Database__ConnectionString: "Host=postgres;Port=5432;Database=veriqa;Username=veriqa;Password=${POSTGRES_PASSWORD}"
+
+      # OpenIddict Server — the Issuer must match the public URL
+      Veriqa__OpenIddict__Server__Issuer: "https://localhost"
+
+      # SignalR Redis backplane (multi-instance)
+      Veriqa__SignalR__RedisConnectionString: "redis:6379"
+
+      # DataProtection — key storage in Redis
+      Veriqa__DataProtection__RedisConnectionString: "redis:6379"
+
+      # Telegram bot (optional)
+      Veriqa__Channels__Telegram__Enabled: "${TELEGRAM_ENABLED:-false}"
+      Veriqa__Channels__Telegram__BotToken: "${TELEGRAM_BOT_TOKEN:-}"
+      Veriqa__Channels__Telegram__UpdateMode: "Webhook"
+      Veriqa__Channels__Telegram__WebhookBaseUrl: "${WEBHOOK_BASE_URL:-https://localhost}"
+      Veriqa__Channels__Telegram__WebhookSecretToken: "${TELEGRAM_WEBHOOK_SECRET:-}"
+
+      # MAX bot (optional)
+      Veriqa__Channels__Max__Enabled: "${MAX_ENABLED:-false}"
+      Veriqa__Channels__Max__BotToken: "${MAX_BOT_TOKEN:-}"
+      Veriqa__Channels__Max__UpdateMode: "Webhook"
+      Veriqa__Channels__Max__WebhookBaseUrl: "${WEBHOOK_BASE_URL:-https://localhost}"
+      Veriqa__Channels__Max__WebhookSecretToken: "${MAX_WEBHOOK_SECRET:-}"
+
+      # Event publisher — RabbitMQ
+      Veriqa__Events__RabbitMq__ConnectionString: "amqp://veriqa:${RABBITMQ_PASSWORD}@rabbitmq:5672/veriqa"
+
+      # OpenIddict certificates (Base64-encoded PFX) — set them in .env
+      Veriqa__OpenIddict__Server__SigningCertificateBase64: "${SIGNING_CERTIFICATE_BASE64:-}"
+      Veriqa__OpenIddict__Server__SigningCertificatePassword: "${SIGNING_CERTIFICATE_PASSWORD:-}"
+      Veriqa__OpenIddict__Server__EncryptionCertificateBase64: "${ENCRYPTION_CERTIFICATE_BASE64:-}"
+      Veriqa__OpenIddict__Server__EncryptionCertificatePassword: "${ENCRYPTION_CERTIFICATE_PASSWORD:-}"
+
+      # OIDC clients (example)
+      Veriqa__OpenIddict__Clients__0__ClientId: "veriqa-demo"
+      Veriqa__OpenIddict__Clients__0__DisplayName: "Veriqa Demo Application"
+      Veriqa__OpenIddict__Clients__0__AllowedRedirectUris__0: "https://localhost:7020/signin-oidc"
+      Veriqa__OpenIddict__Clients__0__AllowedScopes__0: "openid"
+      Veriqa__OpenIddict__Clients__0__AllowedScopes__1: "profile"
+      Veriqa__OpenIddict__Clients__0__AllowedScopes__2: "phone"
+      Veriqa__OpenIddict__Clients__0__AllowedScopes__3: "offline_access"
+      Veriqa__OpenIddict__Clients__0__AllowRefreshTokens: "true"
+    networks:
+      - veriqa-internal
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8080/health/live"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+      start_period: 15s
+
+  # ── PostgreSQL ─────────────────────────────────────────────────────────────
+  postgres:
+    image: postgres:16-alpine
+    restart: unless-stopped
+    environment:
+      POSTGRES_DB: veriqa
+      POSTGRES_USER: veriqa
+      POSTGRES_PASSWORD: "${POSTGRES_PASSWORD}"
+    volumes:
+      - postgres-data:/var/lib/postgresql/data
+    networks:
+      - veriqa-internal
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U veriqa -d veriqa"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+      start_period: 10s
+
+  # ── Redis-compatible store (Valkey) ────────────────────────────────────────
+  # Valkey is a BSD-3-Clause fork of Redis 7.2 and speaks the same protocol. The Redis
+  # server itself is source-available from 7.4 on (RSALv2 / SSPLv1, plus AGPLv3 from 8.0);
+  # to use it anyway, set the image to redis:<version> and valkey-server / valkey-cli below
+  # to redis-server / redis-cli.
+  # The service keeps the name "redis": the connection strings above point at it.
+  redis:
+    image: valkey/valkey:8-alpine
+    restart: unless-stopped
+    command: valkey-server --appendonly yes
+    volumes:
+      - redis-data:/data
+    networks:
+      - veriqa-internal
+    healthcheck:
+      test: ["CMD", "valkey-cli", "ping"]
+      interval: 10s
+      timeout: 5s
+      retries: 5
+
+  # ── RabbitMQ ───────────────────────────────────────────────────────────────
+  rabbitmq:
+    image: rabbitmq:3-management-alpine
+    restart: unless-stopped
+    environment:
+      RABBITMQ_DEFAULT_USER: veriqa
+      RABBITMQ_DEFAULT_PASS: "${RABBITMQ_PASSWORD}"
+      RABBITMQ_DEFAULT_VHOST: veriqa
+    volumes:
+      - rabbitmq-data:/var/lib/rabbitmq
+    networks:
+      - veriqa-internal
+    healthcheck:
+      test: ["CMD", "rabbitmq-diagnostics", "ping"]
+      interval: 15s
+      timeout: 10s
+      retries: 5
+      start_period: 20s
+
+  # ── Nginx reverse proxy ────────────────────────────────────────────────────
+  nginx:
+    image: nginx:alpine
+    restart: unless-stopped
+    depends_on:
+      - authserver
+    ports:
+      - "80:80"
+      - "443:443"
+    volumes:
+      - ./nginx.conf:/etc/nginx/nginx.conf:ro
+      - ./certs:/etc/nginx/certs:ro
+    networks:
+      - veriqa-internal
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost/health/live"]
+      interval: 30s
+      timeout: 5s
+      retries: 3
+
+volumes:
+  postgres-data:
+  redis-data:
+  rabbitmq-data:
+
+networks:
+  veriqa-internal:
+    driver: bridge

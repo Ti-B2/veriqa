@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <!--
+    Aspire AppHost of the aspire sample (MODE-NET-2): orchestrates the transaction store and the
+    application that embeds Veriqa. The Aspire version matches the core AppHost of this
+    solution (13.4.6): one solution must not carry two Aspire.AppHost.Sdk versions (MSB4240).
+  -->
+  <Sdk Name="Aspire.AppHost.Sdk" Version="13.4.6" />
+
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Veriqa.Sample.DotNet.Aspire.Login.AppHost</RootNamespace>
+    <AssemblyName>Veriqa.Sample.DotNet.Aspire.Login.AppHost</AssemblyName>
+    <SuppressNETCoreSdkPreviewMessage>true</SuppressNETCoreSdkPreviewMessage>
+    <!-- The sample is not a public package -->
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!--
+      The orchestrated application lives inside this directory so that the sample stays a single
+      downloadable unit (the demo site serves the whole form directory as one ZIP). Its sources
+      belong to its own project and must not be compiled into the AppHost.
+    -->
+    <Compile Remove="app/**" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Redis as the orchestrated transaction store (official Aspire integration) -->
+    <PackageReference Include="Aspire.Hosting.Redis" Version="13.4.6" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="app\Veriqa.Sample.DotNet.Aspire.Login.App.csproj" IsAspireProjectResource="true" />
+  </ItemGroup>
+
+</Project>

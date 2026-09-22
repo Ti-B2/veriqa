@@ -1,0 +1,26 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Veriqa.Sample.DotNet.Inproc.AgentApproval</RootNamespace>
+    <AssemblyName>Veriqa.Sample.DotNet.Inproc.AgentApproval</AssemblyName>
+    <!-- The agent approval sample is not a public package -->
+    <IsPackable>false</IsPackable>
+    <!-- The bot token is passed through user secrets, never through a committed file -->
+    <UserSecretsId>veriqa-sample-dotnet-inproc-agent-approval</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Dependency on the Veriqa AuthServer library (library mode, MODE-NET-1 inproc) -->
+    <ProjectReference Include="..\..\..\..\src\core\Veriqa.Core.AuthServer\Veriqa.Core.AuthServer.csproj" />
+    <ProjectReference Include="..\..\..\..\src\core\Veriqa.Core.ChannelAdapter\Veriqa.Core.ChannelAdapter.csproj" />
+    <!-- Channel satellites: the channel this host registers. The base package carries the
+         contour, each channel arrives in its own package (and brings its own SDK). -->
+    <ProjectReference Include="..\..\..\..\src\core\Veriqa.Core.ChannelAdapter.Telegram\Veriqa.Core.ChannelAdapter.Telegram.csproj" />
+    <ProjectReference Include="..\..\..\..\src\core\Veriqa.Core.TransactionEngine\Veriqa.Core.TransactionEngine.csproj" />
+  </ItemGroup>
+
+</Project>

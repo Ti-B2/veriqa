@@ -1,0 +1,103 @@
+// Copyright (c) Dmitrii Erusov
+// SPDX-License-Identifier: MPL-2.0
+
+using Veriqa.Core.ChannelAdapter.Constants;
+
+namespace Veriqa.Core.ChannelAdapter.Telegram.Constants;
+
+/// <summary>
+/// Telegram adapter constants (SPEC-003 §21).
+/// Contains the string literals of the adapter itself. The wordings of a message it shows the user
+/// are not among them: those belong to the message and are declared with it
+/// (<see cref="Veriqa.Core.TransactionEngine.MessageTemplates.MessageTemplateNaturalKeys"/>).
+/// </summary>
+internal static class TelegramAdapterConstants
+{
+    /// <summary>
+    /// Adapter version in semver format.
+    /// </summary>
+    public const string AdapterVersion = "1.0.0";
+
+    /// <summary>
+    /// Telegram bot /start command.
+    /// </summary>
+    public const string BotCommandStart = "/start";
+
+    /// <summary>
+    /// Deep link prefix for authentication (matches <see cref="CallbackDataPrefixes.Auth"/>).
+    /// </summary>
+    public const string DeepLinkPrefix = CallbackDataPrefixes.Auth;
+
+    /// <summary>
+    /// HTTP header of the Telegram Bot API webhook secret token.
+    /// </summary>
+    public const string WebhookSecretHeader = "X-Telegram-Bot-Api-Secret-Token";
+
+    /// <summary>
+    /// Confirm button text.
+    /// </summary>
+    public const string ConfirmButtonText = "Confirm ✅";
+
+    /// <summary>
+    /// Decline button text.
+    /// </summary>
+    public const string DeclineButtonText = "Decline ❌";
+
+    /// <summary>
+    /// Phone number request text.
+    /// Experimental reserve for ScopesClaims RequirePhone; currently unused.
+    /// </summary>
+    public const string PhoneRequestText = "Share your phone number";
+
+    /// <summary>
+    /// Text of the send-phone-number button.
+    /// Experimental reserve for ScopesClaims RequirePhone; currently unused.
+    /// </summary>
+    public const string PhoneButtonText = "📱 Send phone number";
+
+    /// <summary>
+    /// Maximum raw metadata size in bytes (CA-005). Alias of the contract-wide
+    /// <see cref="ChannelAdapterLimits.MaxRawMetadataSize"/> — the limit is identical for every channel,
+    /// so this class does not carry its own literal.
+    /// </summary>
+    public const int MaxRawMetadataSize = ChannelAdapterLimits.MaxRawMetadataSize;
+
+    /// <summary>
+    /// Maximum number of API call retry attempts.
+    /// </summary>
+    public const int MaxRetryAttempts = 3;
+
+    /// <summary>
+    /// Base delay between retried API calls (in milliseconds).
+    /// </summary>
+    public const int RetryBaseDelayMs = 1000;
+
+    /// <summary>
+    /// Timeout of the getUpdates long-poll request (in seconds, TASK-051 — extracted magic constant).
+    /// </summary>
+    public const int LongPollTimeoutSeconds = 30;
+
+    /// <summary>
+    /// Webhook path relative to the base URL.
+    /// </summary>
+    public const string WebhookPath = "/api/channels/telegram/webhook";
+
+    /// <summary>
+    /// Separator of the parts packed into the opaque inbound token: the callback query id and the
+    /// coordinates of the message the button belongs to. Neither part can contain it — Telegram
+    /// identifiers are numeric strings.
+    /// </summary>
+    /// <remarks>
+    /// The layout is the adapter's own business: the core carries the token back untouched and never
+    /// parses it. The coordinates are packed here on purpose — the callback query id exists only
+    /// inside the inbound event, and the message coordinates must survive a process restart or a
+    /// different instance, where an in-process prompt store would have nothing to offer (CA-142).
+    /// </remarks>
+    public const string InboundTokenSeparator = "|";
+
+    /// <summary>
+    /// Number of parts in a well-formed inbound token. Only the first one (the callback query id) is
+    /// always filled; the two coordinate slots are empty when the press carried no source message.
+    /// </summary>
+    public const int InboundTokenPartCount = 3;
+}

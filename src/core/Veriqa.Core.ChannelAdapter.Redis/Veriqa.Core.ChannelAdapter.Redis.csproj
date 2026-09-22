@@ -1,0 +1,40 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Veriqa.Core.ChannelAdapter.Redis</RootNamespace>
+    <!-- Satellite package — Redis-backed channel stores (prompt coordinates, Email action tokens,
+         Email push correlations). Keeps Redis out of the channel contour's transitive graph. -->
+    <IsPackable>true</IsPackable>
+    <PackageId>Veriqa.Core.ChannelAdapter.Redis</PackageId>
+    <Authors>Veriqa</Authors>
+    <Description>Redis-backed channel stores for Veriqa — prompt coordinates, Email action tokens and Email push correlations shared across replicas (satellite package).</Description>
+    <PackageTags>veriqa;authentication;channels;redis</PackageTags>
+    <!-- Licensing: the server core and its satellites ship under the Mozilla Public License 2.0.
+         MPL-2.0 is OSI-approved, so nuget.org takes it as a license expression and no license
+         file has to travel inside the package. -->
+    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <!-- Shared package metadata: XML docs, repository metadata, embedded symbols, readme, validation. -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\build\Packaging.props" />
+
+  <!-- Declared inventory of the public surface (PublicAPI.*.txt + RS0016/RS0017 as errors). -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\build\PublicApi.props" />
+
+  <ItemGroup>
+    <PackageReference Include="StackExchange.Redis" Version="2.8.41" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The channel contour carries IChannelPromptMessageStore and the builder this package extends;
+         the Email satellite carries the two Email ports. Both are referenced explicitly because both
+         are implemented here. -->
+    <ProjectReference Include="..\Veriqa.Core.ChannelAdapter\Veriqa.Core.ChannelAdapter.csproj" />
+    <ProjectReference Include="..\Veriqa.Core.ChannelAdapter.Email\Veriqa.Core.ChannelAdapter.Email.csproj" />
+  </ItemGroup>
+
+</Project>

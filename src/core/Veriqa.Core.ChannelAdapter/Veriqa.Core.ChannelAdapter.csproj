@@ -1,0 +1,81 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Veriqa.Core.ChannelAdapter</RootNamespace>
+    <!-- TASK-030: part of the core NuGet supply chain (consumed by external solutions from a local feed) -->
+    <IsPackable>true</IsPackable>
+    <PackageId>Veriqa.Core.ChannelAdapter</PackageId>
+    <Authors>Veriqa</Authors>
+    <Description>Veriqa Channel Adapter System — the channel contour every Veriqa channel plugs into: the registration SPI, the webhook pipeline and the settings resolution seam. The channels themselves ship as satellite packages.</Description>
+    <PackageTags>veriqa;authentication;channels</PackageTags>
+    <!-- Licensing: the server core and its satellites ship under the Mozilla Public License 2.0.
+         MPL-2.0 is OSI-approved, so nuget.org takes it as a license expression and no license
+         file has to travel inside the package. -->
+    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <!-- White-label build variant (build/pack-core with the white-label flag, which sets VeriqaWhiteLabel): the symbol turns the attribution of the
+       "Core" UI contour off in CorePageAttribution. It is appended, never assigned, so the symbols the
+       SDK defines (TRACE, RELEASE, NET*) survive. -->
+  <PropertyGroup Condition="'$(VeriqaWhiteLabel)' == 'true'">
+    <DefineConstants>$(DefineConstants);VERIQA_WHITELABEL</DefineConstants>
+  </PropertyGroup>
+
+  <!-- Shared package metadata: XML docs, repository metadata, embedded symbols, readme, validation. -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\build\Packaging.props" />
+
+  <!-- Declared inventory of the public surface (PublicAPI.*.txt + RS0016/RS0017 as errors). -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\build\PublicApi.props" />
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <!-- Stylesheets of the "Core" UI contour: shipped inside the assembly and inlined into the
+       generated page (the page must stay self-contained — SPEC-015 §1), never served over a URL.
+       LogicalName is explicit so the resource name does not depend on how the SDK derives it. -->
+  <ItemGroup>
+    <EmbeddedResource Include="UI\Styles\veriqa-core-base.css"
+                      LogicalName="Veriqa.Core.ChannelAdapter.UI.Styles.veriqa-core-base.css" />
+    <EmbeddedResource Include="UI\Styles\veriqa-service-page.css"
+                      LogicalName="Veriqa.Core.ChannelAdapter.UI.Styles.veriqa-service-page.css" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The auth server renders pages of the same UI contour: it sees the internal stylesheet
+         loader (CorePageStyles) to read its own embedded window stylesheet through the shared cache -->
+    <InternalsVisibleTo Include="Veriqa.Core.AuthServer" />
+    <!-- The channel satellites: one component split into packages so that a deployment takes only
+         the channels it uses. They are not third-party consumers — they are the very channels this
+         assembly used to hold, and they keep using the registration skeleton and the contour's
+         internal collaborators (the settings resolution seam, the page-rendering helpers, the
+         webhook pipeline's shared parts) that were never part of the published surface. Opening
+         those to the public instead would publish an API nobody outside the product needs; a
+         third-party channel goes through the public SPI (AddChannel, IChannelEndpointRegistrar). -->
+    <InternalsVisibleTo Include="Veriqa.Core.ChannelAdapter.Email" />
+    <InternalsVisibleTo Include="Veriqa.Core.ChannelAdapter.Max" />
+    <InternalsVisibleTo Include="Veriqa.Core.ChannelAdapter.Telegram" />
+    <InternalsVisibleTo Include="Veriqa.Core.ChannelAdapter.WhatsApp" />
+    <!-- The channel service tests build the contour's own seams directly (the settings resolution
+         host, the channel declarations) — surfaces that are internal by design -->
+    <!-- Test friends stay out of the packed assemblies: build/pack-core passes VeriqaPackaging=true. -->
+    <InternalsVisibleTo Include="Veriqa.Core.ChannelAdapter.Tests" Condition="'$(VeriqaPackaging)' != 'true'" />
+  </ItemGroup>
+
+  <!-- No NuGet dependency of its own: the contour talks to no channel platform. Every platform
+       SDK lives in the satellite of the channel that needs it. -->
+
+  <ItemGroup>
+    <!-- The settings resolution mechanism: the channel adapters read their own keys through its
+         public types, so the reference is explicit and does not ride in transitively through the
+         transaction engine. -->
+    <ProjectReference Include="..\Veriqa.Core.Configuration\Veriqa.Core.Configuration.csproj" />
+    <ProjectReference Include="..\Veriqa.Core.Contracts\Veriqa.Core.Contracts.csproj" />
+    <ProjectReference Include="..\Veriqa.Core.TransactionEngine\Veriqa.Core.TransactionEngine.csproj" />
+  </ItemGroup>
+
+</Project>

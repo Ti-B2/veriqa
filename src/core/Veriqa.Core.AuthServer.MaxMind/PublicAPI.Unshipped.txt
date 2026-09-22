@@ -1,0 +1,3 @@
+#nullable enable
+static Veriqa.Core.AuthServer.DependencyInjection.MaxMindGeoIpServiceCollectionExtensions.AddMaxMindGeoIp(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+Veriqa.Core.AuthServer.DependencyInjection.MaxMindGeoIpServiceCollectionExtensions

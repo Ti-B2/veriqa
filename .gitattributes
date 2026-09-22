@@ -1,0 +1,18 @@
+# Line-ending normalization.
+# C# files — always LF in the index and the working tree on every platform. Without this, CRLF files
+# that slipped into the index on Windows fail `dotnet format whitespace` on Linux (it expects LF)
+# while the local run is green — a mismatch that is hard to diagnose.
+*.cs text eol=lf
+# Markdown files — also always LF in the index. The rule removes EOL noise from diffs and keeps
+# `git blame` intact on files with mixed line endings. It applies to new and changed `.md` files;
+# existing files were not renormalized in bulk when the rule was added.
+*.md text eol=lf
+# Shell scripts — always LF in both the index and the working tree. The rule mirrors the `*.cs` one
+# but catches the opposite case: scripts are LF in the index anyway, yet a Windows checkout wrote
+# them with CRLF and `docker build` failed with `/usr/bin/env: 'bash\r': No such file or directory`
+# — invisible on Linux, where the working tree matches the index.
+*.sh text eol=lf
+# MDX documentation pages — always LF in the index and the working tree. Generated blocks in these
+# pages are written with LF and committed, so a CRLF checkout would make the generator rewrite the
+# page on every run and the consistency check fail between runs.
+*.mdx text eol=lf

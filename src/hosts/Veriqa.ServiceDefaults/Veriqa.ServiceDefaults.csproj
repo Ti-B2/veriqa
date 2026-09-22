@@ -1,0 +1,46 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Veriqa.ServiceDefaults</RootNamespace>
+    <!-- TASK-030: part of the core NuGet supply chain (consumed by external solutions from a local feed) -->
+    <IsPackable>true</IsPackable>
+    <PackageId>Veriqa.ServiceDefaults</PackageId>
+    <Authors>Veriqa</Authors>
+    <Description>Veriqa service defaults — shared Aspire service wiring: OpenTelemetry, health checks, service discovery, resilience, forwarded headers and rate limiting helpers.</Description>
+    <PackageTags>veriqa;aspire;servicedefaults</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <!-- Shared package metadata: XML docs, repository metadata, embedded symbols, readme, validation. -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\build\Packaging.props" />
+
+  <!-- Declared inventory of the public surface (PublicAPI.*.txt + RS0016/RS0017 as errors). -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\build\PublicApi.props" />
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The channel adapter's meter name is part of the product's observable contract and lives in
+         the MIT contracts package, so the host subscribes by the very same symbol instead of a
+         string literal. The reverse reference (host wiring → core component) is deliberately absent. -->
+    <ProjectReference Include="..\..\core\Veriqa.Core.Contracts\Veriqa.Core.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Http.Resilience" Version="10.4.0" />
+    <PackageReference Include="Serilog.AspNetCore" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.ServiceDiscovery" Version="10.4.0" />
+    <PackageReference Include="OpenTelemetry.Exporter.OpenTelemetryProtocol" Version="1.15.3" />
+    <PackageReference Include="OpenTelemetry.Extensions.Hosting" Version="1.15.3" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.AspNetCore" Version="1.15.2" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.Http" Version="1.15.1" />
+    <PackageReference Include="OpenTelemetry.Instrumentation.Runtime" Version="1.15.1" />
+  </ItemGroup>
+
+</Project>

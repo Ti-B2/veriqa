@@ -1,0 +1,78 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Veriqa.Core.AuthServer.Host</RootNamespace>
+    <AssemblyName>Veriqa.Core.AuthServer.Host</AssemblyName>
+    <UserSecretsId>da2c85be-8848-4878-882e-63367d93f291</UserSecretsId>
+    <!-- A running host never reads XML documentation, so the publish output (the OS-service archive
+         and the Docker image alike) carries none: this switch drops both the host's own file and the
+         ones of its references. The libraries still generate their XML docs for the NuGet packages —
+         only the copy into this host's publish directory is turned off. -->
+    <PublishDocumentationFiles>false</PublishDocumentationFiles>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="AspNetCore.HealthChecks.NpgSql" Version="9.0.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.Rabbitmq" Version="9.0.0" />
+    <PackageReference Include="AspNetCore.HealthChecks.Redis" Version="9.0.0" />
+    <PackageReference Include="Microsoft.AspNetCore.DataProtection.StackExchangeRedis" Version="10.0.7" />
+    <PackageReference Include="Microsoft.AspNetCore.SignalR.StackExchangeRedis" Version="10.0.10" />
+    <!-- Service-manager lifetimes: the host is installed as a systemd unit on Linux and as a Windows
+         service on Windows (TASK-210). Both packages are context aware — outside their manager the
+         registration does nothing — so the same build serves Docker, a local run and a service. -->
+    <PackageReference Include="Microsoft.Extensions.Hosting.Systemd" Version="10.0.12" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.WindowsServices" Version="10.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.12">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <!-- EF Core providers: the host owns the provider choice (host-owned, SPEC-001 §10.2).
+         Referenced explicitly rather than relying on the transitive flow from the migrations projects. -->
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.1" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.SqlServer" Version="10.0.12" />
+    <PackageReference Include="AspNetCore.HealthChecks.SqlServer" Version="9.0.0" />
+    <!-- Pinned above the version the provider and the health check bring: 7.x has no Azure.* dependencies. -->
+    <PackageReference Include="Microsoft.Data.SqlClient" Version="7.0.3" />
+  </ItemGroup>
+
+  <!-- Development settings stay a local-run file: they are copied to the build output, so `dotnet run`
+       and the IDE profile read them as before, but never to the publish output and therefore never
+       into the image. launchSettings.json needs no rule — the Web SDK already marks it
+       CopyToPublishDirectory=Never. -->
+  <ItemGroup>
+    <Content Update="**/*.Development.*" CopyToPublishDirectory="Never" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\..\hosts\Veriqa.ServiceDefaults\Veriqa.ServiceDefaults.csproj" />
+    <ProjectReference Include="..\Veriqa.Core.AuthServer\Veriqa.Core.AuthServer.csproj" />
+    <ProjectReference Include="..\Veriqa.Core.ChannelAdapter\Veriqa.Core.ChannelAdapter.csproj" />
+    <!-- Channel satellites: the channels this host registers. The base package carries the
+         contour, each channel arrives in its own package (and brings its own SDK). -->
+    <ProjectReference Include="..\Veriqa.Core.ChannelAdapter.Email\Veriqa.Core.ChannelAdapter.Email.csproj" />
+    <ProjectReference Include="..\Veriqa.Core.ChannelAdapter.Max\Veriqa.Core.ChannelAdapter.Max.csproj" />
+    <ProjectReference Include="..\Veriqa.Core.ChannelAdapter.Telegram\Veriqa.Core.ChannelAdapter.Telegram.csproj" />
+    <ProjectReference Include="..\Veriqa.Core.ChannelAdapter.WhatsApp\Veriqa.Core.ChannelAdapter.WhatsApp.csproj" />
+    <ProjectReference Include="..\Veriqa.Core.TransactionEngine\Veriqa.Core.TransactionEngine.csproj" />
+    <ProjectReference Include="..\Veriqa.Core.AuditTrail\Veriqa.Core.AuditTrail.csproj" />
+    <!-- EF Core store satellites: this host persists both the transactions and the audit journal in
+         a relational database when a connection string is configured, so it takes the ORM
+         explicitly. A host on the in-memory store or on Redis references neither. -->
+    <ProjectReference Include="..\Veriqa.Core.TransactionEngine.EntityFrameworkCore\Veriqa.Core.TransactionEngine.EntityFrameworkCore.csproj" />
+    <ProjectReference Include="..\Veriqa.Core.AuditTrail.EntityFrameworkCore\Veriqa.Core.AuditTrail.EntityFrameworkCore.csproj" />
+    <!-- Per-provider migration assemblies: a build-time fixed set of supported databases.
+         The concrete provider is chosen by configuration at runtime (SPEC-020, SPEC-012);
+         extending the set = rebuilding the image, without changing the core. -->
+    <ProjectReference Include="..\Veriqa.Core.TransactionEngine.Migrations.PostgreSql\Veriqa.Core.TransactionEngine.Migrations.PostgreSql.csproj" />
+    <ProjectReference Include="..\Veriqa.Core.AuthServer.Migrations.PostgreSql\Veriqa.Core.AuthServer.Migrations.PostgreSql.csproj" />
+    <ProjectReference Include="..\Veriqa.Core.AuditTrail.Migrations.PostgreSql\Veriqa.Core.AuditTrail.Migrations.PostgreSql.csproj" />
+    <ProjectReference Include="..\Veriqa.Core.TransactionEngine.Migrations.SqlServer\Veriqa.Core.TransactionEngine.Migrations.SqlServer.csproj" />
+    <ProjectReference Include="..\Veriqa.Core.AuthServer.Migrations.SqlServer\Veriqa.Core.AuthServer.Migrations.SqlServer.csproj" />
+    <ProjectReference Include="..\Veriqa.Core.AuditTrail.Migrations.SqlServer\Veriqa.Core.AuditTrail.Migrations.SqlServer.csproj" />
+  </ItemGroup>
+
+</Project>

@@ -1,0 +1,490 @@
+/*
+ * Nova Stream — a ten-foot interface.
+ *
+ * Written for the browsers televisions actually ship: Tizen 5.5 and webOS 5 carry Chromium 68-69.
+ * So no :has(), no :is()/:where(), no :focus-visible, no nesting, no logical properties, no
+ * clamp()/min()/max(), no aspect-ratio, and no gap inside flex containers (grid gap is fine) —
+ * every one of those is younger than that engine and would silently drop the rule.
+ *
+ * Sizes are in vw/vh rather than px: one stylesheet then reads the same from three metres away on a
+ * 55-inch screen and from half a metre on a laptop.
+ */
+
+:root {
+  --brand: #e50a5c;
+  --brand-dim: #8c0937;
+  --bg: #07070c;
+  --bg-raised: #14141f;
+  --bg-card: #1b1b2a;
+  --text: #f4f4f8;
+  --text-dim: #a0a0b4;
+  --focus: #ffffff;
+  --line: #3a3a50;
+  --ok: #3ddc84;
+  --warn: #ffb300;
+  --bad: #ff5252;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 1.6vh;
+  line-height: 1.45;
+  overflow: hidden;
+}
+
+.app {
+  height: 100%;
+  width: 100%;
+}
+
+.screen {
+  height: 100%;
+  width: 100%;
+  padding: 4vh 5vw;
+}
+
+.screen[hidden] {
+  display: none;
+}
+
+/* ---------------------------------------------------------------- brand */
+
+.brand {
+  color: var(--brand);
+  font-weight: 800;
+  letter-spacing: 0.35em;
+  margin: 0;
+  text-transform: uppercase;
+}
+
+.brand-xl {
+  font-size: 7vh;
+}
+
+.brand-l {
+  font-size: 5vh;
+}
+
+.brand-s {
+  font-size: 2.6vh;
+}
+
+.tagline {
+  color: var(--text-dim);
+  font-size: 3vh;
+  margin: 2vh 0 6vh 0;
+}
+
+.hint {
+  color: var(--text-dim);
+  font-size: 1.8vh;
+  margin: 4vh 0 0 0;
+}
+
+/* The splash is read from across the room before anything else, so its lettering is a fifth larger
+   than the same classes elsewhere. */
+.screen-splash .brand-xl {
+  font-size: 8.4vh;
+}
+
+.screen-splash .tagline {
+  font-size: 3.6vh;
+}
+
+.screen-splash .button {
+  font-size: 2.9vh;
+}
+
+.screen-splash .hint {
+  font-size: 2.2vh;
+}
+
+.hint-bottom {
+  bottom: 2vh;
+  left: 5vw;
+  margin: 0;
+  position: absolute;
+}
+
+/* ---------------------------------------------------------------- buttons */
+
+.button {
+  background: var(--bg-raised);
+  border: 0.4vh solid transparent;
+  border-radius: 0.8vh;
+  color: var(--text);
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 2.4vh;
+  font-weight: 600;
+  padding: 1.6vh 4vw;
+  text-decoration: none;
+}
+
+.button-primary {
+  background: var(--brand);
+  color: #ffffff;
+}
+
+.button-ghost {
+  background: transparent;
+  border-color: var(--line);
+  font-size: 1.9vh;
+  padding: 1vh 1.8vw;
+}
+
+/* Focus is drawn by a class the script sets, not by :focus-visible: that pseudo-class arrived in
+   Chromium 86 and would leave a television with no visible cursor at all. */
+.is-focused {
+  border-color: var(--focus);
+  box-shadow: 0 0 0 0.5vh rgba(255, 255, 255, 0.25);
+  outline: none;
+}
+
+/* ---------------------------------------------------------------- splash */
+
+.screen-splash {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.splash-inner {
+  max-width: 60vw;
+}
+
+/* ---------------------------------------------------------------- welcome */
+
+.screen-welcome {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.welcome-inner {
+  max-width: 70vw;
+  width: 100%;
+}
+
+.welcome-kicker {
+  color: var(--text-dim);
+  font-size: 2.4vh;
+  margin: 0 0 1vh 0;
+}
+
+.welcome-registered {
+  color: var(--text);
+  font-size: 2.8vh;
+  margin: 4vh 0 0 0;
+}
+
+/* Spacing by margin, not by gap: flex gap arrived in Chromium 84, after the televisions' 68-69. */
+.welcome-actions .button + .button {
+  margin-left: 2vw;
+}
+
+.card {
+  background: var(--bg-raised);
+  border-radius: 1.4vh;
+  display: flex;
+  align-items: center;
+  margin: 3vh auto 5vh auto;
+  max-width: 46vw;
+  padding: 3vh 3vw;
+  text-align: left;
+}
+
+.card-avatar {
+  flex: 0 0 auto;
+  height: 14vh;
+  margin-right: 2.5vw;
+  width: 14vh;
+}
+
+.card-avatar img,
+.top-bar-avatar img {
+  border-radius: 50%;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.initials {
+  align-items: center;
+  background: var(--brand-dim);
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  font-weight: 700;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.card-avatar .initials {
+  font-size: 5vh;
+}
+
+.card-fields {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.field-name {
+  font-size: 3.4vh;
+  font-weight: 700;
+  margin: 0;
+}
+
+.field {
+  color: var(--text-dim);
+  font-size: 2.2vh;
+  margin: 0.6vh 0 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.field-channel {
+  color: var(--brand);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------- catalogue */
+
+.screen-catalog {
+  display: block;
+  overflow-y: auto;
+  position: relative;
+  /* The grid still scrolls — the remote moves the focus and the focused tile is scrolled into
+     view — but no scrollbar is drawn: a television has no pointer to drag it with. */
+  scrollbar-width: none;
+}
+
+.screen-catalog::-webkit-scrollbar {
+  display: none;
+}
+
+.top-bar {
+  align-items: center;
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 4vh;
+}
+
+.top-bar-right {
+  align-items: center;
+  display: flex;
+}
+
+.viewer {
+  color: var(--text-dim);
+  font-size: 2vh;
+  margin-right: 1.2vw;
+}
+
+.top-bar-avatar {
+  height: 4.6vh;
+  margin-right: 1.2vw;
+  width: 4.6vh;
+}
+
+.top-bar-avatar .initials {
+  font-size: 1.8vh;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 3vh 2vw;
+  padding-bottom: 8vh;
+}
+
+/* CSS grid reached Chromium in 57; older television engines (webOS 4.x runs 53) lay the tiles out
+   by floats instead. Four to a row either way, so the arrow keys meet the same geometry. */
+@supports not (display: grid) {
+  .grid {
+    overflow: hidden;
+  }
+
+  .grid > .tile {
+    float: left;
+    margin: 0 2% 3vh 0;
+    width: 23%;
+  }
+}
+
+.tile {
+  background: var(--bg-card);
+  border: 0.4vh solid transparent;
+  border-radius: 1.2vh;
+  overflow: hidden;
+  padding: 0;
+}
+
+.tile-cover {
+  display: block;
+  height: 22vh;
+  width: 100%;
+}
+
+.tile-cover svg {
+  display: block;
+  height: 100%;
+  width: 100%;
+}
+
+.tile-body {
+  padding: 1.6vh 1.2vw;
+}
+
+.tile-title {
+  font-size: 2.2vh;
+  font-weight: 700;
+  margin: 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.tile-meta {
+  color: var(--text-dim);
+  font-size: 1.7vh;
+  margin: 0.4vh 0 1.4vh 0;
+}
+
+.tile-buy {
+  background: var(--brand);
+  border: 0.4vh solid transparent;
+  border-radius: 0.8vh;
+  color: #ffffff;
+  cursor: pointer;
+  display: block;
+  font-family: inherit;
+  font-size: 2vh;
+  font-weight: 700;
+  padding: 1.1vh 0;
+  width: 100%;
+}
+
+.tile-owned {
+  color: var(--ok);
+  display: block;
+  font-size: 2vh;
+  font-weight: 700;
+  padding: 1.1vh 0;
+  text-align: center;
+}
+
+/* ---------------------------------------------------------------- purchase modal */
+
+.modal {
+  background: rgba(3, 3, 8, 0.86);
+  bottom: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  left: 0;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.modal[hidden] {
+  display: none;
+}
+
+.modal-box {
+  background: var(--bg-raised);
+  border-radius: 1.6vh;
+  max-width: 64vw;
+  padding: 4vh 3vw;
+  width: 100%;
+}
+
+.modal-title {
+  font-size: 3.2vh;
+  font-weight: 700;
+  margin: 0 0 3vh 0;
+}
+
+.modal-body {
+  display: flex;
+  align-items: center;
+}
+
+.modal-qr {
+  background: #ffffff;
+  border-radius: 1vh;
+  flex: 0 0 auto;
+  height: 28vh;
+  margin-right: 2.5vw;
+  padding: 1vh;
+  width: 28vh;
+}
+
+.modal-qr img {
+  height: 100%;
+  image-rendering: auto;
+  width: 100%;
+}
+
+.modal-qr-empty {
+  align-items: center;
+  color: #444444;
+  display: flex;
+  font-size: 1.8vh;
+  height: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.modal-copy {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.modal-status {
+  font-size: 2.4vh;
+  margin: 0 0 1.5vh 0;
+}
+
+.modal-status.is-ok {
+  color: var(--ok);
+}
+
+.modal-status.is-warn {
+  color: var(--warn);
+}
+
+.modal-status.is-bad {
+  color: var(--bad);
+}
+
+.modal-actions {
+  margin-top: 3vh;
+  text-align: right;
+}
+
+.modal-actions .button {
+  margin-left: 1.5vw;
+}
+

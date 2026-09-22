@@ -1,0 +1,7 @@
+#nullable enable
+const Veriqa.Core.AuditTrail.Store.EfCore.AuditMigrationDefaults.MigrationsHistoryTable = "__AuditTrailMigrationsHistory" -> string!
+static Veriqa.Core.AuditTrail.DependencyInjection.AuditTrailBuilderEntityFrameworkCoreExtensions.UseEfCoreSink(this Veriqa.Core.AuditTrail.DependencyInjection.AuditTrailBuilder! audit, System.Action<Microsoft.EntityFrameworkCore.DbContextOptionsBuilder!>! configure) -> Veriqa.Core.AuditTrail.DependencyInjection.AuditTrailBuilder!
+Veriqa.Core.AuditTrail.DependencyInjection.AuditTrailBuilderEntityFrameworkCoreExtensions
+Veriqa.Core.AuditTrail.Store.EfCore.AuditMigrationDefaults
+Veriqa.Core.AuditTrail.Store.EfCore.AuditDbContext
+Veriqa.Core.AuditTrail.Store.EfCore.AuditDbContext.AuditDbContext(Microsoft.EntityFrameworkCore.DbContextOptions<Veriqa.Core.AuditTrail.Store.EfCore.AuditDbContext!>! options) -> void

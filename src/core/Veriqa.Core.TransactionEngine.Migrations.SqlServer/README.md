@@ -1,0 +1,32 @@
+# Veriqa.Core.TransactionEngine.Migrations.SqlServer
+
+SQL Server migrations for the transaction schema of the Veriqa Transaction Engine. The package
+contains no API of its own: it is the migrations assembly a host names by string when it configures
+the EF Core store, plus the design-time factory `dotnet ef` needs.
+
+A host that takes the core from NuGet cannot create the schema on SQL Server without it — the
+migrations its EF Core options name by assembly name live here. Migrations are per provider by EF
+Core design, so a different database gets a different package, not a switch inside this one.
+
+## Install
+
+```bash
+dotnet add package Veriqa.Core.TransactionEngine.Migrations.SqlServer
+```
+
+## Wiring
+
+```csharp
+authServer.ConfigureTransactionEngine(te =>
+    te.UseEfCoreStore(ef => ef.UseSqlServer(
+        connectionString,
+        sqlServer => sqlServer.MigrationsAssembly("Veriqa.Core.TransactionEngine.Migrations.SqlServer"))));
+```
+
+## License
+
+Mozilla Public License 2.0 — see the `LICENSE` file in the repository root; the package carries
+the `MPL-2.0` license expression in its metadata.
+
+---
+Veriqa™ — © Dmitrii Erusov. Sources and mirrors: https://veriqa.app · devs@veriqa.app

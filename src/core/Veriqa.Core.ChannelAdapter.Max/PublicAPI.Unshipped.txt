@@ -1,0 +1,49 @@
+#nullable enable
+const Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions.DefaultDeepLinkBaseUrl = "https://max.ru/" -> string!
+const Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions.SectionName = "Veriqa:Channels:Max" -> string!
+override Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials.Equals(object? obj) -> bool
+override Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials.GetHashCode() -> int
+override Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials.ToString() -> string!
+static Veriqa.Core.ChannelAdapter.DependencyInjection.ChannelAdapterBuilderMaxExtensions.AddMax(this Veriqa.Core.ChannelAdapter.DependencyInjection.ChannelAdapterBuilder! adapters) -> Veriqa.Core.ChannelAdapter.DependencyInjection.ChannelAdapterBuilder!
+static Veriqa.Core.ChannelAdapter.Max.Configuration.MaxConfigKeys.Credentials.get -> Veriqa.Core.Configuration.ConfigKey<Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials!>!
+static Veriqa.Core.ChannelAdapter.Max.Configuration.MaxConfigKeys.Catalog.get -> Veriqa.Core.Configuration.ConfigKeyCatalog!
+static Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials.operator !=(Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials? left, Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials? right) -> bool
+static Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials.operator ==(Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials? left, Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials? right) -> bool
+Veriqa.Core.ChannelAdapter.DependencyInjection.ChannelAdapterBuilderMaxExtensions
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxConfigKeys
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions.BotPublicName.get -> string!
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions.BotPublicName.set -> void
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions.BotToken.get -> string!
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions.BotToken.set -> void
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions.DeepLinkBaseUrl.get -> string!
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions.DeepLinkBaseUrl.set -> void
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions.Enabled.get -> bool
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions.Enabled.set -> void
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions.GetTenantCredentials() -> Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials!
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions.MaxOptions() -> void
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions.UpdateMode.get -> Veriqa.Core.ChannelAdapter.Max.Enums.MaxUpdateMode
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions.UpdateMode.set -> void
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions.WebhookBaseUrl.get -> string!
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions.WebhookBaseUrl.set -> void
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions.WebhookSecretToken.get -> string!
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions.WebhookSecretToken.set -> void
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptionsValidator
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptionsValidator.MaxOptionsValidator() -> void
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptionsValidator.Validate(string? name, Veriqa.Core.ChannelAdapter.Max.Configuration.MaxOptions! options) -> Microsoft.Extensions.Options.ValidateOptionsResult!
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials.<Clone>$() -> Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials!
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials.BotPublicName.get -> string!
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials.BotPublicName.init -> void
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials.BotToken.get -> string!
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials.BotToken.init -> void
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials.Deconstruct(out string! BotToken, out string! WebhookSecretToken, out string! DeepLinkBaseUrl, out string! BotPublicName) -> void
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials.DeepLinkBaseUrl.get -> string!
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials.DeepLinkBaseUrl.init -> void
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials.Equals(Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials? other) -> bool
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials.MaxTenantCredentials(string! BotToken, string! WebhookSecretToken, string! DeepLinkBaseUrl, string! BotPublicName) -> void
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials.WebhookSecretToken.get -> string!
+Veriqa.Core.ChannelAdapter.Max.Configuration.MaxTenantCredentials.WebhookSecretToken.init -> void
+Veriqa.Core.ChannelAdapter.Max.Enums.MaxUpdateMode
+Veriqa.Core.ChannelAdapter.Max.Enums.MaxUpdateMode.Polling = 1 -> Veriqa.Core.ChannelAdapter.Max.Enums.MaxUpdateMode
+Veriqa.Core.ChannelAdapter.Max.Enums.MaxUpdateMode.Webhook = 0 -> Veriqa.Core.ChannelAdapter.Max.Enums.MaxUpdateMode

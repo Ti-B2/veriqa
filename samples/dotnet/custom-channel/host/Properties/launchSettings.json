@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "Veriqa.Sample.CustomChannel.Host": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": false,
+      "applicationUrl": "https://localhost:7320;http://localhost:5320",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

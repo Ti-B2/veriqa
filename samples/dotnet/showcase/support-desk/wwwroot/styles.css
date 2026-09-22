@@ -1,0 +1,474 @@
+/*
+ * Helio — the support section.
+ *
+ * An ordinary responsive web page, read on a phone as often as on a desktop. The CSS stays as
+ * conservative as its neighbour in samples/dotnet/showcase/streaming-tv — no :has(), no :is(), no
+ * nesting, no logical properties, no clamp()/min()/max(), no flex gap — because the two samples
+ * share markup and stylesheet patterns and a rule copied across should not stop working on the way.
+ */
+
+:root {
+  --accent: #1f6feb;
+  --accent-dark: #1554b8;
+  --bg: #f6f7fb;
+  --surface: #ffffff;
+  --border: #e1e4ee;
+  --text: #171a21;
+  --text-dim: #5b6172;
+  --ok: #1a7f4b;
+  --warn: #9a6400;
+  --bad: #b3261e;
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --bg: #0f1117;
+    --surface: #171a23;
+    --border: #262b38;
+    --text: #eceef4;
+    --text-dim: #9aa1b4;
+    --ok: #3ddc84;
+    --warn: #ffb300;
+    --bad: #ff6b60;
+  }
+}
+
+* {
+  box-sizing: border-box;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+  font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+  font-size: 16px;
+  line-height: 1.55;
+  margin: 0;
+}
+
+/* ---------------------------------------------------------------- header */
+
+.site-header {
+  align-items: center;
+  background: var(--surface);
+  border-bottom: 1px solid var(--border);
+  display: flex;
+  justify-content: space-between;
+  padding: 14px 20px;
+}
+
+.brand {
+  color: var(--accent);
+  font-size: 18px;
+  font-weight: 800;
+  letter-spacing: 0.28em;
+  margin: 0;
+}
+
+.site-header-right {
+  align-items: center;
+  display: flex;
+}
+
+.site-header-right[hidden] {
+  display: none;
+}
+
+.header-name {
+  color: var(--text-dim);
+  font-size: 14px;
+  margin: 0 12px 0 10px;
+}
+
+/* ---------------------------------------------------------------- layout */
+
+.page {
+  margin: 0 auto;
+  max-width: 760px;
+  padding: 28px 20px 64px 20px;
+}
+
+.section[hidden] {
+  display: none;
+}
+
+.headline {
+  font-size: 34px;
+  line-height: 1.2;
+  margin: 8px 0 12px 0;
+}
+
+.lede {
+  color: var(--text-dim);
+  font-size: 18px;
+  margin: 0 0 28px 0;
+}
+
+.section-title {
+  font-size: 20px;
+  margin: 32px 0 12px 0;
+}
+
+.empty {
+  color: var(--text-dim);
+}
+
+.empty[hidden] {
+  display: none;
+}
+
+/* ---------------------------------------------------------------- buttons */
+
+.button {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--text);
+  cursor: pointer;
+  display: inline-block;
+  font-family: inherit;
+  font-size: 15px;
+  font-weight: 600;
+  padding: 9px 16px;
+  text-decoration: none;
+}
+
+.button:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+.button-primary {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #ffffff;
+}
+
+.button-primary:hover {
+  background: var(--accent-dark);
+}
+
+.button-ghost {
+  font-size: 14px;
+  padding: 7px 12px;
+}
+
+.button-danger {
+  color: var(--bad);
+}
+
+/* ---------------------------------------------------------------- infographic */
+
+.infographic {
+  margin: 0 0 28px 0;
+}
+
+.infographic svg {
+  display: block;
+  height: auto;
+  width: 100%;
+}
+
+/* ---------------------------------------------------------------- profile card */
+
+.card {
+  align-items: center;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  display: flex;
+  padding: 18px;
+}
+
+.avatar {
+  flex: 0 0 auto;
+  overflow: hidden;
+}
+
+.avatar img {
+  border-radius: 50%;
+  height: 100%;
+  object-fit: cover;
+  width: 100%;
+}
+
+.avatar-l {
+  height: 64px;
+  margin-right: 16px;
+  width: 64px;
+}
+
+.avatar-s {
+  height: 30px;
+  width: 30px;
+}
+
+.initials {
+  align-items: center;
+  background: var(--accent);
+  border-radius: 50%;
+  color: #ffffff;
+  display: flex;
+  font-weight: 700;
+  height: 100%;
+  justify-content: center;
+  width: 100%;
+}
+
+.avatar-l .initials {
+  font-size: 22px;
+}
+
+.avatar-s .initials {
+  font-size: 12px;
+}
+
+.card-fields {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.field-name {
+  font-size: 19px;
+  font-weight: 700;
+  margin: 0;
+}
+
+.field {
+  color: var(--text-dim);
+  font-size: 14px;
+  margin: 2px 0 0 0;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.field-channel {
+  color: var(--accent);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+/* ---------------------------------------------------------------- tickets */
+
+.tickets {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+.ticket {
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  margin-bottom: 12px;
+  padding: 16px 18px;
+}
+
+.ticket-head {
+  align-items: baseline;
+  display: flex;
+  justify-content: space-between;
+}
+
+.ticket-id {
+  color: var(--text-dim);
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+}
+
+.ticket-status {
+  border-radius: 999px;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  padding: 3px 10px;
+  text-transform: uppercase;
+}
+
+.status-open {
+  background: rgba(31, 111, 235, 0.14);
+  color: var(--accent);
+}
+
+.status-waiting {
+  background: rgba(154, 100, 0, 0.16);
+  color: var(--warn);
+}
+
+.status-resolved {
+  background: rgba(26, 127, 75, 0.16);
+  color: var(--ok);
+}
+
+.ticket-subject {
+  font-size: 17px;
+  font-weight: 600;
+  margin: 6px 0 4px 0;
+}
+
+.ticket-message {
+  color: var(--text-dim);
+  font-size: 14px;
+  margin: 0;
+}
+
+.ticket-actions {
+  margin-top: 14px;
+}
+
+.ticket-actions .button {
+  margin-right: 8px;
+}
+
+/* ---------------------------------------------------------------- FAQ */
+
+.faq {
+  border-top: 1px solid var(--border);
+  margin-top: 36px;
+  padding-top: 20px;
+}
+
+.faq-title {
+  font-size: 17px;
+  margin: 0 0 8px 0;
+}
+
+.faq-list {
+  color: var(--text-dim);
+  font-size: 15px;
+  margin: 0;
+  padding-left: 20px;
+}
+
+/* ---------------------------------------------------------------- overlays */
+
+.overlay {
+  align-items: center;
+  background: rgba(10, 12, 18, 0.55);
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  left: 0;
+  padding: 20px;
+  position: fixed;
+  right: 0;
+  top: 0;
+  z-index: 10;
+}
+
+.overlay[hidden] {
+  display: none;
+}
+
+.overlay-box {
+  background: var(--surface);
+  border-radius: 14px;
+  max-width: 520px;
+  padding: 24px;
+  width: 100%;
+}
+
+.overlay-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin: 0 0 10px 0;
+}
+
+.overlay-text {
+  color: var(--text-dim);
+  margin: 0 0 8px 0;
+}
+
+.overlay-actions {
+  margin-top: 20px;
+  text-align: right;
+}
+
+.overlay-actions .button {
+  margin-left: 8px;
+}
+
+.stepup-body {
+  align-items: center;
+  display: flex;
+}
+
+.stepup-qr {
+  background: #ffffff;
+  border-radius: 10px;
+  flex: 0 0 auto;
+  height: 168px;
+  margin-right: 18px;
+  padding: 8px;
+  width: 168px;
+}
+
+.stepup-qr img {
+  height: 100%;
+  width: 100%;
+}
+
+.stepup-qr-empty {
+  align-items: center;
+  color: #555555;
+  display: flex;
+  font-size: 13px;
+  height: 100%;
+  justify-content: center;
+  text-align: center;
+}
+
+.stepup-copy {
+  flex: 1 1 auto;
+  min-width: 0;
+}
+
+.stepup-status {
+  font-size: 15px;
+  margin: 0 0 8px 0;
+}
+
+.stepup-status.is-ok {
+  color: var(--ok);
+}
+
+.stepup-status.is-warn {
+  color: var(--warn);
+}
+
+.stepup-status.is-bad {
+  color: var(--bad);
+}
+
+/* ---------------------------------------------------------------- narrow screens */
+
+@media (max-width: 560px) {
+  .headline {
+    font-size: 27px;
+  }
+
+  .lede {
+    font-size: 16px;
+  }
+
+  .header-name {
+    display: none;
+  }
+
+  .stepup-body {
+    display: block;
+  }
+
+  .stepup-qr {
+    height: 200px;
+    margin: 0 auto 14px auto;
+    width: 200px;
+  }
+
+  .ticket-actions .button {
+    display: block;
+    margin: 0 0 8px 0;
+    width: 100%;
+  }
+}

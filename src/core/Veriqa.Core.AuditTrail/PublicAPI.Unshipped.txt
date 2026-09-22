@@ -1,0 +1,24 @@
+#nullable enable
+const Veriqa.Core.AuditTrail.DependencyInjection.AuditRetentionOptions.DefaultBatchSize = 500 -> int
+const Veriqa.Core.AuditTrail.DependencyInjection.AuditRetentionOptions.MinBatchSize = 1 -> int
+static readonly Veriqa.Core.AuditTrail.DependencyInjection.AuditRetentionOptions.DefaultSweepInterval -> System.TimeSpan
+static readonly Veriqa.Core.AuditTrail.DependencyInjection.AuditRetentionOptions.MaxSweepInterval -> System.TimeSpan
+static readonly Veriqa.Core.AuditTrail.DependencyInjection.AuditRetentionOptions.MinSweepInterval -> System.TimeSpan
+static Veriqa.Core.AuditTrail.DependencyInjection.AuditTrailServiceCollectionExtensions.AddVeriqaAuditTrail(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, System.Action<Veriqa.Core.AuditTrail.DependencyInjection.AuditTrailBuilder!>! configure) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+Veriqa.Core.AuditTrail.DependencyInjection.AuditRecordOptions
+Veriqa.Core.AuditTrail.DependencyInjection.AuditRecordOptions.AuditRecordOptions() -> void
+Veriqa.Core.AuditTrail.DependencyInjection.AuditRecordOptions.IncludeConfirmationParameters.get -> bool
+Veriqa.Core.AuditTrail.DependencyInjection.AuditRecordOptions.IncludeConfirmationParameters.set -> void
+Veriqa.Core.AuditTrail.DependencyInjection.AuditRetentionOptions
+Veriqa.Core.AuditTrail.DependencyInjection.AuditRetentionOptions.AuditRetentionOptions() -> void
+Veriqa.Core.AuditTrail.DependencyInjection.AuditRetentionOptions.BatchSize.get -> int
+Veriqa.Core.AuditTrail.DependencyInjection.AuditRetentionOptions.BatchSize.set -> void
+Veriqa.Core.AuditTrail.DependencyInjection.AuditRetentionOptions.SweepInterval.get -> System.TimeSpan
+Veriqa.Core.AuditTrail.DependencyInjection.AuditRetentionOptions.SweepInterval.set -> void
+Veriqa.Core.AuditTrail.DependencyInjection.AuditTrailBuilder
+Veriqa.Core.AuditTrail.DependencyInjection.AuditTrailBuilder.ConfigureRecord(System.Action<Veriqa.Core.AuditTrail.DependencyInjection.AuditRecordOptions!>! configure) -> Veriqa.Core.AuditTrail.DependencyInjection.AuditTrailBuilder!
+Veriqa.Core.AuditTrail.DependencyInjection.AuditTrailBuilder.ConfigureRetention(System.Action<Veriqa.Core.AuditTrail.DependencyInjection.AuditRetentionOptions!>! configure) -> Veriqa.Core.AuditTrail.DependencyInjection.AuditTrailBuilder!
+Veriqa.Core.AuditTrail.DependencyInjection.AuditTrailBuilder.Services.get -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+Veriqa.Core.AuditTrail.DependencyInjection.AuditTrailBuilder.UseInMemorySink() -> Veriqa.Core.AuditTrail.DependencyInjection.AuditTrailBuilder!
+Veriqa.Core.AuditTrail.DependencyInjection.AuditTrailBuilder.UseSink<TSink>() -> Veriqa.Core.AuditTrail.DependencyInjection.AuditTrailBuilder!
+Veriqa.Core.AuditTrail.DependencyInjection.AuditTrailServiceCollectionExtensions

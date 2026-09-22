@@ -1,0 +1,76 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Veriqa.Core.Configuration</RootNamespace>
+    <!-- TASK-030: part of the core NuGet supply chain (consumed by external solutions from a local feed) -->
+    <IsPackable>true</IsPackable>
+    <PackageId>Veriqa.Core.Configuration</PackageId>
+    <Authors>Veriqa</Authors>
+    <Description>Veriqa Configuration — the canonical multi-level settings resolution mechanism (declarative keys, ownership levels, precedence and gate rules) shared by the Veriqa core assemblies.</Description>
+    <PackageTags>veriqa;configuration;settings;resolver</PackageTags>
+    <!-- Licensing: the server core and its satellites ship under the Mozilla Public License 2.0.
+         MPL-2.0 is OSI-approved, so nuget.org takes it as a license expression and no license
+         file has to travel inside the package. -->
+    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <!-- Shared package metadata: XML docs, repository metadata, embedded symbols, readme, validation. -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\build\Packaging.props" />
+
+  <!-- Declared inventory of the public surface (PublicAPI.*.txt + RS0016/RS0017 as errors). -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\build\PublicApi.props" />
+
+  <ItemGroup>
+    <!-- The caching layer of the resolver is hidden behind a port that is PUBLIC (a port declared
+         replaceable has to be implementable outside this assembly). What the test suite still needs
+         from the inside is the implementation behind that port and the internals it reaches. -->
+    <!-- Test friends stay out of the packed assemblies: build/pack-core passes VeriqaPackaging=true. -->
+    <InternalsVisibleTo Include="Veriqa.Core.Configuration.Tests" Condition="'$(VeriqaPackaging)' != 'true'" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The ownership context of a resolution (ResolutionContext and the two contexts hanging off
+         it) lives in the contracts package: a channel contract carries it, and the contracts package
+         is the one an adapter author is allowed to reference alone. The namespace stays
+         Veriqa.Core.Configuration — a namespace does not follow the assembly it is compiled into.
+         The edge points that way and only that way: Contracts references nothing, so it stays the
+         leaf of the core dependency graph and this module keeps its single Veriqa dependency. -->
+    <ProjectReference Include="..\Veriqa.Core.Contracts\Veriqa.Core.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Apart from the contracts package above, the mechanism depends on no Veriqa assembly, so the
+         consumers (TransactionEngine, ChannelAdapter, AuthServer) can depend on it without a cycle.
+         Its dependencies are the Microsoft.Extensions.* packages it actually uses, listed one by
+         one instead of pulled in wholesale with the ASP.NET Core shared framework: not a single
+         type of that framework appears in the module. IHostedService is not a tie to it either —
+         the type lives in Microsoft.Extensions.Hosting.Abstractions.
+         Versions are pinned to the floor of the net10.0 band, so a host always runs on the shared
+         framework's own (never older) assemblies and the package can never drag a newer one in. -->
+    <PackageReference Include="Microsoft.Extensions.Caching.Memory" Version="10.0.0" />
+    <!-- Configuration abstractions AND the binder: a node of a level served by the application
+         configuration is a section (Abstractions), and the parsing of a value at a path inside it is
+         the binder's rather than this module's — a module that parsed scalars itself would be a second
+         dialect of the same configuration. Neither package brings a provider: which providers a
+         deployment has stays the host's decision. -->
+    <PackageReference Include="Microsoft.Extensions.Configuration.Abstractions" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Configuration.Binder" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.DependencyInjection.Abstractions" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Hosting.Abstractions" Version="10.0.0" />
+    <!-- Logging AND its abstractions: the module logs (Abstractions) and calls services.AddLogging(),
+         and that extension lives in Microsoft.Extensions.Logging, not in the abstractions package. -->
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Options" Version="10.0.0" />
+    <!-- Change tokens: the walk of a configuration snapshot subscribes to the reload of the host
+         configuration itself for the core level, whose record IS that configuration. The package
+         already arrives with the configuration abstractions; it is named here because the module uses
+         it directly, and a dependency that travels in unnamed is one nobody can see. -->
+    <PackageReference Include="Microsoft.Extensions.Primitives" Version="10.0.0" />
+  </ItemGroup>
+
+</Project>

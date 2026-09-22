@@ -1,0 +1,213 @@
+/*
+ * Copyright (c) Dmitrii Erusov
+ * SPDX-License-Identifier: MPL-2.0
+ *
+ * Rules of the "Core" contour service pages - the sign-in confirmation page, the expired-callback
+ * page and the email adapter pages (compose helper, pull form, confirmation from the letter).
+ * One rule set for all four: they are one page family, so title size, button shape and plate
+ * paddings are the same on each of them by design.
+ *
+ * Loaded together with veriqa-core-base.css and never together with veriqa-auth-page.css, so
+ * class names shared with the sign-in window (.veriqa-title, .veriqa-status) cannot collide.
+ * The file is inlined into the generated document, not served over a URL. Every comment of it
+ * therefore reaches the end user's browser verbatim: the norms these rules implement are named
+ * in CorePageStyles (C#), not here.
+ */
+
+body {
+    font-family: var(--veriqa-font-family);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--veriqa-surface);
+    color: var(--veriqa-text);
+}
+
+/* Card - the composition frame of the page */
+.veriqa-card {
+    width: min(calc(100% - var(--veriqa-spacing-48)), 420px);
+    padding: var(--veriqa-spacing-40);
+    border: 1px solid var(--veriqa-surface-variant);
+    border-radius: var(--veriqa-radius-lg);
+    background: var(--veriqa-bg);
+    text-align: center;
+}
+.veriqa-card-wide { width: min(calc(100% - var(--veriqa-spacing-48)), 480px); }
+.veriqa-card--start { text-align: left; }
+/* The bottom margin of the text blocks must not add up with the card padding */
+.veriqa-card > :last-child { margin-bottom: 0; }
+
+/* Typographic frame */
+.veriqa-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--veriqa-spacing-md);
+    line-height: 1.2;
+}
+.veriqa-instruction {
+    color: var(--veriqa-muted);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    margin-bottom: var(--veriqa-spacing-20);
+}
+.veriqa-hint {
+    color: var(--veriqa-soft);
+    font-size: 0.6875rem;
+    line-height: 1.6;
+    margin-bottom: var(--veriqa-spacing-14);
+    text-align: left;
+}
+.veriqa-warning-note {
+    color: var(--veriqa-muted);
+    font-size: 0.75rem;
+    line-height: 1.6;
+    text-align: left;
+    margin-bottom: var(--veriqa-spacing-sm);
+}
+.veriqa-warning-note code {
+    font-family: var(--veriqa-font-mono);
+    font-size: 0.6875rem;
+    background: var(--veriqa-surface);
+    border: 1px solid var(--veriqa-surface-variant);
+    border-radius: 3px;
+    padding: 1px var(--veriqa-spacing-xs);
+}
+
+/* Buttons: the primitive itself is declared once in veriqa-core-base.css;
+   here are only what the service pages add to it. */
+/* A standalone action of the page is separated from the content below; inside .veriqa-actions
+   the spacing is owned by the row, so the rule is scoped to a direct child of the card. The last
+   child is excluded by the selector rather than by the guard above: both are class-and-child
+   selectors of equal specificity, so a guard declared earlier would lose to this rule. */
+.veriqa-card > .veriqa-btn:not(:last-child) { margin-bottom: var(--veriqa-spacing-md); }
+/* "No" of the confirmation question - the same button in the secondary, outlined variant */
+.veriqa-btn-decline {
+    border-color: var(--veriqa-soft);
+    background: var(--veriqa-bg);
+    color: var(--veriqa-text);
+}
+
+.veriqa-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: var(--veriqa-spacing-12);
+    justify-content: center;
+}
+.veriqa-actions form { flex: 1 1 auto; }
+
+/* Email entry form */
+.veriqa-input {
+    display: block;
+    width: 100%;
+    padding: var(--veriqa-spacing-11) var(--veriqa-spacing-14);
+    border: 1px solid var(--veriqa-surface-variant);
+    border-radius: var(--veriqa-radius);
+    font-size: 0.8125rem;
+    color: var(--veriqa-text);
+    background: var(--veriqa-surface);
+    margin-bottom: var(--veriqa-spacing-10);
+    transition: border-color var(--veriqa-transition-fast);
+    font-family: inherit;
+}
+/* The focus indicator of the contour is a :focus-visible outline, never an
+   outline: none plus a border tint - see the same rule of the sign-in window. */
+.veriqa-input:focus-visible {
+    outline: 2px solid var(--veriqa-primary);
+    outline-offset: 2px;
+    border-color: var(--veriqa-primary);
+    background: var(--veriqa-bg);
+}
+.veriqa-msg {
+    margin-top: var(--veriqa-spacing-10);
+    font-size: 0.75rem;
+    font-family: var(--veriqa-font-mono);
+    display: none;
+}
+.veriqa-msg.ok { color: var(--veriqa-success); }
+.veriqa-msg.err { color: var(--veriqa-error); }
+
+/* Status plate of the confirmation page */
+.veriqa-status {
+    font-size: 0.8125rem;
+    padding: var(--veriqa-spacing-10) var(--veriqa-spacing-14);
+    border-radius: var(--veriqa-radius);
+    margin-top: var(--veriqa-spacing-xs);
+    line-height: 1.5;
+}
+.veriqa-status.success {
+    background: var(--veriqa-success-surface);
+    color: var(--veriqa-on-success-surface);
+    border: 1px solid var(--veriqa-success-border);
+}
+.veriqa-status.error {
+    background: var(--veriqa-error-surface);
+    color: var(--veriqa-on-error-surface);
+    border: 1px solid var(--veriqa-error-border);
+}
+.veriqa-badge {
+    display: inline-block;
+    background: var(--veriqa-warning-surface);
+    color: var(--veriqa-on-warning-surface);
+    font-size: 0.625rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    padding: var(--veriqa-spacing-2) var(--veriqa-spacing-sm);
+    border-radius: 4px;
+    margin-bottom: var(--veriqa-spacing-md);
+    font-family: var(--veriqa-font-mono);
+}
+
+/* Fields of the letter being composed */
+.veriqa-fields { margin-top: var(--veriqa-spacing-md); text-align: left; }
+.veriqa-field { margin-bottom: var(--veriqa-spacing-10); }
+.veriqa-field-label {
+    display: block;
+    font-size: 0.625rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--veriqa-soft);
+    font-family: var(--veriqa-font-mono);
+    margin-bottom: var(--veriqa-spacing-xs);
+}
+.veriqa-field-value {
+    font-family: var(--veriqa-font-mono);
+    font-size: 0.6875rem;
+    background: var(--veriqa-surface);
+    border: 1px solid var(--veriqa-surface-variant);
+    border-radius: 6px;
+    padding: var(--veriqa-spacing-sm) var(--veriqa-spacing-10);
+    word-break: break-all;
+    color: var(--veriqa-text);
+    text-align: left;
+}
+.veriqa-code {
+    background: var(--veriqa-code-bg);
+    color: var(--veriqa-on-code-bg);
+    font-family: var(--veriqa-font-mono);
+    font-size: 0.6875rem;
+    border-radius: var(--veriqa-radius);
+    padding: var(--veriqa-spacing-12) var(--veriqa-spacing-14);
+    margin-bottom: var(--veriqa-spacing-md);
+    white-space: pre-wrap;
+    word-break: break-all;
+    text-align: left;
+}
+
+/* Secondary action in link styling */
+.veriqa-link {
+    display: block;
+    margin-top: var(--veriqa-spacing-20);
+    padding-top: var(--veriqa-spacing-md);
+    border-top: 1px solid var(--veriqa-surface-variant);
+    color: var(--veriqa-soft);
+    font-size: 0.6875rem;
+    text-decoration: none;
+    transition: color var(--veriqa-transition-fast);
+    font-family: var(--veriqa-font-mono);
+}
+.veriqa-link:hover { color: var(--veriqa-text); }
+.veriqa-link:focus-visible { outline: 2px solid var(--veriqa-primary); outline-offset: 2px; }

@@ -1,0 +1,725 @@
+#nullable enable
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.AuthPageDesignOptions() -> void
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.BrandName.get -> string?
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.BrandName.set -> void
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.CssSriHash.get -> string?
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.CssSriHash.set -> void
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.CustomCssPath.get -> string?
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.CustomCssPath.set -> void
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.CustomJsAllowApplicationOverride.get -> bool
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.CustomJsAllowApplicationOverride.set -> void
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.CustomJsPath.get -> string?
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.CustomJsPath.set -> void
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.FooterHtml.get -> string?
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.FooterHtml.set -> void
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.GetLogoUrl(string! theme) -> string?
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.GetPrimaryColor(string! theme) -> string?
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.JsSriHash.get -> string?
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.JsSriHash.set -> void
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.LogoUrl.get -> string?
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.LogoUrl.set -> void
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.LogoUrlByTheme.get -> System.Collections.Generic.IDictionary<string!, string!>?
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.LogoUrlByTheme.set -> void
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.Preset.get -> Veriqa.Core.ChannelAdapter.UI.DesignPreset
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.Preset.set -> void
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.PrimaryColor.get -> string?
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.PrimaryColor.set -> void
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.PrimaryColorByTheme.get -> System.Collections.Generic.IDictionary<string!, string!>?
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.PrimaryColorByTheme.set -> void
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.QrCode.get -> Veriqa.Core.AuthServer.Configuration.QrCodeOptions!
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.QrCode.set -> void
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.SignalRClientPath.get -> string?
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.SignalRClientPath.set -> void
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.Theme.get -> Veriqa.Core.AuthServer.Configuration.Enums.AuthPageTheme
+Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.Theme.set -> void
+Veriqa.Core.AuthServer.Configuration.ChannelDisplayOptions
+Veriqa.Core.AuthServer.Configuration.ChannelDisplayOptions.ChannelDisplayOptions() -> void
+Veriqa.Core.AuthServer.Configuration.ChannelDisplayOptions.ChannelOrder.get -> System.Collections.Generic.IReadOnlyList<string!>!
+Veriqa.Core.AuthServer.Configuration.ChannelDisplayOptions.ChannelOrder.set -> void
+Veriqa.Core.AuthServer.Configuration.ChannelDisplayOptions.Hints.get -> System.Collections.Generic.IDictionary<string!, string!>!
+Veriqa.Core.AuthServer.Configuration.ChannelDisplayOptions.Hints.set -> void
+Veriqa.Core.AuthServer.Configuration.ClaimDefinition
+Veriqa.Core.AuthServer.Configuration.ClaimDefinition.ClaimDefinition() -> void
+Veriqa.Core.AuthServer.Configuration.ClaimDefinition.IsRequired.get -> bool
+Veriqa.Core.AuthServer.Configuration.ClaimDefinition.IsRequired.set -> void
+Veriqa.Core.AuthServer.Configuration.ClaimDefinition.Name.get -> string!
+Veriqa.Core.AuthServer.Configuration.ClaimDefinition.Name.set -> void
+Veriqa.Core.AuthServer.Configuration.ClaimDefinition.Source.get -> Veriqa.Core.AuthServer.Configuration.Enums.ClaimSource
+Veriqa.Core.AuthServer.Configuration.ClaimDefinition.Source.set -> void
+Veriqa.Core.AuthServer.Configuration.ConfirmationSubjectDisplayOptions
+Veriqa.Core.AuthServer.Configuration.ConfirmationSubjectDisplayOptions.ConfirmationSubjectDisplayOptions() -> void
+Veriqa.Core.AuthServer.Configuration.ConfirmationSubjectDisplayOptions.Surfaces.get -> System.Collections.Generic.IReadOnlyList<Veriqa.Core.AuthServer.Configuration.Enums.ConfirmationSubjectSurface>!
+Veriqa.Core.AuthServer.Configuration.ConfirmationSubjectDisplayOptions.Surfaces.set -> void
+Veriqa.Core.AuthServer.Configuration.Enums.AuthPageTheme
+Veriqa.Core.AuthServer.Configuration.Enums.AuthPageTheme.Auto = 0 -> Veriqa.Core.AuthServer.Configuration.Enums.AuthPageTheme
+Veriqa.Core.AuthServer.Configuration.Enums.AuthPageTheme.Dark = 2 -> Veriqa.Core.AuthServer.Configuration.Enums.AuthPageTheme
+Veriqa.Core.AuthServer.Configuration.Enums.AuthPageTheme.Light = 1 -> Veriqa.Core.AuthServer.Configuration.Enums.AuthPageTheme
+Veriqa.Core.AuthServer.Configuration.Enums.ChannelDisplayMode
+Veriqa.Core.AuthServer.Configuration.Enums.ChannelDisplayMode.Multichannel = 0 -> Veriqa.Core.AuthServer.Configuration.Enums.ChannelDisplayMode
+Veriqa.Core.AuthServer.Configuration.Enums.ChannelDisplayMode.Selective = 1 -> Veriqa.Core.AuthServer.Configuration.Enums.ChannelDisplayMode
+Veriqa.Core.AuthServer.Configuration.Enums.ClaimSource
+Veriqa.Core.AuthServer.Configuration.Enums.ClaimSource.Channel = 0 -> Veriqa.Core.AuthServer.Configuration.Enums.ClaimSource
+Veriqa.Core.AuthServer.Configuration.Enums.ClaimSource.External = 1 -> Veriqa.Core.AuthServer.Configuration.Enums.ClaimSource
+Veriqa.Core.AuthServer.Configuration.Enums.ConfirmationSubjectSurface
+Veriqa.Core.AuthServer.Configuration.Enums.ConfirmationSubjectSurface.HopInterstitial = 1 -> Veriqa.Core.AuthServer.Configuration.Enums.ConfirmationSubjectSurface
+Veriqa.Core.AuthServer.Configuration.Enums.ConfirmationSubjectSurface.InteractionPage = 0 -> Veriqa.Core.AuthServer.Configuration.Enums.ConfirmationSubjectSurface
+Veriqa.Core.AuthServer.Configuration.Enums.QrCodeVisibility
+Veriqa.Core.AuthServer.Configuration.Enums.QrCodeVisibility.Always = 0 -> Veriqa.Core.AuthServer.Configuration.Enums.QrCodeVisibility
+Veriqa.Core.AuthServer.Configuration.Enums.QrCodeVisibility.DesktopOnly = 1 -> Veriqa.Core.AuthServer.Configuration.Enums.QrCodeVisibility
+Veriqa.Core.AuthServer.Configuration.Enums.QrCodeVisibility.Never = 2 -> Veriqa.Core.AuthServer.Configuration.Enums.QrCodeVisibility
+Veriqa.Core.AuthServer.Configuration.LocalizationOptions
+Veriqa.Core.AuthServer.Configuration.LocalizationOptions.DefaultLanguage.get -> string!
+Veriqa.Core.AuthServer.Configuration.LocalizationOptions.DefaultLanguage.set -> void
+Veriqa.Core.AuthServer.Configuration.LocalizationOptions.LocalizationOptions() -> void
+Veriqa.Core.AuthServer.Configuration.LoggingOptions
+Veriqa.Core.AuthServer.Configuration.LoggingOptions.LoggingOptions() -> void
+Veriqa.Core.AuthServer.Configuration.LoggingOptions.RetentionDays.get -> int
+Veriqa.Core.AuthServer.Configuration.LoggingOptions.RetentionDays.set -> void
+Veriqa.Core.AuthServer.Configuration.LoggingOptionsValidator
+Veriqa.Core.AuthServer.Configuration.LoggingOptionsValidator.LoggingOptionsValidator() -> void
+Veriqa.Core.AuthServer.Configuration.LoggingOptionsValidator.Validate(string? name, Veriqa.Core.AuthServer.Configuration.LoggingOptions! options) -> Microsoft.Extensions.Options.ValidateOptionsResult!
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.AllowClientCredentials.get -> bool
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.AllowClientCredentials.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.AllowConfirmationTokenGrant.get -> bool
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.AllowConfirmationTokenGrant.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.AllowIntrospection.get -> bool
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.AllowIntrospection.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.AllowRefreshTokens.get -> bool
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.AllowRefreshTokens.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.AllowedRedirectUris.get -> System.Collections.Generic.IReadOnlyList<string!>!
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.AllowedRedirectUris.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.AllowedScopes.get -> System.Collections.Generic.IReadOnlyList<string!>!
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.AllowedScopes.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.AllowedUiConfigs.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.AllowedUiConfigs.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.ClientId.get -> string!
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.ClientId.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.ClientSecret.get -> string?
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.ClientSecret.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.CompatibilityProfile.get -> string?
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.CompatibilityProfile.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.CompatibilityQuirks.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.CompatibilityQuirks.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.DefaultUiConfig.get -> string?
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.DefaultUiConfig.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.DisplayName.get -> string!
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.DisplayName.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.InitiatorContextDisplayFields.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.InitiatorContextDisplayFields.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.InitiatorContextEnabled.get -> bool?
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.InitiatorContextEnabled.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.LoginConfirmationMode.get -> Veriqa.Core.TransactionEngine.Domain.LoginConfirmationMode?
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.LoginConfirmationMode.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.OidcClientOptions() -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.RejectBots.get -> bool?
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.RejectBots.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.TenantId.get -> string?
+Veriqa.Core.AuthServer.Configuration.OidcClientOptions.TenantId.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientsOptions
+Veriqa.Core.AuthServer.Configuration.OidcClientsOptions.Clients.get -> System.Collections.Generic.IReadOnlyList<Veriqa.Core.AuthServer.Configuration.OidcClientOptions!>!
+Veriqa.Core.AuthServer.Configuration.OidcClientsOptions.Clients.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientsOptions.CompatibilityQuirksAllowApplicationOverride.get -> bool
+Veriqa.Core.AuthServer.Configuration.OidcClientsOptions.CompatibilityQuirksAllowApplicationOverride.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientsOptions.OidcClientsOptions() -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientsOptionsPostConfigure
+Veriqa.Core.AuthServer.Configuration.OidcClientsOptionsPostConfigure.OidcClientsOptionsPostConfigure(Microsoft.Extensions.Hosting.IHostApplicationLifetime! lifetime, Microsoft.Extensions.Logging.ILogger<Veriqa.Core.AuthServer.Configuration.OidcClientsOptionsPostConfigure!>! logger) -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientsOptionsPostConfigure.PostConfigure(string? name, Veriqa.Core.AuthServer.Configuration.OidcClientsOptions! options) -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientsOptionsValidator
+Veriqa.Core.AuthServer.Configuration.OidcClientsOptionsValidator.OidcClientsOptionsValidator() -> void
+Veriqa.Core.AuthServer.Configuration.OidcClientsOptionsValidator.Validate(string? name, Veriqa.Core.AuthServer.Configuration.OidcClientsOptions! options) -> Microsoft.Extensions.Options.ValidateOptionsResult!
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.AccessTokenLifetimeSeconds.get -> int
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.AccessTokenLifetimeSeconds.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.AuthorizationCodeLifetimeSeconds.get -> int
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.AuthorizationCodeLifetimeSeconds.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.EnableRefreshTokenRotation.get -> bool
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.EnableRefreshTokenRotation.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.EnableRevocation.get -> bool
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.EnableRevocation.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.EncryptionCertificateBase64.get -> string?
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.EncryptionCertificateBase64.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.EncryptionCertificatePassword.get -> string?
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.EncryptionCertificatePassword.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.EncryptionCertificatePath.get -> string?
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.EncryptionCertificatePath.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.Issuer.get -> string?
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.Issuer.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.LoadEncryptionCertificate() -> System.Security.Cryptography.X509Certificates.X509Certificate2!
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.LoadSigningCertificate() -> System.Security.Cryptography.X509Certificates.X509Certificate2!
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.OidcServerOptions() -> void
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.RefreshTokenLifetimeSeconds.get -> int
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.RefreshTokenLifetimeSeconds.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.SigningCertificateBase64.get -> string?
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.SigningCertificateBase64.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.SigningCertificatePassword.get -> string?
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.SigningCertificatePassword.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.SigningCertificatePath.get -> string?
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.SigningCertificatePath.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.TokenPruneIntervalSeconds.get -> int
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.TokenPruneIntervalSeconds.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.TokenPruneThresholdSeconds.get -> int
+Veriqa.Core.AuthServer.Configuration.OidcServerOptions.TokenPruneThresholdSeconds.set -> void
+Veriqa.Core.AuthServer.Configuration.OidcServerOptionsValidator
+Veriqa.Core.AuthServer.Configuration.OidcServerOptionsValidator.OidcServerOptionsValidator() -> void
+Veriqa.Core.AuthServer.Configuration.OidcServerOptionsValidator.Validate(string? name, Veriqa.Core.AuthServer.Configuration.OidcServerOptions! options) -> Microsoft.Extensions.Options.ValidateOptionsResult!
+Veriqa.Core.AuthServer.Configuration.QrCodeOptions
+Veriqa.Core.AuthServer.Configuration.QrCodeOptions.PixelsPerModule.get -> int
+Veriqa.Core.AuthServer.Configuration.QrCodeOptions.PixelsPerModule.set -> void
+Veriqa.Core.AuthServer.Configuration.QrCodeOptions.PixelsPerModuleByChannel.get -> System.Collections.Generic.IDictionary<string!, int>!
+Veriqa.Core.AuthServer.Configuration.QrCodeOptions.PixelsPerModuleByChannel.set -> void
+Veriqa.Core.AuthServer.Configuration.QrCodeOptions.QrCodeOptions() -> void
+Veriqa.Core.AuthServer.Configuration.QrCodeOverrideOptions
+Veriqa.Core.AuthServer.Configuration.QrCodeOverrideOptions.PixelsPerModule.get -> int?
+Veriqa.Core.AuthServer.Configuration.QrCodeOverrideOptions.PixelsPerModule.set -> void
+Veriqa.Core.AuthServer.Configuration.QrCodeOverrideOptions.PixelsPerModuleByChannel.get -> System.Collections.Generic.IDictionary<string!, int>?
+Veriqa.Core.AuthServer.Configuration.QrCodeOverrideOptions.PixelsPerModuleByChannel.set -> void
+Veriqa.Core.AuthServer.Configuration.QrCodeOverrideOptions.QrCodeOverrideOptions() -> void
+Veriqa.Core.AuthServer.Configuration.QrCodeOverrideOptions.ShowQrCode.get -> Veriqa.Core.AuthServer.Configuration.Enums.QrCodeVisibility?
+Veriqa.Core.AuthServer.Configuration.QrCodeOverrideOptions.ShowQrCode.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.AuthorizePermitLimit.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.AuthorizePermitLimit.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.AuthorizeWindowSeconds.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.AuthorizeWindowSeconds.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.CallbackPermitLimit.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.CallbackPermitLimit.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.CallbackWindowSeconds.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.CallbackWindowSeconds.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.ConfirmationCreatePermitLimit.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.ConfirmationCreatePermitLimit.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.ConfirmationCreateWindowSeconds.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.ConfirmationCreateWindowSeconds.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.ConfirmationPagesPermitLimit.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.ConfirmationPagesPermitLimit.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.ConfirmationPagesWindowSeconds.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.ConfirmationPagesWindowSeconds.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.ConfirmationResultPermitLimit.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.ConfirmationResultPermitLimit.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.ConfirmationResultWindowSeconds.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.ConfirmationResultWindowSeconds.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.EmailStartPermitLimit.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.EmailStartPermitLimit.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.EmailStartWindowSeconds.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.EmailStartWindowSeconds.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.PollingPermitLimit.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.PollingPermitLimit.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.PollingWindowSeconds.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.PollingWindowSeconds.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.RateLimitOptions() -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.SignalRPermitLimit.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.SignalRPermitLimit.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.SignalRWindowSeconds.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.SignalRWindowSeconds.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.TokenPermitLimit.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.TokenPermitLimit.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.TokenWindowSeconds.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.TokenWindowSeconds.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.UserAuthMaxPartitions.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.UserAuthMaxPartitions.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.UserAuthPermitLimit.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.UserAuthPermitLimit.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.UserAuthQueueLimit.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.UserAuthQueueLimit.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.UserAuthWindowSeconds.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.UserAuthWindowSeconds.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.WebhookPermitLimit.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.WebhookPermitLimit.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.WebhookWindowSeconds.get -> int
+Veriqa.Core.AuthServer.Configuration.RateLimitOptions.WebhookWindowSeconds.set -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptionsValidator
+Veriqa.Core.AuthServer.Configuration.RateLimitOptionsValidator.RateLimitOptionsValidator() -> void
+Veriqa.Core.AuthServer.Configuration.RateLimitOptionsValidator.Validate(string? name, Veriqa.Core.AuthServer.Configuration.RateLimitOptions! options) -> Microsoft.Extensions.Options.ValidateOptionsResult!
+Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys
+Veriqa.Core.AuthServer.Configuration.Resolution.ConfirmationSubjectDisplayConfigKeys
+Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys
+Veriqa.Core.AuthServer.Configuration.Resolution.VeriqaConfigKeyCatalogs
+Veriqa.Core.AuthServer.Configuration.ScopeDefinition
+Veriqa.Core.AuthServer.Configuration.ScopeDefinition.Claims.get -> System.Collections.Generic.IReadOnlyList<Veriqa.Core.AuthServer.Configuration.ClaimDefinition!>!
+Veriqa.Core.AuthServer.Configuration.ScopeDefinition.Claims.set -> void
+Veriqa.Core.AuthServer.Configuration.ScopeDefinition.IsRequired.get -> bool
+Veriqa.Core.AuthServer.Configuration.ScopeDefinition.IsRequired.set -> void
+Veriqa.Core.AuthServer.Configuration.ScopeDefinition.Name.get -> string!
+Veriqa.Core.AuthServer.Configuration.ScopeDefinition.Name.set -> void
+Veriqa.Core.AuthServer.Configuration.ScopeDefinition.ScopeDefinition() -> void
+Veriqa.Core.AuthServer.Configuration.ScopesClaimsOptions
+Veriqa.Core.AuthServer.Configuration.ScopesClaimsOptions.RequireEmail.get -> bool
+Veriqa.Core.AuthServer.Configuration.ScopesClaimsOptions.RequireEmail.set -> void
+Veriqa.Core.AuthServer.Configuration.ScopesClaimsOptions.RequirePhone.get -> bool
+Veriqa.Core.AuthServer.Configuration.ScopesClaimsOptions.RequirePhone.set -> void
+Veriqa.Core.AuthServer.Configuration.ScopesClaimsOptions.Scopes.get -> System.Collections.Generic.IReadOnlyList<Veriqa.Core.AuthServer.Configuration.ScopeDefinition!>!
+Veriqa.Core.AuthServer.Configuration.ScopesClaimsOptions.Scopes.set -> void
+Veriqa.Core.AuthServer.Configuration.ScopesClaimsOptions.ScopesClaimsOptions() -> void
+Veriqa.Core.AuthServer.Configuration.VeriqaOptions
+Veriqa.Core.AuthServer.Configuration.VeriqaOptions.ChannelDisplay.get -> Veriqa.Core.AuthServer.Configuration.ChannelDisplayOptions!
+Veriqa.Core.AuthServer.Configuration.VeriqaOptions.ChannelDisplay.set -> void
+Veriqa.Core.AuthServer.Configuration.VeriqaOptions.InitiatorContext.get -> Veriqa.Core.TransactionEngine.Configuration.InitiatorContextOptions!
+Veriqa.Core.AuthServer.Configuration.VeriqaOptions.InitiatorContext.set -> void
+Veriqa.Core.AuthServer.Configuration.VeriqaOptions.Localization.get -> Veriqa.Core.AuthServer.Configuration.LocalizationOptions!
+Veriqa.Core.AuthServer.Configuration.VeriqaOptions.Localization.set -> void
+Veriqa.Core.AuthServer.Configuration.VeriqaOptions.Logging.get -> Veriqa.Core.AuthServer.Configuration.LoggingOptions!
+Veriqa.Core.AuthServer.Configuration.VeriqaOptions.Logging.set -> void
+Veriqa.Core.AuthServer.Configuration.VeriqaOptions.ScopesClaims.get -> Veriqa.Core.AuthServer.Configuration.ScopesClaimsOptions!
+Veriqa.Core.AuthServer.Configuration.VeriqaOptions.ScopesClaims.set -> void
+Veriqa.Core.AuthServer.Configuration.VeriqaOptions.VeriqaOptions() -> void
+Veriqa.Core.AuthServer.Configuration.VeriqaOptionsPostConfigure
+Veriqa.Core.AuthServer.Configuration.VeriqaOptionsPostConfigure.PostConfigure(string? name, Veriqa.Core.AuthServer.Configuration.VeriqaOptions! options) -> void
+Veriqa.Core.AuthServer.Configuration.VeriqaOptionsPostConfigure.VeriqaOptionsPostConfigure() -> void
+Veriqa.Core.AuthServer.Constants.AuthPageConstants
+Veriqa.Core.AuthServer.Constants.ChannelDisplayErrorCodes
+Veriqa.Core.AuthServer.Constants.ClientCompatibilityProfiles
+Veriqa.Core.AuthServer.Constants.ClientCompatibilityQuirks
+Veriqa.Core.AuthServer.Constants.ConfirmationPageAuditCodes
+Veriqa.Core.AuthServer.Constants.ConfirmationTokenGrant
+Veriqa.Core.AuthServer.Constants.InfrastructureConfigConstants
+Veriqa.Core.AuthServer.Constants.InitiatorContextResultCodes
+Veriqa.Core.AuthServer.Constants.OidcConstants
+Veriqa.Core.AuthServer.Constants.OidcEndpoints
+Veriqa.Core.AuthServer.Constants.OidcErrorCodes
+Veriqa.Core.AuthServer.Constants.SecurityHeaderConstants
+Veriqa.Core.AuthServer.Constants.SignalRConstants
+Veriqa.Core.AuthServer.Constants.TransactionStatusNames
+Veriqa.Core.AuthServer.Data.OpenIddictDbContext
+Veriqa.Core.AuthServer.Data.OpenIddictDbContext.OpenIddictDbContext(Microsoft.EntityFrameworkCore.DbContextOptions<Veriqa.Core.AuthServer.Data.OpenIddictDbContext!>! options) -> void
+Veriqa.Core.AuthServer.DependencyInjection.OpenIddictIntegrationExtensions
+Veriqa.Core.AuthServer.DependencyInjection.VeriqaAuthServerBuilder
+Veriqa.Core.AuthServer.DependencyInjection.VeriqaAuthServerBuilder.AddChannelAdapters(System.Action<Veriqa.Core.ChannelAdapter.DependencyInjection.ChannelAdapterBuilder!>! configure) -> Veriqa.Core.AuthServer.DependencyInjection.VeriqaAuthServerBuilder!
+Veriqa.Core.AuthServer.DependencyInjection.VeriqaAuthServerBuilder.AddTransactionEventHandler<THandler>() -> Veriqa.Core.AuthServer.DependencyInjection.VeriqaAuthServerBuilder!
+Veriqa.Core.AuthServer.DependencyInjection.VeriqaAuthServerBuilder.ConfigureTransactionEngine(System.Action<Veriqa.Core.TransactionEngine.DependencyInjection.TransactionEngineBuilder!>! configure) -> Veriqa.Core.AuthServer.DependencyInjection.VeriqaAuthServerBuilder!
+Veriqa.Core.AuthServer.DependencyInjection.VeriqaAuthServerBuilder.Services.get -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+Veriqa.Core.AuthServer.DependencyInjection.VeriqaAuthServerBuilder.UseAuthPageRenderer<TRenderer>() -> Veriqa.Core.AuthServer.DependencyInjection.VeriqaAuthServerBuilder!
+Veriqa.Core.AuthServer.DependencyInjection.VeriqaAuthServerBuilder.UseClaimsMapper<TMapper>() -> Veriqa.Core.AuthServer.DependencyInjection.VeriqaAuthServerBuilder!
+Veriqa.Core.AuthServer.DependencyInjection.VeriqaAuthServerBuilder.UseInMemoryOpenIddictStore() -> Veriqa.Core.AuthServer.DependencyInjection.VeriqaAuthServerBuilder!
+Veriqa.Core.AuthServer.DependencyInjection.VeriqaAuthServerBuilder.UseOpenIddictDatabase(System.Action<Microsoft.EntityFrameworkCore.DbContextOptionsBuilder!>! configureDatabase) -> Veriqa.Core.AuthServer.DependencyInjection.VeriqaAuthServerBuilder!
+Veriqa.Core.AuthServer.Endpoints.AuthorizeCallbackEndpoint
+Veriqa.Core.AuthServer.Endpoints.AuthorizeEndpoint
+Veriqa.Core.AuthServer.Endpoints.ConfirmationTransactionEndpoint
+Veriqa.Core.AuthServer.Endpoints.TokenEndpoint
+Veriqa.Core.AuthServer.Endpoints.TransactionConfirmEndpoint
+Veriqa.Core.AuthServer.Endpoints.TransactionEntryEndpoint
+Veriqa.Core.AuthServer.Endpoints.TransactionResultEndpoint
+Veriqa.Core.AuthServer.Endpoints.TransactionStatusEndpoint
+Veriqa.Core.AuthServer.Endpoints.UserInfoEndpoint
+Veriqa.Core.AuthServer.Hubs.AuthTransactionHub
+Veriqa.Core.AuthServer.Hubs.AuthTransactionHub.AuthTransactionHub(Veriqa.Core.TransactionEngine.Store.ITransactionStore! transactionStore, Microsoft.Extensions.Logging.ILogger<Veriqa.Core.AuthServer.Hubs.AuthTransactionHub!>! logger, System.TimeProvider! timeProvider) -> void
+Veriqa.Core.AuthServer.Hubs.AuthTransactionHub.JoinTransactionAsync(string! sessionId) -> System.Threading.Tasks.Task!
+Veriqa.Core.AuthServer.Hubs.AuthTransactionHub.LeaveTransactionAsync(string! sessionId) -> System.Threading.Tasks.Task!
+Veriqa.Core.AuthServer.Hubs.ChannelStatusMessage
+Veriqa.Core.AuthServer.Hubs.ChannelStatusMessage.ChannelStatus.get -> string!
+Veriqa.Core.AuthServer.Hubs.ChannelStatusMessage.ChannelStatus.init -> void
+Veriqa.Core.AuthServer.Hubs.ChannelStatusMessage.ChannelStatusMessage() -> void
+Veriqa.Core.AuthServer.Hubs.ChannelStatusMessage.ChannelType.get -> string!
+Veriqa.Core.AuthServer.Hubs.ChannelStatusMessage.ChannelType.init -> void
+Veriqa.Core.AuthServer.Hubs.ChannelStatusMessage.SessionId.get -> string!
+Veriqa.Core.AuthServer.Hubs.ChannelStatusMessage.SessionId.init -> void
+Veriqa.Core.AuthServer.Hubs.TransactionStatusMessage
+Veriqa.Core.AuthServer.Hubs.TransactionStatusMessage.ErrorCode.get -> string?
+Veriqa.Core.AuthServer.Hubs.TransactionStatusMessage.ErrorCode.init -> void
+Veriqa.Core.AuthServer.Hubs.TransactionStatusMessage.RedirectUrl.get -> string?
+Veriqa.Core.AuthServer.Hubs.TransactionStatusMessage.RedirectUrl.init -> void
+Veriqa.Core.AuthServer.Hubs.TransactionStatusMessage.SessionId.get -> string!
+Veriqa.Core.AuthServer.Hubs.TransactionStatusMessage.SessionId.init -> void
+Veriqa.Core.AuthServer.Hubs.TransactionStatusMessage.Status.get -> string!
+Veriqa.Core.AuthServer.Hubs.TransactionStatusMessage.Status.init -> void
+Veriqa.Core.AuthServer.Hubs.TransactionStatusMessage.TransactionStatusMessage() -> void
+Veriqa.Core.AuthServer.Infrastructure.ClaimsMapper
+Veriqa.Core.AuthServer.Infrastructure.ClaimsMapper.ClaimsMapper() -> void
+Veriqa.Core.AuthServer.Infrastructure.ClaimsMapper.MapToClaimsAsync(Veriqa.Core.TransactionEngine.Domain.ResolvedIdentitySnapshot! resolvedIdentity, Veriqa.Core.TransactionEngine.Domain.CompletionSnapshot! completion, Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext! context, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Veriqa.Core.TransactionEngine.Common.Result<System.Collections.Generic.IReadOnlyList<System.Security.Claims.Claim!>!>!>!
+Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext
+Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext.<Clone>$() -> Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext!
+Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext.ClaimsMappingContext(string? ClientId, string? TenantId, System.Collections.Generic.IReadOnlySet<string!>! Scopes, string? TimeZone = null) -> void
+Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext.ClientId.get -> string?
+Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext.ClientId.init -> void
+Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext.Deconstruct(out string? ClientId, out string? TenantId, out System.Collections.Generic.IReadOnlySet<string!>! Scopes, out string? TimeZone) -> void
+Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext.Equals(Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext? other) -> bool
+Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext.Scopes.get -> System.Collections.Generic.IReadOnlySet<string!>!
+Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext.Scopes.init -> void
+Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext.TenantId.get -> string?
+Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext.TenantId.init -> void
+Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext.TimeZone.get -> string?
+Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext.TimeZone.init -> void
+Veriqa.Core.AuthServer.Infrastructure.ClientSeeder
+Veriqa.Core.AuthServer.Infrastructure.ClientSeeder.ClientSeeder(System.IServiceProvider! serviceProvider, Microsoft.Extensions.Options.IOptions<Veriqa.Core.AuthServer.Configuration.OidcClientsOptions!>! clientsOptions, Microsoft.Extensions.Logging.ILogger<Veriqa.Core.AuthServer.Infrastructure.ClientSeeder!>! logger) -> void
+Veriqa.Core.AuthServer.Infrastructure.ClientSeeder.StartAsync(System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task!
+Veriqa.Core.AuthServer.Infrastructure.ClientSeeder.StopAsync(System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task!
+Veriqa.Core.AuthServer.Infrastructure.IClaimsMapper
+Veriqa.Core.AuthServer.Infrastructure.IClaimsMapper.MapToClaimsAsync(Veriqa.Core.TransactionEngine.Domain.ResolvedIdentitySnapshot! resolvedIdentity, Veriqa.Core.TransactionEngine.Domain.CompletionSnapshot! completion, Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext! context, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Veriqa.Core.TransactionEngine.Common.Result<System.Collections.Generic.IReadOnlyList<System.Security.Claims.Claim!>!>!>!
+Veriqa.Core.AuthServer.Infrastructure.SecurityHeadersMiddlewareExtensions
+Veriqa.Core.AuthServer.Infrastructure.SessionIdMapper
+Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation
+Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation.<Clone>$() -> Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation!
+Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation.City.get -> string?
+Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation.City.init -> void
+Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation.Country.get -> string?
+Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation.Country.init -> void
+Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation.Deconstruct(out string? Country, out string? City) -> void
+Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation.Equals(Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation? other) -> bool
+Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation.GeoIpLocation(string? Country, string? City) -> void
+Veriqa.Core.AuthServer.InitiatorContext.IGeoIpProvider
+Veriqa.Core.AuthServer.InitiatorContext.IGeoIpProvider.IsAvailable.get -> bool
+Veriqa.Core.AuthServer.InitiatorContext.IGeoIpProvider.Lookup(System.Net.IPAddress! address) -> Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation?
+Veriqa.Core.AuthServer.InitiatorContext.IInitiatorContextCollector
+Veriqa.Core.AuthServer.InitiatorContext.IInitiatorContextCollector.Collect(Microsoft.AspNetCore.Http.HttpContext! httpContext, string? clientId) -> Veriqa.Core.TransactionEngine.Domain.InitiatorContextSnapshot?
+Veriqa.Core.AuthServer.InitiatorContext.IUserAgentNormalizer
+Veriqa.Core.AuthServer.InitiatorContext.IUserAgentNormalizer.Normalize(string? userAgent) -> Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo?
+Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo
+Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo.<Clone>$() -> Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo!
+Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo.Browser.get -> string?
+Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo.Browser.init -> void
+Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo.Deconstruct(out string? Browser, out string? OsPlatform, out string! DeviceType) -> void
+Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo.DeviceType.get -> string!
+Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo.DeviceType.init -> void
+Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo.Equals(Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo? other) -> bool
+Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo.OsPlatform.get -> string?
+Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo.OsPlatform.init -> void
+Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo.UserAgentInfo(string? Browser, string? OsPlatform, string! DeviceType) -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.AuthPageRenderContext() -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.CallbackUrl.get -> string?
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.CallbackUrl.init -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.Channels.get -> System.Collections.Generic.IReadOnlyList<Veriqa.Core.AuthServer.UI.Services.ChannelDisplayInfo!>!
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.Channels.init -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.ConfirmationQuestionUrl.get -> string?
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.ConfirmationQuestionUrl.init -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.CspNonce.get -> string?
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.CspNonce.init -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.Design.get -> Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions!
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.Design.init -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.ExpiresAt.get -> System.DateTimeOffset
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.ExpiresAt.init -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.Instruction.get -> string?
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.Instruction.init -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.Language.get -> string!
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.Language.init -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.NavigatesAway.get -> bool
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.NavigatesAway.init -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.PathBase.get -> string!
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.PathBase.init -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.QrVisibility.get -> Veriqa.Core.AuthServer.Configuration.Enums.QrCodeVisibility
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.QrVisibility.init -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.RemainingSeconds.get -> double
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.RemainingSeconds.init -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.RestartUrl.get -> string?
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.RestartUrl.init -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.SessionId.get -> string!
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.SessionId.init -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.SubjectText.get -> string?
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.SubjectText.init -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.TerminalConfirmedText.get -> string?
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.TerminalConfirmedText.init -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.TerminalDeclinedText.get -> string?
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.TerminalDeclinedText.init -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.TerminalErrorText.get -> string?
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.TerminalErrorText.init -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.TerminalExpiredText.get -> string?
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.TerminalExpiredText.init -> void
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.Title.get -> string?
+Veriqa.Core.AuthServer.UI.AuthPageRenderContext.Title.init -> void
+Veriqa.Core.AuthServer.UI.IAuthPageRenderer
+Veriqa.Core.AuthServer.UI.IAuthPageRenderer.RenderAuthPage(Veriqa.Core.AuthServer.UI.AuthPageRenderContext! context) -> string!
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayInfo
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayInfo.ChannelDisplayInfo() -> void
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayInfo.ChannelType.get -> string!
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayInfo.ChannelType.init -> void
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayInfo.DeepLinkUrl.get -> string!
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayInfo.DeepLinkUrl.init -> void
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayInfo.DisplayName.get -> string?
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayInfo.DisplayName.init -> void
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayInfo.Hint.get -> string?
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayInfo.Hint.init -> void
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayInfo.IconSvgPath.get -> string?
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayInfo.IconSvgPath.init -> void
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayInfo.QrCodeBase64.get -> string!
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayInfo.QrCodeBase64.init -> void
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride.<Clone>$() -> Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride!
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride.ChannelDisplayOverride(System.Collections.Generic.IReadOnlyList<string!>? Channels, Veriqa.Core.AuthServer.Configuration.Enums.ChannelDisplayMode? Mode) -> void
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride.Channels.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride.Channels.init -> void
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride.Deconstruct(out System.Collections.Generic.IReadOnlyList<string!>? Channels, out Veriqa.Core.AuthServer.Configuration.Enums.ChannelDisplayMode? Mode) -> void
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride.Equals(Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride? other) -> bool
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride.Mode.get -> Veriqa.Core.AuthServer.Configuration.Enums.ChannelDisplayMode?
+Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride.Mode.init -> void
+Veriqa.Core.AuthServer.UI.Services.IChannelDisplayService
+Veriqa.Core.AuthServer.UI.Services.IChannelDisplayService.GetChannelDisplayDataAsync(Veriqa.Core.TransactionEngine.Domain.TransactionId transactionId, System.Collections.Generic.IReadOnlySet<string!>! allowedChannelTypes, Veriqa.Core.Configuration.ResolutionContext! resolution, Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride? displayOverride, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Veriqa.Core.TransactionEngine.Common.Result<System.Collections.Generic.IReadOnlyList<Veriqa.Core.AuthServer.UI.Services.ChannelDisplayInfo!>!>!>!
+Veriqa.Core.AuthServer.UI.Services.IQrCodeService
+Veriqa.Core.AuthServer.UI.Services.IQrCodeService.GenerateBase64PngAsync(string! content, string! channelType, Veriqa.Core.Configuration.ResolutionContext! resolution, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<string!>
+Veriqa.Core.AuthServer.UiConfig.IUiConfigStore
+Veriqa.Core.AuthServer.UiConfig.IUiConfigStore.GetAsync(string? selector, string? tenantId, string? applicationId, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<Veriqa.Core.TransactionEngine.Common.Result<Veriqa.Core.AuthServer.UiConfig.UiConfigRecord?>!>!
+Veriqa.Core.AuthServer.UiConfig.IUiConfigStore.IsLive.get -> bool
+Veriqa.Core.AuthServer.UiConfig.TolerantNullableEnumConverter<TEnum>
+Veriqa.Core.AuthServer.UiConfig.TolerantNullableEnumConverter<TEnum>.TolerantNullableEnumConverter() -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.BrandName.get -> string?
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.BrandName.init -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.ChannelDisplayMode.get -> Veriqa.Core.AuthServer.Configuration.Enums.ChannelDisplayMode?
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.ChannelDisplayMode.init -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.Channels.get -> System.Collections.Generic.IReadOnlyList<string!>?
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.Channels.init -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.CssSriHash.get -> string?
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.CssSriHash.init -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.CustomCssPath.get -> string?
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.CustomCssPath.init -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.DefaultTimeZone.get -> string?
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.DefaultTimeZone.init -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.Extra.get -> System.Collections.Generic.IDictionary<string!, System.Text.Json.JsonElement>?
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.Extra.init -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.Instruction.get -> string?
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.Instruction.init -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.IsSchemaVersionValid() -> bool
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.LogoUrl.get -> string?
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.LogoUrl.init -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.LogoUrlByTheme.get -> System.Collections.Generic.IReadOnlyDictionary<string!, string!>?
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.LogoUrlByTheme.init -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.Preset.get -> Veriqa.Core.ChannelAdapter.UI.DesignPreset?
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.Preset.init -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.PrimaryColor.get -> string?
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.PrimaryColor.init -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.PrimaryColorByTheme.get -> System.Collections.Generic.IReadOnlyDictionary<string!, string!>?
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.PrimaryColorByTheme.init -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.QrCode.get -> Veriqa.Core.AuthServer.Configuration.QrCodeOverrideOptions?
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.QrCode.init -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.SchemaVersion.get -> int
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.SchemaVersion.init -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.SignalRClientPath.get -> string?
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.SignalRClientPath.init -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.Theme.get -> Veriqa.Core.AuthServer.Configuration.Enums.AuthPageTheme?
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.Theme.init -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.Title.get -> string?
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.Title.init -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.TtlSeconds.get -> int?
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.TtlSeconds.init -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.UiConfigRecord() -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigServiceCollectionExtensions
+Veriqa.Core.AuthServer.UiConfig.UiConfigurationsOptions
+Veriqa.Core.AuthServer.UiConfig.UiConfigurationsOptions.Records.get -> System.Collections.Generic.IReadOnlyDictionary<string!, Veriqa.Core.AuthServer.UiConfig.UiConfigRecord!>!
+Veriqa.Core.AuthServer.UiConfig.UiConfigurationsOptions.Records.set -> void
+Veriqa.Core.AuthServer.UiConfig.UiConfigurationsOptions.UiConfigurationsOptions() -> void
+Veriqa.Core.Configuration.LoggingMode (forwarded, contained in Veriqa.Core.Configuration)
+Veriqa.Core.Configuration.LoggingMode.Audit = 2 -> Veriqa.Core.Configuration.LoggingMode (forwarded, contained in Veriqa.Core.Configuration)
+Veriqa.Core.Configuration.LoggingMode.Disabled = 0 -> Veriqa.Core.Configuration.LoggingMode (forwarded, contained in Veriqa.Core.Configuration)
+Veriqa.Core.Configuration.LoggingMode.System = 1 -> Veriqa.Core.Configuration.LoggingMode (forwarded, contained in Veriqa.Core.Configuration)
+const Veriqa.Core.AuthServer.Configuration.AuthPageDesignOptions.SectionName = "Veriqa:AuthPageDesign" -> string!
+const Veriqa.Core.AuthServer.Configuration.ChannelDisplayOptions.SectionName = "Veriqa:ChannelDisplay" -> string!
+const Veriqa.Core.AuthServer.Configuration.ConfirmationSubjectDisplayOptions.RecordMember = "ConfirmationSubjectDisplaySurfaces" -> string!
+const Veriqa.Core.AuthServer.Configuration.ConfirmationSubjectDisplayOptions.SectionName = "Veriqa:ConfirmationSubjectDisplay" -> string!
+const Veriqa.Core.AuthServer.Configuration.LocalizationOptions.SectionName = "Veriqa:Localization" -> string!
+const Veriqa.Core.AuthServer.Configuration.LoggingOptions.DefaultRetentionDays = 90 -> int
+const Veriqa.Core.AuthServer.Configuration.LoggingOptions.SectionName = "Veriqa:Logging" -> string!
+const Veriqa.Core.AuthServer.Configuration.OidcClientsOptions.SectionName = "Veriqa:OpenIddict" -> string!
+const Veriqa.Core.AuthServer.Configuration.OidcServerOptions.SectionName = "Veriqa:OpenIddict:Server" -> string!
+const Veriqa.Core.AuthServer.Configuration.QrCodeOptions.DefaultPixelsPerModule = 6 -> int
+const Veriqa.Core.AuthServer.Configuration.QrCodeOptions.LargestSupportedQrBoxPx = 1000 -> int
+const Veriqa.Core.AuthServer.Configuration.QrCodeOptions.MaxPixelsPerModule = 35 -> int
+const Veriqa.Core.AuthServer.Configuration.QrCodeOptions.MinPixelsPerModule = 5 -> int
+const Veriqa.Core.AuthServer.Configuration.QrCodeOptions.SectionName = "Veriqa:AuthPageDesign:QrCode" -> string!
+const Veriqa.Core.AuthServer.Configuration.QrCodeOptions.SmallestChannelQrModules = 45 -> int
+const Veriqa.Core.AuthServer.Configuration.QrCodeOptions.SmallestPossibleQrModules = 29 -> int
+const Veriqa.Core.AuthServer.Configuration.RateLimitOptions.AuthorizePolicyName = "authorize" -> string!
+const Veriqa.Core.AuthServer.Configuration.RateLimitOptions.CallbackPolicyName = "callback" -> string!
+const Veriqa.Core.AuthServer.Configuration.RateLimitOptions.ConfirmationCreatePolicyName = "confirmation-create" -> string!
+const Veriqa.Core.AuthServer.Configuration.RateLimitOptions.ConfirmationPagesPolicyName = "confirmation-pages" -> string!
+const Veriqa.Core.AuthServer.Configuration.RateLimitOptions.ConfirmationResultPolicyName = "confirmation-result" -> string!
+const Veriqa.Core.AuthServer.Configuration.RateLimitOptions.EmailStartPolicyName = "email-start" -> string!
+const Veriqa.Core.AuthServer.Configuration.RateLimitOptions.PollingPolicyName = "polling" -> string!
+const Veriqa.Core.AuthServer.Configuration.RateLimitOptions.RateLimitExceededMessage = "Too many requests" -> string!
+const Veriqa.Core.AuthServer.Configuration.RateLimitOptions.SectionName = "Veriqa:RateLimit" -> string!
+const Veriqa.Core.AuthServer.Configuration.RateLimitOptions.SignalRPolicyName = "signalr" -> string!
+const Veriqa.Core.AuthServer.Configuration.RateLimitOptions.TokenPolicyName = "token" -> string!
+const Veriqa.Core.AuthServer.Configuration.RateLimitOptions.TokenRateLimitErrorJson = "{\"error\":\"temporarily_unavailable\",\"error_description\":\"Too many requests. Please retry later.\"}" -> string!
+const Veriqa.Core.AuthServer.Configuration.RateLimitOptions.WebhookPolicyName = "webhook" -> string!
+const Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.ChannelDimensionName = "channel" -> string!
+const Veriqa.Core.AuthServer.Configuration.Resolution.ConfirmationSubjectDisplayConfigKeys.SurfacesKeyName = "ConfirmationSubjectDisplay.Surfaces" -> string!
+const Veriqa.Core.AuthServer.Configuration.ScopesClaimsOptions.SectionName = "Veriqa:ScopesClaims" -> string!
+const Veriqa.Core.AuthServer.Configuration.VeriqaOptions.SectionName = "Veriqa" -> string!
+const Veriqa.Core.AuthServer.Constants.AuthPageConstants.HtmlContentType = "text/html" -> string!
+const Veriqa.Core.AuthServer.Constants.AuthPageConstants.PngDataUriPrefix = "data:image/png;base64," -> string!
+const Veriqa.Core.AuthServer.Constants.AuthPageConstants.QrCodeImgAttributeSizePx = 220 -> int
+const Veriqa.Core.AuthServer.Constants.AuthPageConstants.TransactionUiLocaleItemKey = "Veriqa.AuthPage.TransactionUiLocale" -> string!
+const Veriqa.Core.AuthServer.Constants.ChannelDisplayErrorCodes.NoChannelsAvailable = "no_channels_available" -> string!
+const Veriqa.Core.AuthServer.Constants.ClientCompatibilityProfiles.MoodleAuthOidc = "moodle-auth-oidc" -> string!
+const Veriqa.Core.AuthServer.Constants.ClientCompatibilityProfiles.WordPressOpenIdConnectGeneric = "wordpress-openid-connect-generic" -> string!
+const Veriqa.Core.AuthServer.Constants.ClientCompatibilityQuirks.DropResourceParameter = "drop-resource-parameter" -> string!
+const Veriqa.Core.AuthServer.Constants.ClientCompatibilityQuirks.DropScopeOnCodeExchange = "drop-scope-on-code-exchange" -> string!
+const Veriqa.Core.AuthServer.Constants.ConfirmationPageAuditCodes.Expired = "confirmation_page_expired" -> string!
+const Veriqa.Core.AuthServer.Constants.ConfirmationPageAuditCodes.NotAnswerable = "confirmation_page_not_answerable" -> string!
+const Veriqa.Core.AuthServer.Constants.ConfirmationTokenGrant.GrantType = "urn:veriqa:params:oauth:grant-type:confirmation" -> string!
+const Veriqa.Core.AuthServer.Constants.ConfirmationTokenGrant.TransactionIdParameter = "transaction_id" -> string!
+const Veriqa.Core.AuthServer.Constants.InfrastructureConfigConstants.AuditStoreConnectionStringKey = "Veriqa:Logging:Store:ConnectionString" -> string!
+const Veriqa.Core.AuthServer.Constants.InfrastructureConfigConstants.AuditStoreProviderKey = "Veriqa:Logging:Store:Provider" -> string!
+const Veriqa.Core.AuthServer.Constants.InfrastructureConfigConstants.DataProtectionApplicationName = "veriqa-authserver" -> string!
+const Veriqa.Core.AuthServer.Constants.InfrastructureConfigConstants.DataProtectionKeysDirectoryKey = "Veriqa:DataProtection:KeysDirectory" -> string!
+const Veriqa.Core.AuthServer.Constants.InfrastructureConfigConstants.DataProtectionRedisConnectionStringKey = "Veriqa:DataProtection:RedisConnectionString" -> string!
+const Veriqa.Core.AuthServer.Constants.InfrastructureConfigConstants.DataProtectionRedisKey = "veriqa:dataprotection:keys" -> string!
+const Veriqa.Core.AuthServer.Constants.InfrastructureConfigConstants.DataProtectionSectionName = "Veriqa:DataProtection" -> string!
+const Veriqa.Core.AuthServer.Constants.InfrastructureConfigConstants.HealthChecksSectionName = "Veriqa:HealthChecks" -> string!
+const Veriqa.Core.AuthServer.Constants.InfrastructureConfigConstants.LivenessTag = "live" -> string!
+const Veriqa.Core.AuthServer.Constants.InfrastructureConfigConstants.OpenIddictDatabaseConnectionStringKey = "Veriqa:OpenIddict:Database:ConnectionString" -> string!
+const Veriqa.Core.AuthServer.Constants.InfrastructureConfigConstants.OpenIddictDatabaseProviderKey = "Veriqa:OpenIddict:Database:Provider" -> string!
+const Veriqa.Core.AuthServer.Constants.InfrastructureConfigConstants.RabbitMqConnectionStringKey = "Veriqa:Events:RabbitMq:ConnectionString" -> string!
+const Veriqa.Core.AuthServer.Constants.InfrastructureConfigConstants.ReadinessTag = "ready" -> string!
+const Veriqa.Core.AuthServer.Constants.InfrastructureConfigConstants.SignalRChannelPrefix = "veriqa-signalr" -> string!
+const Veriqa.Core.AuthServer.Constants.InfrastructureConfigConstants.SignalRRedisConnectionStringKey = "Veriqa:SignalR:RedisConnectionString" -> string!
+const Veriqa.Core.AuthServer.Constants.InfrastructureConfigConstants.SignalRSectionName = "Veriqa:SignalR" -> string!
+const Veriqa.Core.AuthServer.Constants.InfrastructureConfigConstants.TransactionStoreConnectionStringKey = "Veriqa:TransactionEngine:Store:ConnectionString" -> string!
+const Veriqa.Core.AuthServer.Constants.InfrastructureConfigConstants.TransactionStoreProviderKey = "Veriqa:TransactionEngine:Store:Provider" -> string!
+const Veriqa.Core.AuthServer.Constants.InitiatorContextResultCodes.AnomalyNoHistory = "initiator_context_anomaly_no_history" -> string!
+const Veriqa.Core.AuthServer.Constants.InitiatorContextResultCodes.ContextTooLarge = "initiator_context_too_large" -> string!
+const Veriqa.Core.AuthServer.Constants.InitiatorContextResultCodes.GeoIpUnavailable = "initiator_context_geoip_unavailable" -> string!
+const Veriqa.Core.AuthServer.Constants.InitiatorContextResultCodes.IpUntrusted = "initiator_context_ip_untrusted" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcConstants.AcrValuesChannelPrefix = "channel:" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcConstants.AuthCookieExpireMinutes = 5 -> int
+const Veriqa.Core.AuthServer.Constants.OidcConstants.AuthCookieName = "veriqa_auth" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcConstants.BrowserNonceCookieMaxAgeMinutes = 10 -> int
+const Veriqa.Core.AuthServer.Constants.OidcConstants.BrowserNonceCookieName = "veriqa_browser_nonce" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcConstants.CookieAuthScheme = "Veriqa.Cookie" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcConstants.InMemoryDatabaseName = "VeriqaOpenIddict" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcConstants.OpenIddictInternalClaimPrefix = "oi_" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcConstants.SessionIdParameterName = "session_id" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcConstants.TimeZoneParameterName = "time_zone" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcConstants.UiConfigParameterName = "ui_config" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcEndpoints.Authorize = "/connect/authorize" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcEndpoints.AuthorizeCallback = "/connect/authorize/callback" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcEndpoints.AuthorizeCallbackConfirm = "/connect/authorize/callback/confirm" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcEndpoints.AuthorizeCallbackDecline = "/connect/authorize/callback/decline" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcEndpoints.ConfirmationTransaction = "/api/transaction/confirmation" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcEndpoints.Introspect = "/connect/introspect" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcEndpoints.Revoke = "/connect/revoke" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcEndpoints.Token = "/connect/token" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcEndpoints.TransactionConfirmAccept = "/auth/transaction/confirm/accept" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcEndpoints.TransactionConfirmDecline = "/auth/transaction/confirm/decline" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcEndpoints.TransactionConfirmPage = "/auth/transaction/confirm" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcEndpoints.TransactionEntryPage = "/auth/transaction" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcEndpoints.TransactionStatusBase = "/api/transaction" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcEndpoints.UserInfo = "/connect/userinfo" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcErrorCodes.BrowserNonceMismatch = "browser_nonce_mismatch" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcErrorCodes.ChannelDisplayFailed = "channel_display_failed" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcErrorCodes.ClaimsMappingFailed = "claims_mapping_failed" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcErrorCodes.ClientSeedingFailed = "client_seeding_failed" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcErrorCodes.OidcRequestInvalid = "oidc_request_invalid" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcErrorCodes.PkceRequired = "pkce_required" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcErrorCodes.TransactionCreationFailed = "transaction_creation_failed" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcErrorCodes.TransactionNotCompleted = "transaction_not_completed" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcErrorCodes.TransactionNotFound = "transaction_not_found" -> string!
+const Veriqa.Core.AuthServer.Constants.OidcErrorCodes.UiConfigInvalid = "ui_config_invalid" -> string!
+const Veriqa.Core.AuthServer.Constants.SecurityHeaderConstants.ContentSecurityPolicyHeader = "Content-Security-Policy" -> string!
+const Veriqa.Core.AuthServer.Constants.SecurityHeaderConstants.FormActionTargetItemKey = "Veriqa.Csp.FormActionTarget" -> string!
+const Veriqa.Core.AuthServer.Constants.SecurityHeaderConstants.CspNonceItemKey = "csp-nonce" -> string!
+const Veriqa.Core.AuthServer.Constants.SecurityHeaderConstants.CspNonceLengthBytes = 16 -> int
+const Veriqa.Core.AuthServer.Constants.SecurityHeaderConstants.ReferrerPolicyHeader = "Referrer-Policy" -> string!
+const Veriqa.Core.AuthServer.Constants.SecurityHeaderConstants.ReferrerPolicyValue = "strict-origin-when-cross-origin" -> string!
+const Veriqa.Core.AuthServer.Constants.SecurityHeaderConstants.XContentTypeOptionsHeader = "X-Content-Type-Options" -> string!
+const Veriqa.Core.AuthServer.Constants.SecurityHeaderConstants.XContentTypeOptionsValue = "nosniff" -> string!
+const Veriqa.Core.AuthServer.Constants.SecurityHeaderConstants.XFrameOptionsHeader = "X-Frame-Options" -> string!
+const Veriqa.Core.AuthServer.Constants.SecurityHeaderConstants.XFrameOptionsValue = "DENY" -> string!
+const Veriqa.Core.AuthServer.Constants.SignalRConstants.AuthHubPath = "/hubs/auth" -> string!
+const Veriqa.Core.AuthServer.Constants.SignalRConstants.JoinTransactionMethod = "JoinTransactionAsync" -> string!
+const Veriqa.Core.AuthServer.Constants.SignalRConstants.LeaveTransactionMethod = "LeaveTransactionAsync" -> string!
+const Veriqa.Core.AuthServer.Constants.SignalRConstants.OnChannelStatusChangedMethod = "OnChannelStatusChanged" -> string!
+const Veriqa.Core.AuthServer.Constants.SignalRConstants.OnStatusChangedMethod = "OnStatusChanged" -> string!
+const Veriqa.Core.AuthServer.Constants.SignalRConstants.SignalRClientPath = "/_content/Veriqa.Core.AuthServer/lib/signalr/signalr.min.js" -> string!
+const Veriqa.Core.AuthServer.Constants.TransactionStatusNames.AwaitingWebConfirmation = "AwaitingWebConfirmation" -> string!
+const Veriqa.Core.AuthServer.Constants.TransactionStatusNames.Completed = "Completed" -> string!
+const Veriqa.Core.AuthServer.Constants.TransactionStatusNames.Confirmed = "Confirmed" -> string!
+const Veriqa.Core.AuthServer.Constants.TransactionStatusNames.Expired = "Expired" -> string!
+const Veriqa.Core.AuthServer.Constants.TransactionStatusNames.Failed = "Failed" -> string!
+const Veriqa.Core.AuthServer.UiConfig.UiConfigRecord.SchemaVersionV1 = 1 -> int
+const Veriqa.Core.AuthServer.UiConfig.UiConfigurationsOptions.SectionName = "Veriqa:UiConfigurations" -> string!
+override Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext.Equals(object? obj) -> bool
+override Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext.GetHashCode() -> int
+override Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext.ToString() -> string!
+override Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation.Equals(object? obj) -> bool
+override Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation.GetHashCode() -> int
+override Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation.ToString() -> string!
+override Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo.Equals(object? obj) -> bool
+override Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo.GetHashCode() -> int
+override Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo.ToString() -> string!
+override Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride.Equals(object? obj) -> bool
+override Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride.GetHashCode() -> int
+override Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride.ToString() -> string!
+override Veriqa.Core.AuthServer.UiConfig.TolerantNullableEnumConverter<TEnum>.Read(ref System.Text.Json.Utf8JsonReader reader, System.Type! typeToConvert, System.Text.Json.JsonSerializerOptions! options) -> TEnum?
+override Veriqa.Core.AuthServer.UiConfig.TolerantNullableEnumConverter<TEnum>.Write(System.Text.Json.Utf8JsonWriter! writer, TEnum? value, System.Text.Json.JsonSerializerOptions! options) -> void
+static Veriqa.Core.AuthServer.Configuration.QrCodeOverrideOptions.IsPixelsPerModuleInRange(int pixelsPerModule) -> bool
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.AccessTokenLifetimeSeconds.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.AuthorizationCodeLifetimeSeconds.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.Catalog.get -> Veriqa.Core.Configuration.ConfigKeyCatalog!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.ChannelHints.get -> Veriqa.Core.Configuration.ConfigKey<string?>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.ClientCompatibilityQuirks.get -> Veriqa.Core.Configuration.ConfigKey<System.Collections.Generic.IReadOnlyList<string!>!>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.ClientInitiateLoginUri.get -> Veriqa.Core.Configuration.ConfigKey<string?>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.DefaultTimeZone.get -> Veriqa.Core.Configuration.ConfigKey<string?>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.EnableRefreshTokenRotation.get -> Veriqa.Core.Configuration.ConfigKey<bool>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.EnableRevocation.get -> Veriqa.Core.Configuration.ConfigKey<bool>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.Issuer.get -> Veriqa.Core.Configuration.ConfigKey<string?>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.PageBrandName.get -> Veriqa.Core.Configuration.ConfigKey<string?>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.PageChannelDisplayMode.get -> Veriqa.Core.Configuration.ConfigKey<Veriqa.Core.AuthServer.Configuration.Enums.ChannelDisplayMode>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.PageChannels.get -> Veriqa.Core.Configuration.ConfigKey<System.Collections.Generic.IReadOnlyList<string!>!>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.PageCustomJs.get -> Veriqa.Core.Configuration.ConfigKey<Veriqa.Core.ChannelAdapter.UI.CorePageCustomResource?>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.PageFooterHtml.get -> Veriqa.Core.Configuration.ConfigKey<string?>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.PageInstruction.get -> Veriqa.Core.Configuration.ConfigKey<string?>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.PageLogoUrl.get -> Veriqa.Core.Configuration.ConfigKey<string?>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.PageSignalRClientPath.get -> Veriqa.Core.Configuration.ConfigKey<string?>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.PageTheme.get -> Veriqa.Core.Configuration.ConfigKey<Veriqa.Core.AuthServer.Configuration.Enums.AuthPageTheme>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.PageTitle.get -> Veriqa.Core.Configuration.ConfigKey<string?>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.QrCodePixelsPerModule.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.QrCodeShowQrCode.get -> Veriqa.Core.Configuration.ConfigKey<Veriqa.Core.AuthServer.Configuration.Enums.QrCodeVisibility>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.RefreshTokenLifetimeSeconds.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.TransactionTtlSeconds.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.AuthServerConfigKeys.UiConfigSelectorAssigned.get -> Veriqa.Core.Configuration.ConfigKey<bool>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.ConfirmationSubjectDisplayConfigKeys.Catalog.get -> Veriqa.Core.Configuration.ConfigKeyCatalog!
+static Veriqa.Core.AuthServer.Configuration.Resolution.ConfirmationSubjectDisplayConfigKeys.Surfaces.get -> Veriqa.Core.Configuration.ConfigKey<System.Collections.Generic.IReadOnlyCollection<Veriqa.Core.AuthServer.Configuration.Enums.ConfirmationSubjectSurface>!>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.AuthorizePermitLimit.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.AuthorizeWindowSeconds.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.CallbackPermitLimit.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.CallbackWindowSeconds.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.Catalog.get -> Veriqa.Core.Configuration.ConfigKeyCatalog!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.ConfirmationCreatePermitLimit.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.ConfirmationCreateWindowSeconds.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.ConfirmationPagesPermitLimit.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.ConfirmationPagesWindowSeconds.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.ConfirmationResultPermitLimit.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.ConfirmationResultWindowSeconds.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.EmailStartPermitLimit.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.EmailStartWindowSeconds.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.PollingPermitLimit.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.PollingWindowSeconds.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.SignalRPermitLimit.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.SignalRWindowSeconds.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.TokenPermitLimit.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.TokenWindowSeconds.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.UserAuthPermitLimit.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.UserAuthWindowSeconds.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.WebhookPermitLimit.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.RateLimitConfigKeys.WebhookWindowSeconds.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.AuthServer.Configuration.Resolution.VeriqaConfigKeyCatalogs.All.get -> System.Collections.Generic.IReadOnlyList<Veriqa.Core.Configuration.ConfigKeyCatalog!>!
+static Veriqa.Core.AuthServer.Constants.ClientCompatibilityProfiles.Expand(string! name) -> System.Collections.Generic.IReadOnlySet<string!>!
+static Veriqa.Core.AuthServer.Constants.ClientCompatibilityProfiles.KnownNames.get -> System.Collections.Generic.IReadOnlySet<string!>!
+static Veriqa.Core.AuthServer.Constants.ClientCompatibilityQuirks.KnownKeys.get -> System.Collections.Generic.IReadOnlySet<string!>!
+static Veriqa.Core.AuthServer.DependencyInjection.OpenIddictIntegrationExtensions.AddVeriqaAuthServer(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Microsoft.Extensions.Configuration.IConfiguration! configuration, Microsoft.AspNetCore.Hosting.IWebHostEnvironment! environment, System.Action<Veriqa.Core.AuthServer.DependencyInjection.VeriqaAuthServerBuilder!>? configure = null) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Veriqa.Core.AuthServer.DependencyInjection.OpenIddictIntegrationExtensions.AddVeriqaOpenIddict(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Microsoft.Extensions.Configuration.IConfiguration! configuration, Microsoft.AspNetCore.Hosting.IWebHostEnvironment! environment, System.Action<Microsoft.EntityFrameworkCore.DbContextOptionsBuilder!>? configureDatabase = null) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Veriqa.Core.AuthServer.DependencyInjection.OpenIddictIntegrationExtensions.AddVeriqaRateLimiting(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Veriqa.Core.AuthServer.DependencyInjection.OpenIddictIntegrationExtensions.MapVeriqaAuthServer(this Microsoft.AspNetCore.Routing.IEndpointRouteBuilder! endpoints) -> Microsoft.AspNetCore.Routing.IEndpointRouteBuilder!
+static Veriqa.Core.AuthServer.DependencyInjection.OpenIddictIntegrationExtensions.MapVeriqaOidcEndpoints(this Microsoft.AspNetCore.Routing.IEndpointRouteBuilder! endpoints) -> Microsoft.AspNetCore.Routing.IEndpointRouteBuilder!
+static Veriqa.Core.AuthServer.DependencyInjection.OpenIddictIntegrationExtensions.UseInMemoryOpenIddictStore(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Veriqa.Core.AuthServer.DependencyInjection.OpenIddictIntegrationExtensions.UseVeriqaAuthServer(this Microsoft.AspNetCore.Builder.IApplicationBuilder! app) -> Microsoft.AspNetCore.Builder.IApplicationBuilder!
+static Veriqa.Core.AuthServer.Endpoints.AuthorizeCallbackEndpoint.MapAuthorizeCallbackEndpoint(this Microsoft.AspNetCore.Routing.IEndpointRouteBuilder! endpoints, string? rateLimitPolicyName = null) -> Microsoft.AspNetCore.Routing.IEndpointRouteBuilder!
+static Veriqa.Core.AuthServer.Endpoints.AuthorizeEndpoint.MapAuthorizeEndpoint(this Microsoft.AspNetCore.Routing.IEndpointRouteBuilder! endpoints) -> Microsoft.AspNetCore.Routing.IEndpointRouteBuilder!
+static Veriqa.Core.AuthServer.Endpoints.ConfirmationTransactionEndpoint.MapConfirmationTransactionEndpoint(this Microsoft.AspNetCore.Routing.IEndpointRouteBuilder! endpoints, string? rateLimitPolicyName = null) -> Microsoft.AspNetCore.Routing.IEndpointRouteBuilder!
+static Veriqa.Core.AuthServer.Endpoints.TokenEndpoint.MapTokenEndpoint(this Microsoft.AspNetCore.Routing.IEndpointRouteBuilder! endpoints, string? rateLimitPolicyName = null) -> Microsoft.AspNetCore.Routing.IEndpointRouteBuilder!
+static Veriqa.Core.AuthServer.Endpoints.TransactionConfirmEndpoint.MapTransactionConfirmEndpoint(this Microsoft.AspNetCore.Routing.IEndpointRouteBuilder! endpoints, string? rateLimitPolicyName = null) -> Microsoft.AspNetCore.Routing.IEndpointRouteBuilder!
+static Veriqa.Core.AuthServer.Endpoints.TransactionEntryEndpoint.MapTransactionEntryEndpoint(this Microsoft.AspNetCore.Routing.IEndpointRouteBuilder! endpoints, string? rateLimitPolicyName = null) -> Microsoft.AspNetCore.Routing.IEndpointRouteBuilder!
+static Veriqa.Core.AuthServer.Endpoints.TransactionResultEndpoint.MapTransactionResultEndpoint(this Microsoft.AspNetCore.Routing.IEndpointRouteBuilder! endpoints, string? rateLimitPolicyName = null) -> Microsoft.AspNetCore.Routing.IEndpointRouteBuilder!
+static Veriqa.Core.AuthServer.Endpoints.TransactionStatusEndpoint.MapTransactionStatusEndpoint(this Microsoft.AspNetCore.Routing.IEndpointRouteBuilder! endpoints, string? rateLimitPolicyName = null) -> Microsoft.AspNetCore.Routing.IEndpointRouteBuilder!
+static Veriqa.Core.AuthServer.Endpoints.UserInfoEndpoint.MapUserInfoEndpoint(this Microsoft.AspNetCore.Routing.IEndpointRouteBuilder! endpoints) -> Microsoft.AspNetCore.Routing.IEndpointRouteBuilder!
+static Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext.operator !=(Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext? left, Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext? right) -> bool
+static Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext.operator ==(Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext? left, Veriqa.Core.AuthServer.Infrastructure.ClaimsMappingContext? right) -> bool
+static Veriqa.Core.AuthServer.Infrastructure.SecurityHeadersMiddlewareExtensions.UseSecurityHeaders(this Microsoft.AspNetCore.Builder.IApplicationBuilder! app) -> Microsoft.AspNetCore.Builder.IApplicationBuilder!
+static Veriqa.Core.AuthServer.Infrastructure.SessionIdMapper.ToSessionId(Veriqa.Core.TransactionEngine.Domain.TransactionId id) -> string!
+static Veriqa.Core.AuthServer.Infrastructure.SessionIdMapper.ToTransactionId(string? sessionId) -> Veriqa.Core.TransactionEngine.Domain.TransactionId?
+static Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation.operator !=(Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation? left, Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation? right) -> bool
+static Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation.operator ==(Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation? left, Veriqa.Core.AuthServer.InitiatorContext.GeoIpLocation? right) -> bool
+static Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo.operator !=(Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo? left, Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo? right) -> bool
+static Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo.operator ==(Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo? left, Veriqa.Core.AuthServer.InitiatorContext.UserAgentInfo? right) -> bool
+static Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride.operator !=(Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride? left, Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride? right) -> bool
+static Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride.operator ==(Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride? left, Veriqa.Core.AuthServer.UI.Services.ChannelDisplayOverride? right) -> bool
+static Veriqa.Core.AuthServer.UiConfig.UiConfigServiceCollectionExtensions.AddVeriqaUiConfig(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Microsoft.Extensions.Configuration.IConfiguration! configuration) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!

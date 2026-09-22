@@ -1,0 +1,24 @@
+{
+  "name": "veriqa-approval",
+  "version": "0.4.3",
+  "description": "Ask a person to approve risky Claude Code actions in a trusted messenger through Veriqa: tool calls, long command cycles, costly runs.",
+  "author": {
+    "name": "Dmitrii Erusov"
+  },
+  "homepage": "https://veriqa.app/docs/research/claude-code-approvals",
+  "license": "MIT",
+  "keywords": [
+    "approval",
+    "human-in-the-loop",
+    "veriqa",
+    "telegram"
+  ],
+  "mcpServers": {
+    "veriqa": {
+      "command": "node",
+      "args": [
+        "${CLAUDE_PLUGIN_ROOT}/scripts/qr-server.mjs"
+      ]
+    }
+  }
+}

@@ -1,0 +1,15 @@
+#nullable enable
+static Veriqa.Core.TransactionEngine.DependencyInjection.TransactionEngineBuilderRabbitMqExtensions.UseRabbitMqPublisher(this Veriqa.Core.TransactionEngine.DependencyInjection.TransactionEngineBuilder! builder, System.Action<Veriqa.Core.TransactionEngine.Events.RabbitMq.RabbitMqEventPublisherOptions!>! configure) -> Veriqa.Core.TransactionEngine.DependencyInjection.TransactionEngineBuilder!
+Veriqa.Core.TransactionEngine.DependencyInjection.TransactionEngineBuilderRabbitMqExtensions
+Veriqa.Core.TransactionEngine.Events.RabbitMq.RabbitMqEventPublisherOptions
+Veriqa.Core.TransactionEngine.Events.RabbitMq.RabbitMqEventPublisherOptions.ConnectionString.get -> string!
+Veriqa.Core.TransactionEngine.Events.RabbitMq.RabbitMqEventPublisherOptions.ConnectionString.set -> void
+Veriqa.Core.TransactionEngine.Events.RabbitMq.RabbitMqEventPublisherOptions.ExchangeName.get -> string!
+Veriqa.Core.TransactionEngine.Events.RabbitMq.RabbitMqEventPublisherOptions.ExchangeName.set -> void
+Veriqa.Core.TransactionEngine.Events.RabbitMq.RabbitMqEventPublisherOptions.MaxReconnectAttempts.get -> int
+Veriqa.Core.TransactionEngine.Events.RabbitMq.RabbitMqEventPublisherOptions.MaxReconnectAttempts.set -> void
+Veriqa.Core.TransactionEngine.Events.RabbitMq.RabbitMqEventPublisherOptions.QueueCapacity.get -> int
+Veriqa.Core.TransactionEngine.Events.RabbitMq.RabbitMqEventPublisherOptions.QueueCapacity.set -> void
+Veriqa.Core.TransactionEngine.Events.RabbitMq.RabbitMqEventPublisherOptions.RabbitMqEventPublisherOptions() -> void
+Veriqa.Core.TransactionEngine.Events.RabbitMq.RabbitMqEventPublisherOptions.ReconnectBaseDelaySeconds.get -> int
+Veriqa.Core.TransactionEngine.Events.RabbitMq.RabbitMqEventPublisherOptions.ReconnectBaseDelaySeconds.set -> void

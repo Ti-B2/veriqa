@@ -1,0 +1,51 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Veriqa.Core.ChannelAdapter.Email</RootNamespace>
+    <!-- Satellite package — the Email channel. Keeps MailKit out of the base package's transitive
+         graph, so a deployment that takes only Telegram never receives a mail library. -->
+    <IsPackable>true</IsPackable>
+    <PackageId>Veriqa.Core.ChannelAdapter.Email</PackageId>
+    <Authors>Veriqa</Authors>
+    <Description>Email channel adapter for Veriqa — magic link (Pull) and send-to-login (Push) sign-in over SMTP and an inbound provider (satellite package).</Description>
+    <PackageTags>veriqa;authentication;email;smtp</PackageTags>
+    <!-- Licensing: the server core and its satellites ship under the Mozilla Public License 2.0.
+         MPL-2.0 is OSI-approved, so nuget.org takes it as a license expression and no license
+         file has to travel inside the package. -->
+    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <!-- Shared package metadata: XML docs, repository metadata, embedded symbols, readme, validation. -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\build\Packaging.props" />
+
+  <!-- Declared inventory of the public surface (PublicAPI.*.txt + RS0016/RS0017 as errors). -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\build\PublicApi.props" />
+
+  <ItemGroup>
+    <FrameworkReference Include="Microsoft.AspNetCore.App" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The channel service tests drive the internal SMTP outbound sender directly: its connection
+         state is the surface under test, and it has no public entry point of its own. Travelled here
+         with the types it opens up. -->
+    <!-- Test friends stay out of the packed assemblies: build/pack-core passes VeriqaPackaging=true. -->
+    <InternalsVisibleTo Include="Veriqa.Core.ChannelAdapter.Tests" Condition="'$(VeriqaPackaging)' != 'true'" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="MailKit" Version="4.16.0" />
+    <!-- The Pull-mode letter embeds the sign-in QR as an inline image, so the channel encodes one
+         itself rather than borrowing the page's. -->
+    <PackageReference Include="QRCoder" Version="1.8.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Veriqa.Core.ChannelAdapter\Veriqa.Core.ChannelAdapter.csproj" />
+  </ItemGroup>
+
+</Project>

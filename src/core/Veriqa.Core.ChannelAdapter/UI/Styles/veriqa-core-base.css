@@ -1,0 +1,224 @@
+/*
+ * Copyright (c) Dmitrii Erusov
+ * SPDX-License-Identifier: MPL-2.0
+ *
+ * Shared layer of the "Core" UI contour: the single declaration point of the --veriqa-* tokens
+ * and of the primitives shared by every page family (the button) for every page the core
+ * generates (sign-in window and the service pages). The file is not served over a URL - its
+ * content is inlined into the generated document, so the page stays self-contained. Every
+ * comment of it therefore reaches the end user's browser verbatim: the norms these rules
+ * implement are named in CorePageStyles (C#), not here.
+ *
+ * --veriqa-primary / --veriqa-on-primary keep the neutral canon here; the branded value
+ * (PrimaryColor of the Branded preset) is generated in C# and appended after this file, so
+ * it overrides these declarations by source order.
+ */
+
+:root {
+    /* Primary (neutral canon; overridden by the branded block and by the integrator's stylesheet) */
+    --veriqa-primary: #111827;
+    --veriqa-on-primary: #ffffff;
+    /* Surfaces and background - light theme */
+    --veriqa-bg: #ffffff;
+    --veriqa-surface: #f9f9fa;
+    --veriqa-surface-variant: #e2e2e3;
+    --veriqa-surface-container: #eeeeef;
+    /* Text */
+    --veriqa-text: #1a1c1d;
+    --veriqa-muted: #4c4546;
+    /* Dimmest text step. It carries real copy at 11px - the channel hint, the countdown, the
+       field labels of the service pages - so it is kept above AA on the card: the previous
+       #7e7576 measured 4.47:1 on #ffffff and missed 4.5:1 by a hair. Same value as the site
+       contour, which shifted it for the same reason. */
+    --veriqa-soft: #767071;
+    /* Semantic colors */
+    --veriqa-success: #16a34a;
+    --veriqa-error: #dc2626;
+    --veriqa-warning: #eab308;
+    /* Semantic plates (filled status boxes and labels of the service pages) */
+    --veriqa-success-surface: #f0fdf4;
+    --veriqa-on-success-surface: #166534;
+    --veriqa-success-border: #bbf7d0;
+    --veriqa-error-surface: #fef2f2;
+    --veriqa-on-error-surface: #991b1b;
+    --veriqa-error-border: #fecaca;
+    --veriqa-warning-surface: #fef3c7;
+    --veriqa-on-warning-surface: #92400e;
+    /* Code sample block (setup instructions of the compose helper) */
+    --veriqa-code-bg: #1e293b;
+    --veriqa-on-code-bg: #86efac;
+    /* Corner radii */
+    --veriqa-radius: 8px;
+    --veriqa-radius-lg: 12px;
+    /* Typography */
+    --veriqa-font-family: system-ui, -apple-system, "Segoe UI", Roboto, Arial, sans-serif;
+    --veriqa-font-mono: "JetBrains Mono", Consolas, monospace;
+    /* Animations */
+    --veriqa-transition-fast: 160ms ease;
+    /* Spacing (names shared with the site scale where the value matches, numeric-by-value
+       suffix otherwise) */
+    --veriqa-spacing-2: 2px;
+    --veriqa-spacing-xs: 4px;
+    --veriqa-spacing-6: 6px;
+    --veriqa-spacing-sm: 8px;
+    --veriqa-spacing-9: 9px;
+    --veriqa-spacing-10: 10px;
+    --veriqa-spacing-11: 11px;
+    --veriqa-spacing-12: 12px;
+    --veriqa-spacing-14: 14px;
+    --veriqa-spacing-md: 16px;
+    --veriqa-spacing-18: 18px;
+    --veriqa-spacing-20: 20px;
+    --veriqa-spacing-lg: 24px;
+    --veriqa-spacing-40: 40px;
+    --veriqa-spacing-48: 48px;
+}
+
+/* Dark theme - forced via data-theme="dark" */
+[data-theme="dark"] {
+    --veriqa-primary: #f9fafb;
+    --veriqa-on-primary: #111827;
+    --veriqa-bg: #111827;
+    --veriqa-surface: #1f2937;
+    --veriqa-surface-variant: #374151;
+    --veriqa-surface-container: #1f2937;
+    --veriqa-text: #f9fafb;
+    --veriqa-muted: #d1d5db;
+    --veriqa-soft: #9ca3af;
+    --veriqa-success: #22c55e;
+    --veriqa-error: #ef4444;
+    --veriqa-warning: #fbbf24;
+}
+
+/* Auto theme - follows the OS system setting, only for data-theme="auto" */
+@media (prefers-color-scheme: dark) {
+    [data-theme="auto"] {
+        --veriqa-primary: #f9fafb;
+        --veriqa-on-primary: #111827;
+        --veriqa-bg: #111827;
+        --veriqa-surface: #1f2937;
+        --veriqa-surface-variant: #374151;
+        --veriqa-surface-container: #1f2937;
+        --veriqa-text: #f9fafb;
+        --veriqa-muted: #d1d5db;
+        --veriqa-soft: #9ca3af;
+        --veriqa-success: #22c55e;
+        --veriqa-error: #ef4444;
+        --veriqa-warning: #fbbf24;
+    }
+}
+
+/* Respect for prefers-reduced-motion */
+@media (prefers-reduced-motion: reduce) {
+    *, *::before, *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+* { margin: 0; padding: 0; box-sizing: border-box; }
+
+/* Button of the contour - one primitive for every page family. The base is
+   declared here rather than in a family stylesheet because the sign-in window and the service
+   pages never load each other's rules: a base living in one of them would leave the contour with
+   two button sets again. Family stylesheets add modifiers only. */
+.veriqa-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    min-width: fit-content;
+    padding: var(--veriqa-spacing-11) var(--veriqa-spacing-lg);
+    border: 1px solid var(--veriqa-primary);
+    border-radius: 999px;
+    background: var(--veriqa-primary);
+    color: var(--veriqa-on-primary);
+    font-family: var(--veriqa-font-mono);
+    font-size: 0.75rem;
+    font-weight: 700;
+    text-decoration: none;
+    cursor: pointer;
+    transition: transform var(--veriqa-transition-fast), opacity var(--veriqa-transition-fast);
+}
+.veriqa-btn:hover { transform: translateY(-1px); opacity: 0.88; }
+.veriqa-btn:focus-visible { outline: 2px solid var(--veriqa-primary); outline-offset: 2px; }
+.veriqa-btn:disabled { opacity: 0.4; cursor: not-allowed; transform: none; }
+
+/* Page composition: the card and the attribution line under it are stacked, so the body lays its
+   children out in a column. Both family stylesheets center the body as a flex container and leave
+   the direction to this shared layer. */
+body { flex-direction: column; }
+
+/* Attribution line - "Powered by Veriqa" under the card of every page of the contour.
+   The line is kept against the integrator's stylesheet, which is linked AFTER these inline styles and
+   would win by source order: every declaration below is important and sits inside a cascade layer,
+   and a layered important declaration beats any unlayered one regardless of specificity or order, as
+   well as the important declarations of any layer declared later.
+   The layer has no name: a named layer can be appended to from another stylesheet, and a later
+   important rule appended there would win.
+   Every property of the node and of its children is first reset to its initial value, so a property
+   these rules do not name cannot hide or move the line either. The reset leaves out only what `all`
+   does not cover: direction and unicode-bidi are set right after it (the direction follows the
+   parent, as the page's writing direction does; no bidi override), and the tokens the line reads are
+   pinned to the parent's value, so a token redefined on the node alone does not reach it.
+   The line carries its own background, so a page background from that stylesheet does not break its
+   contrast; its colors are the token pair the card text is read in (--veriqa-muted on --veriqa-bg).
+   This keeps the line against configuration and customization, not against an edited copy of the
+   sources. */
+@layer {
+    .veriqa-attribution,
+    .veriqa-attribution > * {
+        all: initial !important;
+        /* Not covered by `all`, so a stylesheet could still reverse the text or reorder the diamond. */
+        direction: inherit !important;
+        unicode-bidi: normal !important;
+        /* Spelled out as well, in case an engine leaves a legacy or prefixed property out of `all`. */
+        zoom: 1 !important;
+        -webkit-mask: none !important;
+        -webkit-mask-box-image: none !important;
+        -webkit-text-stroke-width: 0 !important;
+        -webkit-text-fill-color: currentColor !important;
+    }
+    .veriqa-attribution::before,
+    .veriqa-attribution::after,
+    .veriqa-attribution > *::before,
+    .veriqa-attribution > *::after { content: none !important; }
+    .veriqa-attribution {
+        --veriqa-bg: inherit !important;
+        --veriqa-muted: inherit !important;
+        --veriqa-font-family: inherit !important;
+        --veriqa-spacing-2: inherit !important;
+        --veriqa-spacing-6: inherit !important;
+        --veriqa-spacing-10: inherit !important;
+        --veriqa-spacing-md: inherit !important;
+        display: flex !important;
+        align-items: center !important;
+        gap: var(--veriqa-spacing-6) !important;
+        margin: var(--veriqa-spacing-md) 0 0 !important;
+        padding: var(--veriqa-spacing-2) var(--veriqa-spacing-10) !important;
+        border-radius: 999px !important;
+        background-color: var(--veriqa-bg) !important;
+        color: var(--veriqa-muted) !important;
+        font-family: var(--veriqa-font-family) !important;
+        font-size: 0.6875rem !important;
+        line-height: 1.6 !important;
+    }
+    .veriqa-attribution > span {
+        display: block !important;
+        font: inherit !important;
+        color: inherit !important;
+    }
+    .veriqa-attribution > span::first-line,
+    .veriqa-attribution > span::first-letter { all: inherit !important; }
+    .veriqa-attribution > .veriqa-brand-mark {
+        display: block !important;
+        /* The reset above drops the inherited text size, and the diamond is sized by it. */
+        font-size: inherit !important;
+        width: 1em !important;
+        height: 1em !important;
+        flex-shrink: 0 !important;
+    }
+    /* A second line on the page (a repeated call of the carrier) is not shown: the first one stays. */
+    .veriqa-attribution ~ .veriqa-attribution { display: none !important; }
+}

@@ -1,0 +1,55 @@
+<!--
+  Directory.Build.props — build-wide settings for every project of the repository.
+
+  Wires the analyzers and the banned-API list into all projects. If a subdirectory gets its own
+  Directory.Build.props, MSBuild takes the nearest one up the tree — merge the contents by hand.
+-->
+<Project>
+
+  <!-- The only version-scheme line of this file: build/Versions.props defines
+       VeriqaCoreVersion AND maps it onto <Version> for every project, so restoring this one
+       Import restores the whole version scheme. If the Import is lost, VeriqaCoreVersion
+       becomes empty and the guard in the root Directory.Build.targets fails the build instead
+       of silently shipping 1.0.0. -->
+  <Import Project="$(MSBuildThisFileDirectory)build/Versions.props" />
+
+  <PropertyGroup>
+    <!-- Enable the analyzers and treat them strictly -->
+    <EnableNETAnalyzers>true</EnableNETAnalyzers>
+    <AnalysisLevel>latest</AnalysisLevel>
+    <!-- Run IDE-style analyzers at build time so the scoped IDE0073 file-header
+         gate (SPDX/copyright headers on public manifest projects) is enforced by
+         `dotnet build`, not only inside the IDE. Header requirement fires only
+         where file_header_template is defined (per-bucket nested .editorconfig). -->
+    <EnforceCodeStyleInBuild>true</EnforceCodeStyleInBuild>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+
+    <!-- TreatWarningsAsErrors is NOT enabled globally, so third-party warnings do not break the
+         build. Critical rules are raised to error one by one in .editorconfig. -->
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Banned APIs (MediatR, DateTime.Now/UtcNow/Today, etc.) -->
+    <PackageReference Include="Microsoft.CodeAnalysis.BannedApiAnalyzers" Version="4.14.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+
+    <!-- Async suffix (VSTHRD200), no sync-over-async (VSTHRD002) and other threading rules;
+         severity is raised in .editorconfig -->
+    <PackageReference Include="Microsoft.VisualStudio.Threading.Analyzers" Version="17.14.15">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The banned-API list. The Exists condition keeps a tree without the file buildable:
+         a missing AdditionalFiles item is a hard CS2001 error, not a warning. Without the file
+         the banned-API list is not enforced. -->
+    <AdditionalFiles Include="$(MSBuildThisFileDirectory).ai-shared\tooling\dotnet\BannedSymbols.txt"
+                     Condition="Exists('$(MSBuildThisFileDirectory).ai-shared\tooling\dotnet\BannedSymbols.txt')" />
+  </ItemGroup>
+
+</Project>

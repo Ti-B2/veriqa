@@ -1,0 +1,41 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Veriqa.Core.AuthServer.Migrations.PostgreSql</RootNamespace>
+    <!-- TASK-131: shipped as a package — a host taking the core from NuGet cannot create
+         the OpenIddict store otherwise: the migrations its EF Core options name by assembly
+         name live here. -->
+    <IsPackable>true</IsPackable>
+    <PackageId>Veriqa.Core.AuthServer.Migrations.PostgreSql</PackageId>
+    <Authors>Veriqa</Authors>
+    <Description>PostgreSQL migrations for the Veriqa OpenIddict store (host-referenced migrations assembly).</Description>
+    <PackageTags>veriqa;authentication;openiddict;efcore;migrations;postgresql</PackageTags>
+    <!-- Licensing: the server core and its satellites ship under the Mozilla Public License 2.0.
+         MPL-2.0 is OSI-approved, so nuget.org takes it as a license expression and no license
+         file has to travel inside the package. -->
+    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <!-- Shared package metadata: XML docs, repository metadata, embedded symbols, readme, validation. -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\build\Packaging.props" />
+
+  <ItemGroup>
+    <!-- OpenIddict store migration assembly for PostgreSQL.
+         The InitialOpenIddict migration was moved out of Veriqa.Core.AuthServer
+         keeping its MigrationId — the __EFMigrationsHistory history is not broken. -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.12">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Veriqa.Core.AuthServer\Veriqa.Core.AuthServer.csproj" />
+  </ItemGroup>
+
+</Project>

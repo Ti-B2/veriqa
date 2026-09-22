@@ -1,0 +1,13 @@
+{
+  "profiles": {
+    "Veriqa.Sample.DotNet.Inproc.AgentApproval": {
+      "commandName": "Project",
+      "dotnetRunMessages": true,
+      "launchBrowser": true,
+      "applicationUrl": "https://localhost:7340;http://localhost:5340",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Development"
+      }
+    }
+  }
+}

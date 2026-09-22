@@ -1,0 +1,67 @@
+{
+  "chains": {
+    "agent-costly-run": [
+      "developer",
+      "manager"
+    ]
+  },
+  "rules": [
+    {
+      "id": "git-push",
+      "event": "PreToolUse",
+      "tool": "^Bash$",
+      "input": {
+        "command": "\\bgit\\s+push\\b"
+      },
+      "action_type": "agent-tool-call",
+      "slots": {
+        "action": "push the branch to the remote repository",
+        "tool": "{tool}",
+        "target": "{input.command}",
+        "project": "{project}"
+      }
+    },
+    {
+      "id": "recursive-delete",
+      "event": "PreToolUse",
+      "tool": "^Bash$",
+      "input": {
+        "command": "\\brm\\s+-[a-zA-Z]*[rR]"
+      },
+      "action_type": "agent-tool-call",
+      "slots": {
+        "action": "delete files and folders recursively",
+        "tool": "{tool}",
+        "target": "{input.command}",
+        "project": "{project}"
+      }
+    },
+    {
+      "id": "cycle-typed",
+      "event": "UserPromptSubmit",
+      "prompt": "^\\s*/(cycle|cycle-chain)(?:\\s+([\\s\\S]*))?$",
+      "action_type": "agent-command-start",
+      "slots": {
+        "command": "{match.1}",
+        "arguments": "{match.2}",
+        "project": "{project}",
+        "started_by": "person"
+      }
+    },
+    {
+      "id": "cycle-by-agent",
+      "event": "PreToolUse",
+      "tool": "^Skill$",
+      "input": {
+        "skill": "^(cycle|cycle-chain)$"
+      },
+      "action_type": "agent-command-start",
+      "slots": {
+        "command": "{input.skill}",
+        "arguments": "{input.args}",
+        "project": "{project}",
+        "started_by": "agent"
+      }
+    }
+  ]
+}

@@ -1,0 +1,14 @@
+{
+  "name": "veriqa-samples",
+  "owner": {
+    "name": "Dmitrii Erusov"
+  },
+  "description": "Samples of plugging Veriqa approvals into Claude Code.",
+  "plugins": [
+    {
+      "name": "veriqa-approval",
+      "source": "./veriqa-approval",
+      "description": "Approve risky Claude Code actions in a trusted messenger through Veriqa."
+    }
+  ]
+}

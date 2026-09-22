@@ -1,0 +1,73 @@
+#nullable enable
+const Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions.DefaultGraphApiBaseUrl = "https://graph.facebook.com" -> string!
+const Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions.DefaultGraphApiVersion = "v21.0" -> string!
+const Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.SectionName = "Veriqa:Channels:WhatsApp" -> string!
+const Veriqa.Core.ChannelAdapter.WhatsApp.Constants.WhatsAppProviderNames.MetaCloudApi = "MetaCloudApi" -> string!
+override Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials.Equals(object? obj) -> bool
+override Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials.GetHashCode() -> int
+override Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials.ToString() -> string!
+static Veriqa.Core.ChannelAdapter.DependencyInjection.ChannelAdapterBuilderWhatsAppExtensions.AddWhatsApp(this Veriqa.Core.ChannelAdapter.DependencyInjection.ChannelAdapterBuilder! adapters) -> Veriqa.Core.ChannelAdapter.DependencyInjection.ChannelAdapterBuilder!
+static Veriqa.Core.ChannelAdapter.DependencyInjection.ChannelAdapterBuilderWhatsAppExtensions.UseWhatsAppProvider<TProvider>(this Veriqa.Core.ChannelAdapter.DependencyInjection.ChannelAdapterBuilder! adapters) -> Veriqa.Core.ChannelAdapter.DependencyInjection.ChannelAdapterBuilder!
+static Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppConfigKeys.Credentials.get -> Veriqa.Core.Configuration.ConfigKey<Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials!>!
+static Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppConfigKeys.Catalog.get -> Veriqa.Core.Configuration.ConfigKeyCatalog!
+static Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials.operator !=(Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials? left, Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials? right) -> bool
+static Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials.operator ==(Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials? left, Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials? right) -> bool
+Veriqa.Core.ChannelAdapter.DependencyInjection.ChannelAdapterBuilderWhatsAppExtensions
+Veriqa.Core.ChannelAdapter.WhatsApp.Abstractions.IWhatsAppProvider
+Veriqa.Core.ChannelAdapter.WhatsApp.Abstractions.IWhatsAppProvider.CheckHealthAsync(System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<(bool IsHealthy, string? Details)>!
+Veriqa.Core.ChannelAdapter.WhatsApp.Abstractions.IWhatsAppProvider.ProviderType.get -> string!
+Veriqa.Core.ChannelAdapter.WhatsApp.Abstractions.IWhatsAppProvider.SendInteractiveButtonsMessageAsync(string! recipientPhone, string! bodyText, string! confirmButtonId, string! confirmButtonTitle, string! declineButtonId, string! declineButtonTitle, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
+Veriqa.Core.ChannelAdapter.WhatsApp.Abstractions.IWhatsAppProvider.SendTextMessageAsync(string! recipientPhone, string! messageText, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.Task<bool>!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions.AccessToken.get -> string!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions.AccessToken.set -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions.AppSecret.get -> string!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions.AppSecret.set -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions.GraphApiBaseUrl.get -> string!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions.GraphApiBaseUrl.set -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions.GraphApiVersion.get -> string!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions.GraphApiVersion.set -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions.MetaCloudApiOptions() -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions.PhoneNumberId.get -> string!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions.PhoneNumberId.set -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions.WebhookVerifyToken.get -> string!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions.WebhookVerifyToken.set -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppConfigKeys
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.AccessToken.get -> string!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.AccessToken.set -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.AppSecret.get -> string!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.AppSecret.set -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.BusinessPhoneNumber.get -> string!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.BusinessPhoneNumber.set -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.Enabled.get -> bool
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.Enabled.set -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.GetTenantCredentials() -> Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.GraphApiBaseUrl.get -> string!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.GraphApiBaseUrl.set -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.GraphApiVersion.get -> string!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.GraphApiVersion.set -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.MetaCloudApi.get -> Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.MetaCloudApi.set -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.PhoneNumberId.get -> string!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.PhoneNumberId.set -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.Provider.get -> string!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.Provider.set -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.WebhookVerifyToken.get -> string!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.WebhookVerifyToken.set -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions.WhatsAppOptions() -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptionsValidator
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptionsValidator.Validate(string? name, Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptions! options) -> Microsoft.Extensions.Options.ValidateOptionsResult!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppOptionsValidator.WhatsAppOptionsValidator() -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials.<Clone>$() -> Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials.BusinessPhoneNumber.get -> string!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials.BusinessPhoneNumber.init -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials.Deconstruct(out string! Provider, out string! BusinessPhoneNumber, out Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions! MetaCloudApi) -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials.Equals(Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials? other) -> bool
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials.MetaCloudApi.get -> Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials.MetaCloudApi.init -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials.Provider.get -> string!
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials.Provider.init -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.WhatsAppTenantCredentials.WhatsAppTenantCredentials(string! Provider, string! BusinessPhoneNumber, Veriqa.Core.ChannelAdapter.WhatsApp.Configuration.MetaCloudApiOptions! MetaCloudApi) -> void
+Veriqa.Core.ChannelAdapter.WhatsApp.Constants.WhatsAppProviderNames

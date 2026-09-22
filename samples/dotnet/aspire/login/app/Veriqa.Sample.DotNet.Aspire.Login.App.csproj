@@ -1,0 +1,28 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Veriqa.Sample.DotNet.Aspire.Login.App</RootNamespace>
+    <AssemblyName>Veriqa.Sample.DotNet.Aspire.Login.App</AssemblyName>
+    <!-- The sample is not a public package -->
+    <IsPackable>false</IsPackable>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Veriqa AuthServer as a library (embedded issuer) + the orchestrated Redis store -->
+    <ProjectReference Include="..\..\..\..\..\src\core\Veriqa.Core.AuthServer\Veriqa.Core.AuthServer.csproj" />
+    <ProjectReference Include="..\..\..\..\..\src\core\Veriqa.Core.ChannelAdapter\Veriqa.Core.ChannelAdapter.csproj" />
+    <!-- Channel satellites: the channels this host registers. The base package carries the
+         contour, each channel arrives in its own package (and brings its own SDK). -->
+    <ProjectReference Include="..\..\..\..\..\src\core\Veriqa.Core.ChannelAdapter.Email\Veriqa.Core.ChannelAdapter.Email.csproj" />
+    <ProjectReference Include="..\..\..\..\..\src\core\Veriqa.Core.ChannelAdapter.Max\Veriqa.Core.ChannelAdapter.Max.csproj" />
+    <ProjectReference Include="..\..\..\..\..\src\core\Veriqa.Core.ChannelAdapter.Telegram\Veriqa.Core.ChannelAdapter.Telegram.csproj" />
+    <ProjectReference Include="..\..\..\..\..\src\core\Veriqa.Core.ChannelAdapter.WhatsApp\Veriqa.Core.ChannelAdapter.WhatsApp.csproj" />
+    <ProjectReference Include="..\..\..\..\..\src\core\Veriqa.Core.TransactionEngine\Veriqa.Core.TransactionEngine.csproj" />
+    <ProjectReference Include="..\..\..\..\..\src\core\Veriqa.Core.TransactionEngine.Redis\Veriqa.Core.TransactionEngine.Redis.csproj" />
+  </ItemGroup>
+
+</Project>

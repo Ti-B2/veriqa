@@ -1,0 +1,438 @@
+#nullable enable
+Veriqa.Core.Configuration.ChannelInboundVerification
+Veriqa.Core.Configuration.ChannelInboundVerification.None = 3 -> Veriqa.Core.Configuration.ChannelInboundVerification
+Veriqa.Core.Configuration.ChannelInboundVerification.OutboundFetch = 2 -> Veriqa.Core.Configuration.ChannelInboundVerification
+Veriqa.Core.Configuration.ChannelInboundVerification.SharedSecret = 1 -> Veriqa.Core.Configuration.ChannelInboundVerification
+Veriqa.Core.Configuration.ChannelInboundVerification.Signature = 0 -> Veriqa.Core.Configuration.ChannelInboundVerification
+Veriqa.Core.Configuration.ChannelInboundVerificationConfigKeys
+Veriqa.Core.Configuration.ConfigCacheKey
+Veriqa.Core.Configuration.ConfigCacheKey.ConfigCacheKey() -> void
+Veriqa.Core.Configuration.ConfigCacheKey.ConfigCacheKey(string! keyName, Veriqa.Core.Configuration.ConfigLevel level, Veriqa.Core.Configuration.ResolutionContext! context, Veriqa.Core.Configuration.ConfigDimensionValues dimensions) -> void
+Veriqa.Core.Configuration.ConfigCacheKey.Equals(Veriqa.Core.Configuration.ConfigCacheKey other) -> bool
+Veriqa.Core.Configuration.ConfigCachePolicy
+Veriqa.Core.Configuration.ConfigCachePolicy.<Clone>$() -> Veriqa.Core.Configuration.ConfigCachePolicy!
+Veriqa.Core.Configuration.ConfigCachePolicy.ConfigCachePolicy() -> void
+Veriqa.Core.Configuration.ConfigCachePolicy.Equals(Veriqa.Core.Configuration.ConfigCachePolicy? other) -> bool
+Veriqa.Core.Configuration.ConfigCachePolicy.LocalOnly.get -> bool
+Veriqa.Core.Configuration.ConfigCachePolicy.LocalOnly.init -> void
+Veriqa.Core.Configuration.ConfigCachePolicy.Ttl.get -> System.TimeSpan?
+Veriqa.Core.Configuration.ConfigCachePolicy.Ttl.init -> void
+Veriqa.Core.Configuration.ConfigCoreValues
+Veriqa.Core.Configuration.ConfigCoreValues.Read<T>(Veriqa.Core.Configuration.ConfigKey<T>! key) -> T
+Veriqa.Core.Configuration.ConfigDeclaredDefault
+Veriqa.Core.Configuration.ConfigDeclaredDefault.<Clone>$() -> Veriqa.Core.Configuration.ConfigDeclaredDefault!
+Veriqa.Core.Configuration.ConfigDeclaredDefault.ConfigDeclaredDefault(string? Text) -> void
+Veriqa.Core.Configuration.ConfigDeclaredDefault.Deconstruct(out string? Text) -> void
+Veriqa.Core.Configuration.ConfigDeclaredDefault.Equals(Veriqa.Core.Configuration.ConfigDeclaredDefault? other) -> bool
+Veriqa.Core.Configuration.ConfigDeclaredDefault.Text.get -> string?
+Veriqa.Core.Configuration.ConfigDeclaredDefault.Text.init -> void
+Veriqa.Core.Configuration.ConfigDimensionNames
+Veriqa.Core.Configuration.ConfigDimensionValues
+Veriqa.Core.Configuration.ConfigDimensionValues.ConfigDimensionValues() -> void
+Veriqa.Core.Configuration.ConfigDimensionValues.ConfigDimensionValues(System.Collections.Generic.IReadOnlyDictionary<string!, string!>! Values) -> void
+Veriqa.Core.Configuration.ConfigDimensionValues.Count.get -> int
+Veriqa.Core.Configuration.ConfigDimensionValues.Deconstruct(out System.Collections.Generic.IReadOnlyDictionary<string!, string!>! Values) -> void
+Veriqa.Core.Configuration.ConfigDimensionValues.Equals(Veriqa.Core.Configuration.ConfigDimensionValues other) -> bool
+Veriqa.Core.Configuration.ConfigDimensionValues.Values.get -> System.Collections.Generic.IReadOnlyDictionary<string!, string!>!
+Veriqa.Core.Configuration.ConfigDimensionValues.Values.init -> void
+Veriqa.Core.Configuration.ConfigEnumTokens
+Veriqa.Core.Configuration.ConfigGroupAssembler<TResult>
+Veriqa.Core.Configuration.ConfigGroupConsistencyRule<TResult>
+Veriqa.Core.Configuration.ConfigGroupResolution
+Veriqa.Core.Configuration.ConfigGroupResolution.OptionalValueOfAsync<T>(Veriqa.Core.Configuration.ConfigKey<T>! key) -> System.Threading.Tasks.ValueTask<T?>
+Veriqa.Core.Configuration.ConfigGroupResolution.ResolveAsync<T>(Veriqa.Core.Configuration.ConfigKey<T>! key, Veriqa.Core.Configuration.ConfigDimensionValues dimensions) -> System.Threading.Tasks.ValueTask<Veriqa.Core.Configuration.ResolvedValue<T>>
+Veriqa.Core.Configuration.ConfigGroupResolution.TextByDimensionAsync(Veriqa.Core.Configuration.ConfigKey<string?>! key, string! dimensionName, System.Collections.Generic.IReadOnlyList<string!>! dimensionValues) -> System.Threading.Tasks.ValueTask<System.Collections.Generic.Dictionary<string!, string!>?>
+Veriqa.Core.Configuration.ConfigGroupResolution.ValueOfAsync<T>(Veriqa.Core.Configuration.ConfigKey<T>! key) -> System.Threading.Tasks.ValueTask<T>
+Veriqa.Core.Configuration.ConfigKey<T>
+Veriqa.Core.Configuration.ConfigKey<T>.CachePolicy.get -> Veriqa.Core.Configuration.ConfigCachePolicy!
+Veriqa.Core.Configuration.ConfigKey<T>.CoreParticipatesInSetIntersection.get -> bool
+Veriqa.Core.Configuration.ConfigKey<T>.Dimensions.get -> Veriqa.Core.Configuration.ConfigKeyDimensions?
+Veriqa.Core.Configuration.ConfigKey<T>.Domain.get -> Veriqa.Core.Configuration.ConfigValueDomain<T>?
+Veriqa.Core.Configuration.ConfigKey<T>.GatedLevels.get -> System.Collections.Generic.IReadOnlySet<Veriqa.Core.Configuration.ConfigLevel>?
+Veriqa.Core.Configuration.ConfigKey<T>.Intersect.get -> System.Func<T, T, T>?
+Veriqa.Core.Configuration.ConfigKey<T>.IsSecret.get -> bool
+Veriqa.Core.Configuration.ConfigKey<T>.Kind.get -> Veriqa.Core.Configuration.ConfigKeyKind
+Veriqa.Core.Configuration.ConfigKey<T>.Levels.get -> System.Collections.Generic.IReadOnlySet<Veriqa.Core.Configuration.ConfigLevel>!
+Veriqa.Core.Configuration.ConfigKey<T>.Name.get -> string!
+Veriqa.Core.Configuration.ConfigKey<T>.Stricter.get -> System.Func<T, T, T>?
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.At(Veriqa.Core.Configuration.ConfigLevel level, string! path) -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.At(params Veriqa.Core.Configuration.ConfigLevel[]! levels) -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.AtIdentity(Veriqa.Core.Configuration.ConfigLevel level) -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.BlankIsUnstated() -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.Cached(Veriqa.Core.Configuration.ConfigCachePolicy! policy) -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.Declare() -> Veriqa.Core.Configuration.ConfigKey<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.Default(T value) -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.Domain(Veriqa.Core.Configuration.ConfigValueDomain<T>! domain) -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.EnumTokens<TEnum>() -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.Fallback(params string![]![]! steps) -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.GatedValue(params Veriqa.Core.Configuration.ConfigLevel[]! gatedLevels) -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.Identity(string! dimension) -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.Narrowing(params string![]! dimensions) -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.NotWalked() -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.Parse(System.Func<Veriqa.Core.Configuration.ConfigNode!, string!, Veriqa.Core.Configuration.ConfigDimensionValues, Veriqa.Core.Configuration.LayerValue<T>>! parse) -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.PresenceMeans(T value) -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.ProtectiveCeiling(System.Func<T, T, T>! stricter) -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.Required() -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.Secret() -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.Set(System.Func<T, T, T>! intersect, bool coreParticipatesInSetIntersection = true) -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyBuilder<T>.Stated(System.Func<Veriqa.Core.Configuration.ConfigNode!, string!, System.Collections.Generic.IEnumerable<string!>!>! stated) -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyCatalog
+Veriqa.Core.Configuration.ConfigKeyCatalog.ConfigKeyCatalog() -> void
+Veriqa.Core.Configuration.ConfigKeyCatalog.Keys.get -> System.Collections.Generic.IReadOnlyList<Veriqa.Core.Configuration.DeclaredConfigKey!>!
+Veriqa.Core.Configuration.ConfigKeyCatalog.Of<T>(string! name) -> Veriqa.Core.Configuration.ConfigKeyBuilder<T>!
+Veriqa.Core.Configuration.ConfigKeyCatalog.Text(string! name) -> Veriqa.Core.Configuration.ConfigKeyBuilder<string?>!
+Veriqa.Core.Configuration.ConfigKeyDimensions
+Veriqa.Core.Configuration.ConfigKeyDimensions.<Clone>$() -> Veriqa.Core.Configuration.ConfigKeyDimensions!
+Veriqa.Core.Configuration.ConfigKeyDimensions.ConfigKeyDimensions() -> void
+Veriqa.Core.Configuration.ConfigKeyDimensions.Equals(Veriqa.Core.Configuration.ConfigKeyDimensions? other) -> bool
+Veriqa.Core.Configuration.ConfigKeyDimensions.Fallback.get -> System.Collections.Generic.IReadOnlyList<System.Collections.Generic.IReadOnlySet<string!>!>!
+Veriqa.Core.Configuration.ConfigKeyDimensions.Fallback.init -> void
+Veriqa.Core.Configuration.ConfigKeyDimensions.Names.get -> System.Collections.Generic.IReadOnlyList<string!>!
+Veriqa.Core.Configuration.ConfigKeyDimensions.Names.init -> void
+Veriqa.Core.Configuration.ConfigKeyGroup<TResult>
+Veriqa.Core.Configuration.ConfigKeyGroup<TResult>.Name.get -> string!
+Veriqa.Core.Configuration.ConfigKeyKind
+Veriqa.Core.Configuration.ConfigKeyKind.GatedValue = 3 -> Veriqa.Core.Configuration.ConfigKeyKind
+Veriqa.Core.Configuration.ConfigKeyKind.ProtectiveCeiling = 2 -> Veriqa.Core.Configuration.ConfigKeyKind
+Veriqa.Core.Configuration.ConfigKeyKind.Set = 1 -> Veriqa.Core.Configuration.ConfigKeyKind
+Veriqa.Core.Configuration.ConfigKeyKind.Value = 0 -> Veriqa.Core.Configuration.ConfigKeyKind
+Veriqa.Core.Configuration.ConfigKeySchemaView
+Veriqa.Core.Configuration.ConfigKeySchemaView.Keys.get -> System.Collections.Immutable.ImmutableArray<Veriqa.Core.Configuration.ConfigKeyView!>
+Veriqa.Core.Configuration.ConfigKeyView
+Veriqa.Core.Configuration.ConfigKeyView.<Clone>$() -> Veriqa.Core.Configuration.ConfigKeyView!
+Veriqa.Core.Configuration.ConfigKeyView.CachePolicy.get -> Veriqa.Core.Configuration.ConfigCachePolicy!
+Veriqa.Core.Configuration.ConfigKeyView.CachePolicy.init -> void
+Veriqa.Core.Configuration.ConfigKeyView.ConfigKeyView(string! Name, Veriqa.Core.Configuration.ConfigKeyKind Kind, System.Collections.Immutable.ImmutableArray<Veriqa.Core.Configuration.ConfigLevel> Levels, System.Collections.Immutable.ImmutableArray<Veriqa.Core.Configuration.ConfigLevel> GatedLevels, System.Collections.Immutable.ImmutableArray<string!> Dimensions, Veriqa.Core.Configuration.ConfigCachePolicy! CachePolicy, string? Domain, Veriqa.Core.Configuration.ConfigValueRejectionPolicy OnRejected, bool IsSecret, Veriqa.Core.Configuration.ConfigDeclaredDefault? DeclaredDefault) -> void
+Veriqa.Core.Configuration.ConfigKeyView.DeclaredDefault.get -> Veriqa.Core.Configuration.ConfigDeclaredDefault?
+Veriqa.Core.Configuration.ConfigKeyView.DeclaredDefault.init -> void
+Veriqa.Core.Configuration.ConfigKeyView.Deconstruct(out string! Name, out Veriqa.Core.Configuration.ConfigKeyKind Kind, out System.Collections.Immutable.ImmutableArray<Veriqa.Core.Configuration.ConfigLevel> Levels, out System.Collections.Immutable.ImmutableArray<Veriqa.Core.Configuration.ConfigLevel> GatedLevels, out System.Collections.Immutable.ImmutableArray<string!> Dimensions, out Veriqa.Core.Configuration.ConfigCachePolicy! CachePolicy, out string? Domain, out Veriqa.Core.Configuration.ConfigValueRejectionPolicy OnRejected, out bool IsSecret, out Veriqa.Core.Configuration.ConfigDeclaredDefault? DeclaredDefault) -> void
+Veriqa.Core.Configuration.ConfigKeyView.Dimensions.get -> System.Collections.Immutable.ImmutableArray<string!>
+Veriqa.Core.Configuration.ConfigKeyView.Dimensions.init -> void
+Veriqa.Core.Configuration.ConfigKeyView.Domain.get -> string?
+Veriqa.Core.Configuration.ConfigKeyView.Domain.init -> void
+Veriqa.Core.Configuration.ConfigKeyView.Equals(Veriqa.Core.Configuration.ConfigKeyView? other) -> bool
+Veriqa.Core.Configuration.ConfigKeyView.GatedLevels.get -> System.Collections.Immutable.ImmutableArray<Veriqa.Core.Configuration.ConfigLevel>
+Veriqa.Core.Configuration.ConfigKeyView.GatedLevels.init -> void
+Veriqa.Core.Configuration.ConfigKeyView.IsSecret.get -> bool
+Veriqa.Core.Configuration.ConfigKeyView.IsSecret.init -> void
+Veriqa.Core.Configuration.ConfigKeyView.Kind.get -> Veriqa.Core.Configuration.ConfigKeyKind
+Veriqa.Core.Configuration.ConfigKeyView.Kind.init -> void
+Veriqa.Core.Configuration.ConfigKeyView.Levels.get -> System.Collections.Immutable.ImmutableArray<Veriqa.Core.Configuration.ConfigLevel>
+Veriqa.Core.Configuration.ConfigKeyView.Levels.init -> void
+Veriqa.Core.Configuration.ConfigKeyView.Name.get -> string!
+Veriqa.Core.Configuration.ConfigKeyView.Name.init -> void
+Veriqa.Core.Configuration.ConfigKeyView.OnRejected.get -> Veriqa.Core.Configuration.ConfigValueRejectionPolicy
+Veriqa.Core.Configuration.ConfigKeyView.OnRejected.init -> void
+Veriqa.Core.Configuration.ConfigLevel
+Veriqa.Core.Configuration.ConfigLevel.Application = 3 -> Veriqa.Core.Configuration.ConfigLevel
+Veriqa.Core.Configuration.ConfigLevel.Core = 5 -> Veriqa.Core.Configuration.ConfigLevel
+Veriqa.Core.Configuration.ConfigLevel.PerRequest = 1 -> Veriqa.Core.Configuration.ConfigLevel
+Veriqa.Core.Configuration.ConfigLevel.Tenant = 4 -> Veriqa.Core.Configuration.ConfigLevel
+Veriqa.Core.Configuration.ConfigLevel.UiConfig = 2 -> Veriqa.Core.Configuration.ConfigLevel
+Veriqa.Core.Configuration.ConfigLevel.UserOverride = 0 -> Veriqa.Core.Configuration.ConfigLevel
+Veriqa.Core.Configuration.ConfigLevelAddress
+Veriqa.Core.Configuration.ConfigLevelAddress.Address.get -> string?
+Veriqa.Core.Configuration.ConfigLevelAddress.Kind.get -> Veriqa.Core.Configuration.ConfigLevelAddressKind
+Veriqa.Core.Configuration.ConfigLevelAddress.Level.get -> Veriqa.Core.Configuration.ConfigLevel
+Veriqa.Core.Configuration.ConfigLevelAddressKind
+Veriqa.Core.Configuration.ConfigLevelAddressKind.DerivedFromName = 0 -> Veriqa.Core.Configuration.ConfigLevelAddressKind
+Veriqa.Core.Configuration.ConfigLevelAddressKind.Identity = 2 -> Veriqa.Core.Configuration.ConfigLevelAddressKind
+Veriqa.Core.Configuration.ConfigLevelAddressKind.Path = 1 -> Veriqa.Core.Configuration.ConfigLevelAddressKind
+Veriqa.Core.Configuration.ConfigLevels
+Veriqa.Core.Configuration.ConfigNode
+Veriqa.Core.Configuration.ConfigNode.Children(string! path) -> System.Collections.Generic.IEnumerable<string!>!
+Veriqa.Core.Configuration.ConfigNode.ConfigurationKeyOf(string! address) -> string?
+Veriqa.Core.Configuration.ConfigNode.Has(string! path) -> bool
+Veriqa.Core.Configuration.ConfigNode.Level.get -> Veriqa.Core.Configuration.ConfigLevel
+Veriqa.Core.Configuration.ConfigNode.RecordLabel.get -> string?
+Veriqa.Core.Configuration.ConfigNode.TryRead<T>(string! path, out T value) -> bool
+Veriqa.Core.Configuration.ConfigResolutionOptions
+Veriqa.Core.Configuration.ConfigResolutionOptions.ConfigResolutionOptions() -> void
+Veriqa.Core.Configuration.ConfigResolutionOptions.LastGoodCapacity.get -> int
+Veriqa.Core.Configuration.ConfigResolutionOptions.LastGoodCapacity.set -> void
+Veriqa.Core.Configuration.ConfigResolutionOptions.SecretLastGoodMaxAge.get -> System.TimeSpan
+Veriqa.Core.Configuration.ConfigResolutionOptions.SecretLastGoodMaxAge.set -> void
+Veriqa.Core.Configuration.ConfigResolutionScope
+Veriqa.Core.Configuration.ConfigResolutionScope.ConfigResolutionScope(Veriqa.Core.Configuration.ResolutionContext! context) -> void
+Veriqa.Core.Configuration.ConfigResolutionScope.Context.get -> Veriqa.Core.Configuration.ResolutionContext!
+Veriqa.Core.Configuration.ConfigResolutionScope.Dispose() -> void
+Veriqa.Core.Configuration.ConfigResolutionScope.ReadAsync<TRecord>(Veriqa.Core.Configuration.IConfigRecordReader<TRecord!>! reader, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<TRecord?>
+Veriqa.Core.Configuration.ConfigSnapshotFact
+Veriqa.Core.Configuration.ConfigSnapshotFact.RecordNotBound = 1 -> Veriqa.Core.Configuration.ConfigSnapshotFact
+Veriqa.Core.Configuration.ConfigSnapshotFact.SettingNotStated = 2 -> Veriqa.Core.Configuration.ConfigSnapshotFact
+Veriqa.Core.Configuration.ConfigSnapshotFact.ValueRejected = 0 -> Veriqa.Core.Configuration.ConfigSnapshotFact
+Veriqa.Core.Configuration.ConfigSnapshotFact.ValueUnreadable = 3 -> Veriqa.Core.Configuration.ConfigSnapshotFact
+Veriqa.Core.Configuration.ConfigSnapshotFinding
+Veriqa.Core.Configuration.ConfigSnapshotFinding.ConfigSnapshotFinding() -> void
+Veriqa.Core.Configuration.ConfigSnapshotFinding.ConfigSnapshotFinding(Veriqa.Core.Configuration.ConfigSnapshotFact Fact, Veriqa.Core.Configuration.ConfigLevel Level, string! ConfigurationKey, string? RecordLabel, string? SettingKey, string? Value, string! Detail, string? CorrectAt = null) -> void
+Veriqa.Core.Configuration.ConfigSnapshotFinding.ConfigurationKey.get -> string!
+Veriqa.Core.Configuration.ConfigSnapshotFinding.ConfigurationKey.init -> void
+Veriqa.Core.Configuration.ConfigSnapshotFinding.CorrectAt.get -> string?
+Veriqa.Core.Configuration.ConfigSnapshotFinding.CorrectAt.init -> void
+Veriqa.Core.Configuration.ConfigSnapshotFinding.Deconstruct(out Veriqa.Core.Configuration.ConfigSnapshotFact Fact, out Veriqa.Core.Configuration.ConfigLevel Level, out string! ConfigurationKey, out string? RecordLabel, out string? SettingKey, out string? Value, out string! Detail, out string? CorrectAt) -> void
+Veriqa.Core.Configuration.ConfigSnapshotFinding.Detail.get -> string!
+Veriqa.Core.Configuration.ConfigSnapshotFinding.Detail.init -> void
+Veriqa.Core.Configuration.ConfigSnapshotFinding.Equals(Veriqa.Core.Configuration.ConfigSnapshotFinding other) -> bool
+Veriqa.Core.Configuration.ConfigSnapshotFinding.Fact.get -> Veriqa.Core.Configuration.ConfigSnapshotFact
+Veriqa.Core.Configuration.ConfigSnapshotFinding.Fact.init -> void
+Veriqa.Core.Configuration.ConfigSnapshotFinding.Level.get -> Veriqa.Core.Configuration.ConfigLevel
+Veriqa.Core.Configuration.ConfigSnapshotFinding.Level.init -> void
+Veriqa.Core.Configuration.ConfigSnapshotFinding.RecordLabel.get -> string?
+Veriqa.Core.Configuration.ConfigSnapshotFinding.RecordLabel.init -> void
+Veriqa.Core.Configuration.ConfigSnapshotFinding.SettingKey.get -> string?
+Veriqa.Core.Configuration.ConfigSnapshotFinding.SettingKey.init -> void
+Veriqa.Core.Configuration.ConfigSnapshotFinding.Value.get -> string?
+Veriqa.Core.Configuration.ConfigSnapshotFinding.Value.init -> void
+Veriqa.Core.Configuration.ConfigSourceMapView
+Veriqa.Core.Configuration.ConfigSourceMapView.AbsentLevels.get -> System.Collections.Immutable.ImmutableArray<Veriqa.Core.Configuration.ConfigLevel>
+Veriqa.Core.Configuration.ConfigSourceMapView.ServedLevels.get -> System.Collections.Immutable.ImmutableArray<Veriqa.Core.Configuration.ConfigLevel>
+Veriqa.Core.Configuration.ConfigSourceMapView.SourceNames.get -> System.Collections.Frozen.FrozenDictionary<Veriqa.Core.Configuration.ConfigLevel, string!>!
+Veriqa.Core.Configuration.ConfigValueCatalog<T>
+Veriqa.Core.Configuration.ConfigValueCatalog<T>.ConfigValueCatalog(Veriqa.Core.Configuration.ConfigKey<T>! key, Veriqa.Core.Configuration.ConfigLevel level, string! sectionKey, string? readThroughSectionKey = null) -> void
+Veriqa.Core.Configuration.ConfigValueCatalog<T>.Level.get -> Veriqa.Core.Configuration.ConfigLevel
+Veriqa.Core.Configuration.ConfigValueCatalog<T>.ReadThroughSectionKey.get -> string?
+Veriqa.Core.Configuration.ConfigValueCatalog<T>.SectionKey.get -> string!
+Veriqa.Core.Configuration.ConfigValueCatalog<T>.SettingKeys.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
+Veriqa.Core.Configuration.ConfigValueCatalog<T>.Walk() -> System.Collections.Generic.IEnumerable<Veriqa.Core.Configuration.ConfigSnapshotFinding>!
+Veriqa.Core.Configuration.ConfigValueDomain<T>
+Veriqa.Core.Configuration.ConfigValueDomain<T>.Admits(T value, out string? violatedRule) -> bool
+Veriqa.Core.Configuration.ConfigValueDomain<T>.Boundary.get -> string!
+Veriqa.Core.Configuration.ConfigValueDomain<T>.ConfigValueDomain(System.Func<T, bool>! admits, string! boundary) -> void
+Veriqa.Core.Configuration.ConfigValueDomain<T>.ConfigValueDomain(System.Func<T, bool>! admits, string! boundary, string! correctAt, Veriqa.Core.Configuration.ConfigValueRejectionPolicy onRejected = Veriqa.Core.Configuration.ConfigValueRejectionPolicy.SkipStep) -> void
+Veriqa.Core.Configuration.ConfigValueDomain<T>.CorrectAt.get -> string?
+Veriqa.Core.Configuration.ConfigValueDomain<T>.OnRejected.get -> Veriqa.Core.Configuration.ConfigValueRejectionPolicy
+Veriqa.Core.Configuration.ConfigValueRejectionPolicy
+Veriqa.Core.Configuration.ConfigValueRejectionPolicy.FailStart = 1 -> Veriqa.Core.Configuration.ConfigValueRejectionPolicy
+Veriqa.Core.Configuration.ConfigValueRejectionPolicy.SkipStep = 0 -> Veriqa.Core.Configuration.ConfigValueRejectionPolicy
+Veriqa.Core.Configuration.ConfigWalkedValue<T>
+Veriqa.Core.Configuration.ConfigWalkedValue<T>.ConfigWalkedValue() -> void
+Veriqa.Core.Configuration.ConfigWalkedValue<T>.ConfigWalkedValue(string! ConfigurationKey, string? RecordLabel, T? Value, string? UnreadableReason) -> void
+Veriqa.Core.Configuration.ConfigWalkedValue<T>.ConfigurationKey.get -> string!
+Veriqa.Core.Configuration.ConfigWalkedValue<T>.ConfigurationKey.init -> void
+Veriqa.Core.Configuration.ConfigWalkedValue<T>.Deconstruct(out string! ConfigurationKey, out string? RecordLabel, out T? Value, out string? UnreadableReason) -> void
+Veriqa.Core.Configuration.ConfigWalkedValue<T>.Equals(Veriqa.Core.Configuration.ConfigWalkedValue<T> other) -> bool
+Veriqa.Core.Configuration.ConfigWalkedValue<T>.RecordLabel.get -> string?
+Veriqa.Core.Configuration.ConfigWalkedValue<T>.RecordLabel.init -> void
+Veriqa.Core.Configuration.ConfigWalkedValue<T>.UnreadableReason.get -> string?
+Veriqa.Core.Configuration.ConfigWalkedValue<T>.UnreadableReason.init -> void
+Veriqa.Core.Configuration.ConfigWalkedValue<T>.Value.get -> T?
+Veriqa.Core.Configuration.ConfigWalkedValue<T>.Value.init -> void
+Veriqa.Core.Configuration.ConfigurationResolverBuilder
+Veriqa.Core.Configuration.ConfigurationResolverBuilder.UseCache<TCache>() -> Veriqa.Core.Configuration.ConfigurationResolverBuilder!
+Veriqa.Core.Configuration.ConfigurationResolverBuilder.UseTimeProvider(System.TimeProvider! timeProvider) -> Veriqa.Core.Configuration.ConfigurationResolverBuilder!
+Veriqa.Core.Configuration.ConfigurationResolverServiceCollectionExtensions
+Veriqa.Core.Configuration.DeclaredConfigKey
+Veriqa.Core.Configuration.DeclaredConfigKey.AdmittedValues.get -> string?
+Veriqa.Core.Configuration.DeclaredConfigKey.DeclaredDefault.get -> Veriqa.Core.Configuration.ConfigDeclaredDefault?
+Veriqa.Core.Configuration.DeclaredConfigKey.Dimensions.get -> Veriqa.Core.Configuration.ConfigKeyDimensions?
+Veriqa.Core.Configuration.DeclaredConfigKey.IsRequired.get -> bool
+Veriqa.Core.Configuration.DeclaredConfigKey.Levels.get -> System.Collections.Generic.IReadOnlyList<Veriqa.Core.Configuration.ConfigLevelAddress!>!
+Veriqa.Core.Configuration.DeclaredConfigKey.Name.get -> string!
+Veriqa.Core.Configuration.DeclaredConfigKey.NotWalked.get -> bool
+Veriqa.Core.Configuration.DeclaredConfigKey.ValueType.get -> System.Type!
+Veriqa.Core.Configuration.DeclaredConfigKey<T>
+Veriqa.Core.Configuration.DeclaredConfigKey<T>.BlankIsUnstated.get -> bool
+Veriqa.Core.Configuration.DeclaredConfigKey<T>.Default.get -> Veriqa.Core.Configuration.LayerValue<T>
+Veriqa.Core.Configuration.DeclaredConfigKey<T>.Key.get -> Veriqa.Core.Configuration.ConfigKey<T>!
+Veriqa.Core.Configuration.DeclaredConfigKey<T>.Parse.get -> System.Func<Veriqa.Core.Configuration.ConfigNode!, string!, Veriqa.Core.Configuration.ConfigDimensionValues, Veriqa.Core.Configuration.LayerValue<T>>?
+Veriqa.Core.Configuration.DeclaredConfigKey<T>.PresenceMeans.get -> Veriqa.Core.Configuration.LayerValue<T>
+Veriqa.Core.Configuration.DeclaredConfigKey<T>.Reading.get -> System.Func<Veriqa.Core.Configuration.ConfigNode!, string!, Veriqa.Core.Configuration.LayerValue<T>>?
+Veriqa.Core.Configuration.DeclaredConfigKey<T>.Stated.get -> System.Func<Veriqa.Core.Configuration.ConfigNode!, string!, System.Collections.Generic.IEnumerable<string!>!>?
+Veriqa.Core.Configuration.DimensionedConfigValue
+Veriqa.Core.Configuration.IConfigBindings
+Veriqa.Core.Configuration.IConfigBindings.Register<T, TRecord>(Veriqa.Core.Configuration.ConfigKey<T>! key, Veriqa.Core.Configuration.ConfigLevel level, Veriqa.Core.Configuration.IConfigRecordReader<TRecord!>! reader, System.Func<TRecord!, Veriqa.Core.Configuration.ConfigDimensionValues, Veriqa.Core.Configuration.LayerValue<T>>! extract) -> void
+Veriqa.Core.Configuration.IConfigBindings.Register<T, TRecord>(Veriqa.Core.Configuration.ConfigKey<T>! key, Veriqa.Core.Configuration.ConfigLevel level, Veriqa.Core.Configuration.IConfigRecordReader<TRecord!>! reader, System.Func<TRecord!, Veriqa.Core.Configuration.LayerValue<T>>! extract) -> void
+Veriqa.Core.Configuration.IConfigCoreBindings
+Veriqa.Core.Configuration.IConfigCoreBindings.RegisterCore<T>(Veriqa.Core.Configuration.ConfigKey<T>! key, System.Func<T>! extract) -> void
+Veriqa.Core.Configuration.IConfigCoreBindings.RegisterCore<T>(Veriqa.Core.Configuration.ConfigKey<T>! key, System.Func<T>! extract, System.Func<bool>! gate) -> void
+Veriqa.Core.Configuration.IConfigCoreBindings.RegisterCore<T>(Veriqa.Core.Configuration.ConfigKey<T>! key, System.Func<Veriqa.Core.Configuration.ConfigDimensionValues, Veriqa.Core.Configuration.LayerValue<T>>! extract, System.Func<bool>? gate = null) -> void
+Veriqa.Core.Configuration.IConfigKeyDeclarationVisitor
+Veriqa.Core.Configuration.IConfigKeyDeclarationVisitor.Visit<T>(Veriqa.Core.Configuration.DeclaredConfigKey<T>! declared) -> void
+Veriqa.Core.Configuration.IConfigKeyDeclarations
+Veriqa.Core.Configuration.IConfigKeyDeclarations.Declare<T>(Veriqa.Core.Configuration.ConfigKey<T>! key, Veriqa.Core.Configuration.ConfigDeclaredDefault? declaredDefault = null, bool notWalked = false) -> void
+Veriqa.Core.Configuration.IConfigNodeWalker
+Veriqa.Core.Configuration.IConfigNodeWalker.CanWalk.get -> bool
+Veriqa.Core.Configuration.IConfigNodeWalker.Level.get -> Veriqa.Core.Configuration.ConfigLevel
+Veriqa.Core.Configuration.IConfigNodeWalker.SectionKey.get -> string!
+Veriqa.Core.Configuration.IConfigNodeWalker.Subscribe(System.Action! onSnapshot) -> System.IDisposable?
+Veriqa.Core.Configuration.IConfigNodeWalker.Walk() -> System.Collections.Generic.IEnumerable<Veriqa.Core.Configuration.ConfigNode!>!
+Veriqa.Core.Configuration.IConfigRecordReader
+Veriqa.Core.Configuration.IConfigRecordReader.IsLive.get -> bool?
+Veriqa.Core.Configuration.IConfigRecordReader.Name.get -> string!
+Veriqa.Core.Configuration.IConfigRecordReader<TRecord>
+Veriqa.Core.Configuration.IConfigRecordReader<TRecord>.ReadAsync(Veriqa.Core.Configuration.ResolutionContext! context, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<TRecord?>
+Veriqa.Core.Configuration.IConfigResolutionCache
+Veriqa.Core.Configuration.IConfigResolutionCache.ForgetAsync(Veriqa.Core.Configuration.ConfigCacheKey key, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<bool>
+Veriqa.Core.Configuration.IConfigResolutionCache.GetLastGoodOrNoneAsync<T>(Veriqa.Core.Configuration.ConfigCacheKey key, bool isSecret, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<Veriqa.Core.Configuration.LayerValue<T>>
+Veriqa.Core.Configuration.IConfigResolutionCache.GetOrCreateAsync<T>(Veriqa.Core.Configuration.ConfigCacheKey key, Veriqa.Core.Configuration.ConfigCachePolicy! policy, System.Func<System.Threading.CancellationToken, System.Threading.Tasks.ValueTask<Veriqa.Core.Configuration.LayerValue<T>>>! read, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<Veriqa.Core.Configuration.LayerValue<T>>
+Veriqa.Core.Configuration.IConfigResolutionCache.StoreLastGoodAsync<T>(Veriqa.Core.Configuration.ConfigCacheKey key, bool isSecret, Veriqa.Core.Configuration.LayerValue<T> layer, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<Veriqa.Core.Configuration.LayerValue<T>>
+Veriqa.Core.Configuration.IConfigSnapshotCatalog
+Veriqa.Core.Configuration.IConfigSnapshotCatalog.CanWalk.get -> bool
+Veriqa.Core.Configuration.IConfigSnapshotCatalog.Level.get -> Veriqa.Core.Configuration.ConfigLevel
+Veriqa.Core.Configuration.IConfigSnapshotCatalog.ReadThroughSectionKey.get -> string?
+Veriqa.Core.Configuration.IConfigSnapshotCatalog.SectionKey.get -> string!
+Veriqa.Core.Configuration.IConfigSnapshotCatalog.SettingKeys.get -> System.Collections.Generic.IReadOnlyCollection<string!>!
+Veriqa.Core.Configuration.IConfigSnapshotCatalog.Subscribe(System.Action! onSnapshot) -> System.IDisposable?
+Veriqa.Core.Configuration.IConfigSnapshotCatalog.Walk() -> System.Collections.Generic.IEnumerable<Veriqa.Core.Configuration.ConfigSnapshotFinding>!
+Veriqa.Core.Configuration.IConfigSource
+Veriqa.Core.Configuration.IConfigSource.IsLive.get -> bool
+Veriqa.Core.Configuration.IConfigSource.Levels.get -> System.Collections.Generic.IReadOnlySet<Veriqa.Core.Configuration.ConfigLevel>!
+Veriqa.Core.Configuration.IConfigSource.Name.get -> string!
+Veriqa.Core.Configuration.IConfigurationResolver
+Veriqa.Core.Configuration.IConfigurationResolver.ResolveAsync<T>(Veriqa.Core.Configuration.ConfigKey<T>! key, Veriqa.Core.Configuration.ConfigResolutionScope! scope, Veriqa.Core.Configuration.ConfigDimensionValues dimensions, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<Veriqa.Core.Configuration.ResolvedValue<T>>
+Veriqa.Core.Configuration.IConfigurationResolver.ResolveAsync<T>(Veriqa.Core.Configuration.ConfigKey<T>! key, Veriqa.Core.Configuration.ResolutionContext! context, Veriqa.Core.Configuration.ConfigDimensionValues dimensions, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<Veriqa.Core.Configuration.ResolvedValue<T>>
+Veriqa.Core.Configuration.IConfigurationResolver.ResolveGroupAsync<TResult>(Veriqa.Core.Configuration.ConfigKeyGroup<TResult!>! group, Veriqa.Core.Configuration.ConfigResolutionScope! scope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<Veriqa.Core.Configuration.ResolvedGroup<TResult!>>
+Veriqa.Core.Configuration.IConfigurationResolver.ResolveGroupAsync<TResult>(Veriqa.Core.Configuration.ConfigKeyGroup<TResult!>! group, Veriqa.Core.Configuration.ResolutionContext! context, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<Veriqa.Core.Configuration.ResolvedGroup<TResult!>>
+Veriqa.Core.Configuration.IDerivedConfigRecordReader<TRecord>
+Veriqa.Core.Configuration.IDerivedConfigRecordReader<TRecord>.ReadAsync(Veriqa.Core.Configuration.ConfigResolutionScope! scope, System.Threading.CancellationToken cancellationToken = default(System.Threading.CancellationToken)) -> System.Threading.Tasks.ValueTask<TRecord?>
+Veriqa.Core.Configuration.IRegisterConfigKeys
+Veriqa.Core.Configuration.IRegisterConfigKeys.DeclareKeys(Veriqa.Core.Configuration.IConfigKeyDeclarations! keys) -> void
+Veriqa.Core.Configuration.IRegisterConfigKeys.Register(Veriqa.Core.Configuration.IConfigBindings! bindings, Veriqa.Core.Configuration.IConfigCoreBindings! coreBindings) -> void
+Veriqa.Core.Configuration.LayerValue<T>
+Veriqa.Core.Configuration.LayerValue<T>.AddressedDimensions.get -> System.Collections.Generic.IReadOnlySet<string!>!
+Veriqa.Core.Configuration.LayerValue<T>.AllowLowerOverride.get -> bool
+Veriqa.Core.Configuration.LayerValue<T>.DeclaresGate.get -> bool
+Veriqa.Core.Configuration.LayerValue<T>.HasValue.get -> bool
+Veriqa.Core.Configuration.LayerValue<T>.LayerValue() -> void
+Veriqa.Core.Configuration.LayerValue<T>.Value.get -> T?
+Veriqa.Core.Configuration.LoggingConfigKeys
+Veriqa.Core.Configuration.LoggingMode
+Veriqa.Core.Configuration.LoggingMode.Audit = 2 -> Veriqa.Core.Configuration.LoggingMode
+Veriqa.Core.Configuration.LoggingMode.Disabled = 0 -> Veriqa.Core.Configuration.LoggingMode
+Veriqa.Core.Configuration.LoggingMode.System = 1 -> Veriqa.Core.Configuration.LoggingMode
+Veriqa.Core.Configuration.PathConfigKeyRegistrar
+Veriqa.Core.Configuration.PathConfigKeyRegistrar.DeclareKeys(Veriqa.Core.Configuration.IConfigKeyDeclarations! keys) -> void
+Veriqa.Core.Configuration.PathConfigKeyRegistrar.PathConfigKeyRegistrar(System.Collections.Generic.IEnumerable<Veriqa.Core.Configuration.ConfigKeyCatalog!>! catalogs, System.Collections.Generic.IReadOnlyDictionary<Veriqa.Core.Configuration.ConfigLevel, Veriqa.Core.Configuration.IConfigRecordReader<Veriqa.Core.Configuration.ConfigNode!>!>! readers, Microsoft.Extensions.Configuration.IConfiguration! configuration, Microsoft.Extensions.Logging.ILogger<Veriqa.Core.Configuration.PathConfigKeyRegistrar!>! logger) -> void
+Veriqa.Core.Configuration.PathConfigKeyRegistrar.Register(Veriqa.Core.Configuration.IConfigBindings! bindings, Veriqa.Core.Configuration.IConfigCoreBindings! coreBindings) -> void
+Veriqa.Core.Configuration.RequiredConfigValues
+Veriqa.Core.Configuration.RequiredConfigValues.EnsureStatedAsync<T>(Veriqa.Core.Configuration.ConfigKey<T>! key, Veriqa.Core.Configuration.ResolutionContext! context, System.Collections.Generic.IEnumerable<Veriqa.Core.Configuration.ConfigDimensionValues>! points, System.Threading.CancellationToken cancellationToken) -> System.Threading.Tasks.Task!
+Veriqa.Core.Configuration.RequiredConfigValues.RequiredConfigValues(Veriqa.Core.Configuration.IConfigurationResolver! resolver) -> void
+Veriqa.Core.Configuration.ResolvedGroup<TResult>
+Veriqa.Core.Configuration.ResolvedGroup<TResult>.Deconstruct(out TResult! Value, out string? Violation) -> void
+Veriqa.Core.Configuration.ResolvedGroup<TResult>.IsConsistent.get -> bool
+Veriqa.Core.Configuration.ResolvedGroup<TResult>.ResolvedGroup() -> void
+Veriqa.Core.Configuration.ResolvedGroup<TResult>.ResolvedGroup(TResult! Value, string? Violation) -> void
+Veriqa.Core.Configuration.ResolvedGroup<TResult>.Value.get -> TResult!
+Veriqa.Core.Configuration.ResolvedGroup<TResult>.Value.init -> void
+Veriqa.Core.Configuration.ResolvedGroup<TResult>.Violation.get -> string?
+Veriqa.Core.Configuration.ResolvedGroup<TResult>.Violation.init -> void
+Veriqa.Core.Configuration.ResolvedValue<T>
+Veriqa.Core.Configuration.ResolvedValue<T>.AddressedDimensions.get -> System.Collections.Generic.IReadOnlySet<string!>!
+Veriqa.Core.Configuration.ResolvedValue<T>.AddressedDimensions.init -> void
+Veriqa.Core.Configuration.ResolvedValue<T>.Deconstruct(out T Value, out Veriqa.Core.Configuration.ConfigLevel? SourceLevel) -> void
+Veriqa.Core.Configuration.ResolvedValue<T>.Equals(Veriqa.Core.Configuration.ResolvedValue<T> other) -> bool
+Veriqa.Core.Configuration.ResolvedValue<T>.ResolvedValue() -> void
+Veriqa.Core.Configuration.ResolvedValue<T>.ResolvedValue(T Value, Veriqa.Core.Configuration.ConfigLevel? SourceLevel) -> void
+Veriqa.Core.Configuration.ResolvedValue<T>.SourceLevel.get -> Veriqa.Core.Configuration.ConfigLevel?
+Veriqa.Core.Configuration.ResolvedValue<T>.SourceLevel.init -> void
+Veriqa.Core.Configuration.ResolvedValue<T>.Value.get -> T
+Veriqa.Core.Configuration.ResolvedValue<T>.Value.init -> void
+abstract Veriqa.Core.Configuration.ConfigValueCatalog<T>.Enumerate() -> System.Collections.Generic.IEnumerable<Veriqa.Core.Configuration.ConfigWalkedValue<T>>!
+abstract Veriqa.Core.Configuration.ConfigValueCatalog<T>.Subscribe(System.Action! onSnapshot) -> System.IDisposable?
+abstract Veriqa.Core.Configuration.DeclaredConfigKey.Accept(Veriqa.Core.Configuration.IConfigKeyDeclarationVisitor! visitor) -> void
+const Veriqa.Core.Configuration.ChannelInboundVerificationConfigKeys.ChannelsCoreSectionName = "Veriqa:Channels" -> string!
+const Veriqa.Core.Configuration.ChannelInboundVerificationConfigKeys.InboundVerificationKeyName = "Channels.InboundVerification" -> string!
+const Veriqa.Core.Configuration.ChannelInboundVerificationConfigKeys.InboundVerificationMember = "InboundVerification" -> string!
+const Veriqa.Core.Configuration.ConfigDimensionNames.Channel = "channel" -> string!
+const Veriqa.Core.Configuration.ConfigNode.PathSeparator = ':' -> char
+const Veriqa.Core.Configuration.LoggingConfigKeys.CoreSectionName = "Veriqa:Logging" -> string!
+const Veriqa.Core.Configuration.LoggingConfigKeys.DefaultMode = Veriqa.Core.Configuration.LoggingMode.System -> Veriqa.Core.Configuration.LoggingMode
+const Veriqa.Core.Configuration.LoggingConfigKeys.DefaultRetentionDays = 90 -> int
+override Veriqa.Core.Configuration.ConfigCacheKey.GetHashCode() -> int
+override Veriqa.Core.Configuration.ConfigCacheKey.ToString() -> string!
+override Veriqa.Core.Configuration.ConfigCachePolicy.Equals(object? obj) -> bool
+override Veriqa.Core.Configuration.ConfigCachePolicy.GetHashCode() -> int
+override Veriqa.Core.Configuration.ConfigCachePolicy.ToString() -> string!
+override Veriqa.Core.Configuration.ConfigDeclaredDefault.Equals(object? obj) -> bool
+override Veriqa.Core.Configuration.ConfigDeclaredDefault.GetHashCode() -> int
+override Veriqa.Core.Configuration.ConfigDeclaredDefault.ToString() -> string!
+override Veriqa.Core.Configuration.ConfigDimensionValues.GetHashCode() -> int
+override Veriqa.Core.Configuration.ConfigKeyDimensions.Equals(object? obj) -> bool
+override Veriqa.Core.Configuration.ConfigKeyDimensions.GetHashCode() -> int
+override Veriqa.Core.Configuration.ConfigKeyDimensions.ToString() -> string!
+override Veriqa.Core.Configuration.ConfigKeyView.Equals(object? obj) -> bool
+override Veriqa.Core.Configuration.ConfigKeyView.GetHashCode() -> int
+override Veriqa.Core.Configuration.ConfigKeyView.ToString() -> string!
+override Veriqa.Core.Configuration.ConfigSnapshotFinding.GetHashCode() -> int
+override Veriqa.Core.Configuration.ConfigWalkedValue<T>.GetHashCode() -> int
+override Veriqa.Core.Configuration.DeclaredConfigKey<T>.Accept(Veriqa.Core.Configuration.IConfigKeyDeclarationVisitor! visitor) -> void
+override Veriqa.Core.Configuration.ResolvedGroup<TResult>.GetHashCode() -> int
+override Veriqa.Core.Configuration.ResolvedValue<T>.GetHashCode() -> int
+static Veriqa.Core.Configuration.ChannelInboundVerificationConfigKeys.Catalog.get -> Veriqa.Core.Configuration.ConfigKeyCatalog!
+static Veriqa.Core.Configuration.ChannelInboundVerificationConfigKeys.InboundVerification.get -> Veriqa.Core.Configuration.ConfigKey<Veriqa.Core.Configuration.ChannelInboundVerification?>!
+static Veriqa.Core.Configuration.ConfigCacheKey.operator !=(Veriqa.Core.Configuration.ConfigCacheKey left, Veriqa.Core.Configuration.ConfigCacheKey right) -> bool
+static Veriqa.Core.Configuration.ConfigCacheKey.operator ==(Veriqa.Core.Configuration.ConfigCacheKey left, Veriqa.Core.Configuration.ConfigCacheKey right) -> bool
+static Veriqa.Core.Configuration.ConfigCachePolicy.DefaultExternalStoreTtl.get -> System.TimeSpan
+static Veriqa.Core.Configuration.ConfigCachePolicy.ExternalStore.get -> Veriqa.Core.Configuration.ConfigCachePolicy!
+static Veriqa.Core.Configuration.ConfigCachePolicy.None.get -> Veriqa.Core.Configuration.ConfigCachePolicy!
+static Veriqa.Core.Configuration.ConfigCachePolicy.operator !=(Veriqa.Core.Configuration.ConfigCachePolicy? left, Veriqa.Core.Configuration.ConfigCachePolicy? right) -> bool
+static Veriqa.Core.Configuration.ConfigCachePolicy.operator ==(Veriqa.Core.Configuration.ConfigCachePolicy? left, Veriqa.Core.Configuration.ConfigCachePolicy? right) -> bool
+static Veriqa.Core.Configuration.ConfigCoreValues.Declare(System.Action<Veriqa.Core.Configuration.IConfigCoreBindings!>! declare) -> Veriqa.Core.Configuration.ConfigCoreValues!
+static Veriqa.Core.Configuration.ConfigDeclaredDefault.operator !=(Veriqa.Core.Configuration.ConfigDeclaredDefault? left, Veriqa.Core.Configuration.ConfigDeclaredDefault? right) -> bool
+static Veriqa.Core.Configuration.ConfigDeclaredDefault.operator ==(Veriqa.Core.Configuration.ConfigDeclaredDefault? left, Veriqa.Core.Configuration.ConfigDeclaredDefault? right) -> bool
+static Veriqa.Core.Configuration.ConfigDimensionValues.None.get -> Veriqa.Core.Configuration.ConfigDimensionValues
+static Veriqa.Core.Configuration.ConfigDimensionValues.Of(params System.ReadOnlySpan<(string! Dimension, string? Value)> values) -> Veriqa.Core.Configuration.ConfigDimensionValues
+static Veriqa.Core.Configuration.ConfigDimensionValues.operator !=(Veriqa.Core.Configuration.ConfigDimensionValues left, Veriqa.Core.Configuration.ConfigDimensionValues right) -> bool
+static Veriqa.Core.Configuration.ConfigDimensionValues.operator ==(Veriqa.Core.Configuration.ConfigDimensionValues left, Veriqa.Core.Configuration.ConfigDimensionValues right) -> bool
+static Veriqa.Core.Configuration.ConfigEnumTokens.All<TEnum>() -> System.Collections.Generic.IReadOnlyList<string!>!
+static Veriqa.Core.Configuration.ConfigEnumTokens.ToToken<TEnum>(this TEnum value) -> string!
+static Veriqa.Core.Configuration.ConfigEnumTokens.TryParse<TEnum>(string? token, out TEnum value) -> bool
+static Veriqa.Core.Configuration.ConfigKey<T>.GatedValue(string! name, System.Collections.Generic.IReadOnlySet<Veriqa.Core.Configuration.ConfigLevel>! levels, System.Collections.Generic.IReadOnlySet<Veriqa.Core.Configuration.ConfigLevel>! gatedLevels, Veriqa.Core.Configuration.ConfigCachePolicy? cachePolicy = null, Veriqa.Core.Configuration.ConfigKeyDimensions? dimensions = null, Veriqa.Core.Configuration.ConfigValueDomain<T>? domain = null) -> Veriqa.Core.Configuration.ConfigKey<T>!
+static Veriqa.Core.Configuration.ConfigKey<T>.ProtectiveCeiling(string! name, System.Collections.Generic.IReadOnlySet<Veriqa.Core.Configuration.ConfigLevel>! levels, System.Func<T, T, T>! stricter, Veriqa.Core.Configuration.ConfigCachePolicy? cachePolicy = null, Veriqa.Core.Configuration.ConfigKeyDimensions? dimensions = null, Veriqa.Core.Configuration.ConfigValueDomain<T>? domain = null) -> Veriqa.Core.Configuration.ConfigKey<T>!
+static Veriqa.Core.Configuration.ConfigKey<T>.Set(string! name, System.Collections.Generic.IReadOnlySet<Veriqa.Core.Configuration.ConfigLevel>! levels, System.Func<T, T, T>! intersect, bool coreParticipatesInSetIntersection = true, Veriqa.Core.Configuration.ConfigCachePolicy? cachePolicy = null, Veriqa.Core.Configuration.ConfigKeyDimensions? dimensions = null, Veriqa.Core.Configuration.ConfigValueDomain<T>? domain = null) -> Veriqa.Core.Configuration.ConfigKey<T>!
+static Veriqa.Core.Configuration.ConfigKey<T>.Value(string! name, System.Collections.Generic.IReadOnlySet<Veriqa.Core.Configuration.ConfigLevel>! levels, bool isSecret = false, Veriqa.Core.Configuration.ConfigCachePolicy? cachePolicy = null, Veriqa.Core.Configuration.ConfigKeyDimensions? dimensions = null, Veriqa.Core.Configuration.ConfigValueDomain<T>? domain = null) -> Veriqa.Core.Configuration.ConfigKey<T>!
+static Veriqa.Core.Configuration.ConfigKeyDimensions.operator !=(Veriqa.Core.Configuration.ConfigKeyDimensions? left, Veriqa.Core.Configuration.ConfigKeyDimensions? right) -> bool
+static Veriqa.Core.Configuration.ConfigKeyDimensions.operator ==(Veriqa.Core.Configuration.ConfigKeyDimensions? left, Veriqa.Core.Configuration.ConfigKeyDimensions? right) -> bool
+static Veriqa.Core.Configuration.ConfigKeyGroup<TResult>.Of(string! name, Veriqa.Core.Configuration.ConfigGroupAssembler<TResult!>! assemble, Veriqa.Core.Configuration.ConfigGroupConsistencyRule<TResult!>? consistency = null) -> Veriqa.Core.Configuration.ConfigKeyGroup<TResult!>!
+static Veriqa.Core.Configuration.ConfigKeyView.operator !=(Veriqa.Core.Configuration.ConfigKeyView? left, Veriqa.Core.Configuration.ConfigKeyView? right) -> bool
+static Veriqa.Core.Configuration.ConfigKeyView.operator ==(Veriqa.Core.Configuration.ConfigKeyView? left, Veriqa.Core.Configuration.ConfigKeyView? right) -> bool
+static Veriqa.Core.Configuration.ConfigLevels.CoreOnly.get -> System.Collections.Generic.IReadOnlySet<Veriqa.Core.Configuration.ConfigLevel>!
+static Veriqa.Core.Configuration.ConfigLevels.Of(params Veriqa.Core.Configuration.ConfigLevel[]! levels) -> System.Collections.Generic.IReadOnlySet<Veriqa.Core.Configuration.ConfigLevel>!
+static Veriqa.Core.Configuration.ConfigNode.Over(Microsoft.Extensions.Configuration.IConfigurationSection! section, Veriqa.Core.Configuration.ConfigLevel level, string? recordLabel) -> Veriqa.Core.Configuration.ConfigNode!
+static Veriqa.Core.Configuration.ConfigNode.Over(System.Text.Json.JsonElement element, Veriqa.Core.Configuration.ConfigLevel level, string? recordLabel, System.Func<string!, string!>? configurationKeyOf = null) -> Veriqa.Core.Configuration.ConfigNode!
+static Veriqa.Core.Configuration.ConfigSnapshotFinding.operator !=(Veriqa.Core.Configuration.ConfigSnapshotFinding left, Veriqa.Core.Configuration.ConfigSnapshotFinding right) -> bool
+static Veriqa.Core.Configuration.ConfigSnapshotFinding.operator ==(Veriqa.Core.Configuration.ConfigSnapshotFinding left, Veriqa.Core.Configuration.ConfigSnapshotFinding right) -> bool
+static Veriqa.Core.Configuration.ConfigWalkedValue<T>.Stated(string! configurationKey, string? recordLabel, T value) -> Veriqa.Core.Configuration.ConfigWalkedValue<T>
+static Veriqa.Core.Configuration.ConfigWalkedValue<T>.Unreadable(string! configurationKey, string? recordLabel, string! reason) -> Veriqa.Core.Configuration.ConfigWalkedValue<T>
+static Veriqa.Core.Configuration.ConfigWalkedValue<T>.operator !=(Veriqa.Core.Configuration.ConfigWalkedValue<T> left, Veriqa.Core.Configuration.ConfigWalkedValue<T> right) -> bool
+static Veriqa.Core.Configuration.ConfigWalkedValue<T>.operator ==(Veriqa.Core.Configuration.ConfigWalkedValue<T> left, Veriqa.Core.Configuration.ConfigWalkedValue<T> right) -> bool
+static Veriqa.Core.Configuration.ConfigurationResolverServiceCollectionExtensions.AddVeriqaConfigKeyCatalog(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Microsoft.Extensions.Configuration.IConfiguration! configuration, Veriqa.Core.Configuration.ConfigKeyCatalog! catalog) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Veriqa.Core.Configuration.ConfigurationResolverServiceCollectionExtensions.AddVeriqaConfigKeyCatalogs(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Microsoft.Extensions.Configuration.IConfiguration! configuration, params Veriqa.Core.Configuration.ConfigKeyCatalog![]! catalogs) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Veriqa.Core.Configuration.ConfigurationResolverServiceCollectionExtensions.AddVeriqaConfigKeys<TRegistrar>(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Veriqa.Core.Configuration.ConfigurationResolverServiceCollectionExtensions.AddVeriqaConfigLevelNodeReader(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Veriqa.Core.Configuration.ConfigLevel level, System.Func<System.IServiceProvider!, Veriqa.Core.Configuration.IConfigRecordReader<Veriqa.Core.Configuration.ConfigNode!>!>! factory) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Veriqa.Core.Configuration.ConfigurationResolverServiceCollectionExtensions.AddVeriqaConfigLevelNodeReader<TReader>(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Veriqa.Core.Configuration.ConfigLevel level) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Veriqa.Core.Configuration.ConfigurationResolverServiceCollectionExtensions.AddVeriqaConfigurationResolver(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Veriqa.Core.Configuration.ConfigurationResolverServiceCollectionExtensions.AddVeriqaConfigurationResolver(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, System.Action<Veriqa.Core.Configuration.ConfigurationResolverBuilder!>! configure) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Veriqa.Core.Configuration.ConfigurationResolverServiceCollectionExtensions.AddVeriqaDeclaredConfigSnapshotCatalogs(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Microsoft.Extensions.Configuration.IConfiguration! configuration, Veriqa.Core.Configuration.ConfigKeyCatalog! catalog) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Veriqa.Core.Configuration.ConfigurationResolverServiceCollectionExtensions.AddVeriqaOptionsConfigLevels(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, params Veriqa.Core.Configuration.ConfigLevel[]! levels) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Veriqa.Core.Configuration.ConfigurationResolverServiceCollectionExtensions.AddVeriqaPathConfigKeyRegistrar(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Microsoft.Extensions.Configuration.IConfiguration! configuration) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Veriqa.Core.Configuration.DimensionedConfigValue.Layer(Veriqa.Core.Configuration.ConfigDimensionValues point, System.Collections.Generic.IReadOnlyList<string!>! dimensionNames, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string!, string!>>? valuesByDimension, string? commonValue) -> Veriqa.Core.Configuration.LayerValue<string?>
+static Veriqa.Core.Configuration.DimensionedConfigValue.Layer<T>(Veriqa.Core.Configuration.ConfigDimensionValues point, System.Collections.Generic.IReadOnlyList<string!>! dimensionNames, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string!, T>>? valuesByDimension, T? commonValue) -> Veriqa.Core.Configuration.LayerValue<T>
+static Veriqa.Core.Configuration.DimensionedConfigValue.TextFor(System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string!, string!>>? valuesByDimension, string! dimensionValue) -> string?
+static Veriqa.Core.Configuration.DimensionedConfigValue.TryValueFor<TValue>(Veriqa.Core.Configuration.ConfigDimensionValues point, string! dimensionName, System.Collections.Generic.IEnumerable<System.Collections.Generic.KeyValuePair<string!, TValue>>? valuesByDimension, out TValue value) -> bool
+static Veriqa.Core.Configuration.LayerValue<T>.None.get -> Veriqa.Core.Configuration.LayerValue<T>
+static Veriqa.Core.Configuration.LayerValue<T>.Set(T value) -> Veriqa.Core.Configuration.LayerValue<T>
+static Veriqa.Core.Configuration.LayerValue<T>.Set(T value, bool allowLowerOverride) -> Veriqa.Core.Configuration.LayerValue<T>
+static Veriqa.Core.Configuration.LoggingConfigKeys.Catalog.get -> Veriqa.Core.Configuration.ConfigKeyCatalog!
+static Veriqa.Core.Configuration.LoggingConfigKeys.Mode.get -> Veriqa.Core.Configuration.ConfigKey<Veriqa.Core.Configuration.LoggingMode>!
+static Veriqa.Core.Configuration.LoggingConfigKeys.RetentionDays.get -> Veriqa.Core.Configuration.ConfigKey<int>!
+static Veriqa.Core.Configuration.ResolvedValue<T>.operator !=(Veriqa.Core.Configuration.ResolvedValue<T> left, Veriqa.Core.Configuration.ResolvedValue<T> right) -> bool
+static Veriqa.Core.Configuration.ResolvedValue<T>.operator ==(Veriqa.Core.Configuration.ResolvedValue<T> left, Veriqa.Core.Configuration.ResolvedValue<T> right) -> bool
+virtual Veriqa.Core.Configuration.ConfigGroupAssembler<TResult>.Invoke(Veriqa.Core.Configuration.ConfigGroupResolution! resolution) -> System.Threading.Tasks.ValueTask<TResult>
+virtual Veriqa.Core.Configuration.ConfigGroupConsistencyRule<TResult>.Invoke(TResult value) -> string?
+virtual Veriqa.Core.Configuration.ConfigValueCatalog<T>.CanWalk.get -> bool
+~Veriqa.Core.Configuration.ResolvedGroup<TResult>.Equals(Veriqa.Core.Configuration.ResolvedGroup<TResult> other) -> bool
+~override Veriqa.Core.Configuration.ConfigCacheKey.Equals(object obj) -> bool
+~override Veriqa.Core.Configuration.ConfigDimensionValues.Equals(object obj) -> bool
+~override Veriqa.Core.Configuration.ConfigDimensionValues.ToString() -> string
+~override Veriqa.Core.Configuration.ConfigSnapshotFinding.Equals(object obj) -> bool
+~override Veriqa.Core.Configuration.ConfigSnapshotFinding.ToString() -> string
+~override Veriqa.Core.Configuration.ConfigWalkedValue<T>.Equals(object obj) -> bool
+~override Veriqa.Core.Configuration.ConfigWalkedValue<T>.ToString() -> string
+~override Veriqa.Core.Configuration.ResolvedGroup<TResult>.Equals(object obj) -> bool
+~override Veriqa.Core.Configuration.ResolvedGroup<TResult>.ToString() -> string
+~override Veriqa.Core.Configuration.ResolvedValue<T>.Equals(object obj) -> bool
+~override Veriqa.Core.Configuration.ResolvedValue<T>.ToString() -> string
+~static Veriqa.Core.Configuration.ResolvedGroup<TResult>.operator !=(Veriqa.Core.Configuration.ResolvedGroup<TResult> left, Veriqa.Core.Configuration.ResolvedGroup<TResult> right) -> bool
+~static Veriqa.Core.Configuration.ResolvedGroup<TResult>.operator ==(Veriqa.Core.Configuration.ResolvedGroup<TResult> left, Veriqa.Core.Configuration.ResolvedGroup<TResult> right) -> bool

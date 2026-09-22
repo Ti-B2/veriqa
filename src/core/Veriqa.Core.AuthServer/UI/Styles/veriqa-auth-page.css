@@ -1,0 +1,450 @@
+/*
+ * Copyright (c) Dmitrii Erusov
+ * SPDX-License-Identifier: MPL-2.0
+ *
+ * Rules of the sign-in window of the "Core" contour (DefaultAuthPageRenderer). Loaded together
+ * with veriqa-core-base.css (tokens and the shared button primitive) and never together with
+ * veriqa-service-page.css.
+ * The file is inlined into the generated document, not served over a URL. Every comment of it
+ * therefore reaches the end user's browser verbatim: the norms these rules implement are named
+ * in AuthPageStyles (C#), not here.
+ *
+ * Brand colors of the channels are literals on purpose: they are canonical constants of an
+ * external brand and are never repainted by the client's branding.
+ */
+
+/* Minimal preset: only QR and buttons, no decorative elements. The brand row is
+   not emitted by the server in this preset, so no rule here hides it. */
+[data-preset="minimal"] .veriqa-container { border-color: transparent; }
+
+body {
+    font-family: var(--veriqa-font-family);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    background: var(--veriqa-bg);
+    color: var(--veriqa-text);
+}
+.veriqa-container {
+    width: min(calc(100% - var(--veriqa-spacing-48)), 420px);
+    /* Vertical rhythm stays 40px; horizontal padding narrows on a narrow viewport
+       so the QR image keeps its full size (see the .veriqa-qr img comment). Floor 16px
+       (mobile gutter) via clamp() holds at any width, incl. below 320px; the top of
+       40px is reached at 100vw >= 400px, so >= 400px the desktop look is unchanged. */
+    padding-block: var(--veriqa-spacing-40);
+    padding-inline: clamp(var(--veriqa-spacing-md), calc(var(--veriqa-spacing-40) - (400px - 100vw) * 0.5), var(--veriqa-spacing-40));
+    border: 1px solid var(--veriqa-surface-variant);
+    border-radius: var(--veriqa-radius-lg);
+    background: var(--veriqa-bg);
+    text-align: center;
+}
+.veriqa-logo { margin-bottom: var(--veriqa-spacing-20); max-height: 40px; }
+
+/* Brand row of the window: the integrator's logo and name, or the shipped default — the red diamond
+   and the wordmark (landing canon) */
+.veriqa-brand-row {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--veriqa-spacing-sm);
+    margin-bottom: var(--veriqa-spacing-18);
+    font-size: 1.0625rem;
+    font-weight: 700;
+    letter-spacing: -0.01em;
+}
+.veriqa-brand-mark { width: 15px; height: 15px; flex-shrink: 0; }
+
+/* The integrator's logo standing in the brand row beside a brand name: the bottom margin belongs to
+   a logo standing alone, and here the row carries the spacing below itself. A long brand name wraps
+   by characters instead of being cut off — the name is the client's, and any length of it has to
+   stay readable on a narrow card. */
+.veriqa-brand-row .veriqa-logo { margin-bottom: 0; }
+.veriqa-brand-row span { min-width: 0; overflow-wrap: anywhere; }
+
+.veriqa-title {
+    font-size: 1.375rem;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    margin-bottom: var(--veriqa-spacing-sm);
+    line-height: 1.2;
+}
+.veriqa-instruction {
+    color: var(--veriqa-muted);
+    font-size: 0.8125rem;
+    line-height: 1.6;
+    margin-bottom: var(--veriqa-spacing-lg);
+}
+.veriqa-hint {
+    color: var(--veriqa-soft);
+    font-size: 0.6875rem;
+    line-height: 1.6;
+    margin-top: var(--veriqa-spacing-sm);
+    text-align: left;
+}
+
+/* Channel tabs */
+.veriqa-tabs {
+    display: flex;
+    /* Wrap tabs to a second row when width is insufficient (e.g. 4 channels on
+       a narrow screen): without it overflow:hidden clipped the last channel (Email)
+       past the right edge. 3 channels still fit in a single row. */
+    flex-wrap: wrap;
+    gap: 0;
+    margin-bottom: var(--veriqa-spacing-20);
+    border-radius: var(--veriqa-radius);
+    overflow: hidden;
+    border: 1px solid var(--veriqa-surface-variant);
+}
+.veriqa-tab {
+    flex: 1;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--veriqa-spacing-6);
+    padding: var(--veriqa-spacing-9) var(--veriqa-spacing-10);
+    border: none;
+    background: var(--veriqa-surface);
+    font-size: 0.75rem;
+    font-weight: 600;
+    font-family: var(--veriqa-font-mono);
+    cursor: pointer;
+    transition: background var(--veriqa-transition-fast), color var(--veriqa-transition-fast);
+    color: var(--veriqa-muted);
+    min-width: fit-content;
+}
+.veriqa-tab:hover { background: var(--veriqa-surface-container); color: var(--veriqa-text); }
+/* The only inset focus outline of the contour: the tab strip clips its content
+   (overflow: hidden for the rounded corners), so an outline offset outwards would be cut off. */
+.veriqa-tab:focus-visible { outline: 2px solid var(--veriqa-primary); outline-offset: -2px; }
+.veriqa-tab.active { background: var(--veriqa-bg); color: var(--veriqa-text); }
+
+/* 4 channels (all messengers + Email): a symmetric 2×2 grid instead of a cramped
+   row / an asymmetric "3+1" wrap on a narrow screen. Thin separators —
+   via gap: 1px over the container background (--veriqa-surface-variant). */
+.veriqa-tabs--grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 1px;
+    background: var(--veriqa-surface-variant);
+}
+.veriqa-tabs--grid .veriqa-tab { min-width: 0; }
+
+/* The channel panel is focusable by its own tabindex (WAI-ARIA Tabs pattern), so it carries the
+   focus indicator of the contour instead of the browser default one. */
+.veriqa-panel:focus-visible { outline: 2px solid var(--veriqa-primary); outline-offset: 2px; }
+
+/* Label of a tab / CTA button of a THIRD-PARTY channel only. Such a label comes
+   from the SPI, so the width must never be driven by its length: the label is
+   clipped with an ellipsis (the full text is reachable through the tooltip of
+   the contour, see below) instead of
+   stretching the tab strip or pushing the CTA past the card. Built-in channels
+   keep their localized text unclipped — it wraps. */
+.veriqa-tab-label {
+    min-width: 0;
+    max-width: 12ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+.veriqa-btn-label {
+    min-width: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+/* Tooltip of a clipped third-party label. The bubble is anchored to the host
+   rather than to the trigger for two reasons: the tab strip clips its own content
+   (overflow: hidden), and a host wrapping both trigger and bubble lets the pointer travel onto
+   the bubble without dismissing it (WCAG 1.4.13 "hoverable") — leaving the host for one of its
+   own descendants raises no mouseleave. */
+.veriqa-tooltip-host {
+    display: block;
+    position: relative;
+}
+.veriqa-tooltip {
+    position: absolute;
+    z-index: 1;
+    inset-inline: 0;
+    inset-block-start: 100%;
+    margin-block-start: var(--veriqa-spacing-6);
+    padding: var(--veriqa-spacing-sm) var(--veriqa-spacing-10);
+    border: 1px solid var(--veriqa-surface-variant);
+    border-radius: var(--veriqa-radius);
+    background: var(--veriqa-bg);
+    color: var(--veriqa-text);
+    font-family: var(--veriqa-font-mono);
+    font-size: 0.6875rem;
+    line-height: 1.4;
+    text-align: center;
+    overflow-wrap: anywhere;
+}
+/* The gap above the bubble belongs to neither of them, and a pointer crossing it would leave the
+   host and dismiss the bubble before reaching it. This strip bridges the gap and belongs to the
+   bubble for hit testing (a pseudo-element answers for its own element), so the path from the
+   trigger to the bubble is unbroken. Its height is the gap plus the bubble's own border: an
+   absolutely positioned child is placed against the padding box, inside that border. The bridge
+   exists only while the bubble is shown - a hidden bubble displays neither. */
+.veriqa-tooltip::before {
+    content: "";
+    position: absolute;
+    inset-inline: 0;
+    inset-block-end: 100%;
+    block-size: calc(var(--veriqa-spacing-6) + 1px);
+}
+.veriqa-tooltip[hidden] { display: none; }
+
+/* Channel icons: in tabs — brand color (always), in CTA — the button text color */
+.veriqa-tab-icon { width: 14px; height: 14px; flex-shrink: 0; fill: currentColor; }
+.veriqa-btn-icon { width: 16px; height: 16px; flex-shrink: 0; fill: currentColor; margin-inline-end: var(--veriqa-spacing-sm); }
+
+/* QR visibility (setting Veriqa:AuthPageDesign:QrCode:ShowQrCode). The server renders the same
+   markup for every value of the key and hands the value itself over in data-qr-visibility on the
+   root element; the decision is the page's, because only the browser knows the device.
+   "never" hides with no script involved at all. "desktoponly" additionally requires data-device,
+   which the page script sets only after two independent signals agree on a phone — an absent
+   marker (script blocked, a signal missed) therefore leaves the QR visible, which is the safe
+   direction: a page whose only way in is a button the user cannot reach is worse than a QR shown
+   where it is useless. The attribute values are the lower-cased names of QrCodeVisibility.
+   display: none — not a visual offset — so that the text alternative of the image leaves the
+   accessibility tree together with the block it describes. */
+[data-qr-visibility="never"] .veriqa-qr,
+[data-qr-visibility="desktoponly"][data-device="mobile"] .veriqa-qr { display: none; }
+
+/* The wording follows the QR. Page text that mentions the code (the instruction, the "back to QR
+   code" link) is rendered in both wordings — .veriqa-if-qr and .veriqa-if-no-qr — switched by the
+   same two conditions as the block above, so the page can never promise a QR it does not show. The
+   switch is here and not in a script for the same reason the QR's is: one decision, one place. The
+   QR wording is the default state, and display: revert returns its counterpart to whatever display
+   its own element has; the inline before it is the value that element carries today (both wordings
+   are spans) and is there for a browser too old to know the revert keyword — such a browser drops
+   the declaration it cannot parse, and without the explicit one it would show neither wording at
+   all. Both sides hide with display: none — the wording that does not hold leaves the
+   accessibility tree instead of being read out over a page that contradicts it. */
+.veriqa-if-no-qr { display: none; }
+[data-qr-visibility="never"] .veriqa-if-qr,
+[data-qr-visibility="desktoponly"][data-device="mobile"] .veriqa-if-qr { display: none; }
+[data-qr-visibility="never"] .veriqa-if-no-qr,
+[data-qr-visibility="desktoponly"][data-device="mobile"] .veriqa-if-no-qr { display: inline; display: revert; }
+
+/* Expired page (data-page-state). The state is written on the root element by the page script, in
+   the one function every path into expiry passes through — the verification the countdown makes at
+   zero, the status delivered over SignalR, the 404 of the polling fallback. What the state does is
+   drop every way INTO the transaction and show the one way out: a QR that no longer scans, a deep
+   link that no longer resolves and an email form the server would refuse are three ways to spend
+   the user's attention on an action that cannot succeed. The channel tabs stay — switching one
+   sends no request, and hiding them would rebuild the card under the user's eyes.
+   The rules deliberately target only elements that carry NO inline display of their own: the panel
+   containers and the two Email sections are switched by the script with style.display, and a rule
+   over them would lose to it without !important. They need no hiding anyway — everything inside
+   them is hidden here by its own selector. display: none rather than a visual offset, so a hidden
+   control leaves the accessibility tree with its label. */
+[data-page-state="expired"] .veriqa-qr,
+[data-page-state="expired"] .veriqa-btn-channel,
+[data-page-state="expired"] .veriqa-divider,
+[data-page-state="expired"] .veriqa-email-form,
+[data-page-state="expired"] #veriqa-show-pull,
+[data-page-state="expired"] #veriqa-show-push { display: none; }
+
+/* The way out, rendered ready and hidden: only the state attribute reveals it, so the page needs no
+   script to build a link whose target the server already knows. display matches the .veriqa-btn
+   primitive it is a modifier of (veriqa-core-base.css). */
+.veriqa-btn-restart { display: none; margin-top: var(--veriqa-spacing-md); }
+[data-page-state="expired"] .veriqa-btn-restart { display: inline-flex; }
+
+/* QR code */
+.veriqa-qr {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    /* Same fluid narrowing as .veriqa-container: vertical padding stays 24px,
+       horizontal narrows toward a floor of 8px on a narrow viewport and saturates
+       to 24px at 100vw >= 400px. Together with the card padding this keeps the
+       calculated width enough for the QR image across the supported range; the
+       actual width is smaller by any scrollbar, so the scanning minimum can be
+       missed with a wide OS scrollbar (a known, accepted limitation). */
+    padding-block: var(--veriqa-spacing-lg);
+    padding-inline: clamp(var(--veriqa-spacing-sm), calc(var(--veriqa-spacing-lg) - (400px - 100vw) * 0.3), var(--veriqa-spacing-lg));
+    border: 1px solid var(--veriqa-surface-variant);
+    border-radius: var(--veriqa-radius);
+    background: var(--veriqa-surface);
+    margin-bottom: var(--veriqa-spacing-md);
+}
+.veriqa-qr img {
+    display: block;
+    /* Display size is the --veriqa-qr-size token (default QrCodeImgAttributeSizePx = 220;
+       scannability requires a 200px minimum and a verified module density);
+       the width/height attributes carry the same value as a pre-CSS hint (aspect ratio,
+       no layout shift). The horizontal insets of the card and the QR block narrow via
+       fluid clamp() so the width available to the image stays large enough to keep the
+       token size across the supported range from a 320px viewport — which is why
+       max-width: 100% does not shrink it when the scrollbar is absent; it stays an
+       overflow guard. The actual available width is smaller by the scrollbar width, so
+       with the OS "wide scrollbar" accessibility setting both criteria — the minimum and
+       the density measured at 220px — can be missed in part of the range: an accepted
+       limitation. 220px is the size a runtime scan confirmed,
+       so do not raise the default to buy headroom here.
+       No image-rendering: pixelated — the PNG is downscaled to the display box, and
+       pixelated resampling at a non-integer ratio makes module widths uneven and
+       breaks scanning; smooth (default) downscale keeps the module grid uniform. */
+    width: var(--veriqa-qr-size);
+    max-width: 100%;
+    height: auto;
+}
+
+/* Channel buttons: the primitive itself is declared once in veriqa-core-base.css;
+   here are only the modifiers of the sign-in window. */
+.veriqa-btn-channel { margin-bottom: var(--veriqa-spacing-md); }
+.veriqa-btn-telegram { background: #26a5e4; border-color: #26a5e4; color: #ffffff; }
+.veriqa-btn-whatsapp { background: #25d366; border-color: #25d366; color: #ffffff; }
+.veriqa-btn-max { background: #9500ff; border-color: #9500ff; color: #ffffff; }
+.veriqa-tab-icon--telegram { color: #26a5e4; }
+.veriqa-tab-icon--whatsapp { color: #25d366; }
+.veriqa-tab-icon--max { color: #9500ff; }
+.veriqa-btn-email { background: var(--veriqa-primary); border-color: var(--veriqa-primary); }
+.veriqa-btn-default { background: var(--veriqa-primary); border-color: var(--veriqa-primary); }
+
+/* Status */
+.veriqa-status {
+    margin-top: var(--veriqa-spacing-md);
+    font-size: 0.75rem;
+    font-family: var(--veriqa-font-mono);
+    color: var(--veriqa-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: var(--veriqa-spacing-sm);
+}
+.veriqa-status::before {
+    content: "";
+    width: 7px;
+    height: 7px;
+    border-radius: 50%;
+    background: var(--veriqa-warning);
+    animation: pulse-dot 1.6s ease-in-out infinite;
+    flex-shrink: 0;
+}
+.veriqa-status.success { color: var(--veriqa-success); }
+.veriqa-status.success::before { background: var(--veriqa-success); animation: none; }
+.veriqa-status.confirmed { color: var(--veriqa-primary); }
+.veriqa-status.confirmed::before { background: var(--veriqa-primary); animation: none; }
+.veriqa-status.error { color: var(--veriqa-error); }
+.veriqa-status.error::before { background: var(--veriqa-error); animation: none; }
+@keyframes pulse-dot {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.25; }
+}
+
+/* Spinner */
+.veriqa-spinner {
+    display: none;
+    margin: var(--veriqa-spacing-md) auto 0;
+    width: 24px;
+    height: 24px;
+    border: 2px solid var(--veriqa-surface-variant);
+    border-top-color: var(--veriqa-primary);
+    border-radius: 50%;
+    animation: spin 0.8s linear infinite;
+}
+@keyframes spin { to { transform: rotate(360deg); } }
+
+/* Timer */
+.veriqa-countdown {
+    margin-top: var(--veriqa-spacing-sm);
+    font-size: 0.6875rem;
+    font-family: var(--veriqa-font-mono);
+    color: var(--veriqa-soft);
+}
+.veriqa-countdown.warning { color: var(--veriqa-error); }
+
+/* Email form */
+.veriqa-email-form { margin: var(--veriqa-spacing-xs) 0 var(--veriqa-spacing-md); text-align: left; }
+.veriqa-email-input {
+    display: block;
+    width: 100%;
+    padding: var(--veriqa-spacing-11) var(--veriqa-spacing-14);
+    border: 1px solid var(--veriqa-surface-variant);
+    border-radius: var(--veriqa-radius);
+    font-size: 0.8125rem;
+    color: var(--veriqa-text);
+    background: var(--veriqa-surface);
+    margin-bottom: var(--veriqa-spacing-10);
+    transition: border-color var(--veriqa-transition-fast);
+    font-family: inherit;
+}
+/* The focus indicator of the contour is a :focus-visible outline, never an
+   outline: none plus a border tint: the condition "keyboard navigation only" is then the browser
+   heuristic (which, for a text field, does treat a click as focus-visible) rather than our own
+   always-on :focus. */
+.veriqa-email-input:focus-visible {
+    outline: 2px solid var(--veriqa-primary);
+    outline-offset: 2px;
+    border-color: var(--veriqa-primary);
+    background: var(--veriqa-bg);
+}
+.veriqa-email-msg {
+    margin-top: var(--veriqa-spacing-10);
+    font-size: 0.75rem;
+    color: var(--veriqa-success);
+    font-family: var(--veriqa-font-mono);
+    display: none;
+}
+.veriqa-email-msg.error { color: var(--veriqa-error); }
+
+/* Push/Pull toggle link button */
+.veriqa-text-link {
+    background: none;
+    border: none;
+    color: var(--veriqa-soft);
+    font-size: 0.6875rem;
+    cursor: pointer;
+    text-decoration: underline;
+    text-underline-offset: 2px;
+    margin-top: var(--veriqa-spacing-12);
+    padding: 0;
+    font-family: var(--veriqa-font-mono);
+    display: block;
+    width: 100%;
+    text-align: center;
+    transition: color var(--veriqa-transition-fast);
+}
+.veriqa-text-link:hover { color: var(--veriqa-text); }
+.veriqa-text-link:focus-visible { outline: 2px solid var(--veriqa-primary); outline-offset: 2px; border-radius: 2px; }
+
+/* "OR" divider between the mail-client button and the manual email entry link */
+.veriqa-divider {
+    display: flex;
+    align-items: center;
+    gap: var(--veriqa-spacing-10);
+    margin: var(--veriqa-spacing-14) 0 0;
+    color: var(--veriqa-soft);
+    font-size: 0.625rem;
+    letter-spacing: 0.08em;
+    font-family: var(--veriqa-font-mono);
+}
+.veriqa-divider::before,
+.veriqa-divider::after {
+    content: "";
+    flex: 1;
+    height: 1px;
+    background: var(--veriqa-surface-variant);
+}
+
+/* Integrator's footer block: the markup inside it is theirs, and these rules only keep the block
+   secondary to the card and make a bare <a> look at home there. The muted token rather than the soft
+   one used by the hint: the block carries legal text, and the soft token stays below the 4.5:1
+   contrast on the light background. The primary color does not paint it — the Branded preset
+   repaints the listed elements only. */
+.veriqa-footer {
+    margin-top: var(--veriqa-spacing-lg);
+    color: var(--veriqa-muted);
+    font-size: 0.6875rem;
+    line-height: 1.6;
+}
+.veriqa-footer a {
+    color: var(--veriqa-muted);
+    text-decoration: underline;
+    text-underline-offset: 2px;
+}
+.veriqa-footer a:focus-visible { outline: 2px solid var(--veriqa-primary); outline-offset: 2px; border-radius: 2px; }

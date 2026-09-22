@@ -1,0 +1,68 @@
+<Project>
+
+  <!--
+    PublicApi.props — the machine inventory gate of the public surface, shared by every packable
+    assembly that has one. A project imports this file with a single line, next to the import of
+    build/Packaging.props.
+
+    What it buys: the public surface of the assembly is DECLARED, not implied. Every public type
+    and member is listed in PublicAPI.Unshipped.txt next to the project sources, and the analyzer
+    enforces both directions as build errors (RS0016 — a public member missing from the inventory,
+    RS0017 — an inventory entry with no member behind it; both raised to error by the
+    WarningsAsErrors property below). So the surface cannot grow or shrink silently: it either shows
+    up as a line in the diff of that file, or the build breaks.
+
+    PublicAPI.Shipped.txt is empty everywhere: nothing has been published yet. Moving lines from
+    Unshipped to Shipped is an act of a release, not of ordinary work.
+
+    Who does NOT import it — a closed list, and the reason is not "no public surface":
+      * the six migrations assemblies, *.Migrations.PostgreSql and *.Migrations.SqlServer for each of
+        the transaction, OpenIddict and audit stores: EF Core generates their migrations as public
+        classes, so a surface exists — but it is produced by a tool and grows with every
+        `dotnet ef migrations add`. The inventory would have to be extended on each of them while
+        protecting nothing: those files are not written by hand in the first place;
+      * the metapackage Veriqa.Core.BaseChannels: it ships dependencies only
+        (IncludeBuildOutput=false), so there is no assembly to inventory.
+  -->
+
+  <PropertyGroup>
+    <!--
+      RS0026/RS0027 are a different subject from the inventory gate and are switched off here for
+      the whole set, in one place rather than per project. They are advice about EVOLVING an
+      already published API: do not add a second overload with optional parameters, and keep the
+      overload with the most parameters as the one carrying them. They fire on overload shapes that
+      already exist and are deliberate (an operation offered with a context and with a scope, each
+      taking an optional CancellationToken — the ordinary .NET shape), and the compatibility they
+      protect does not exist yet: PublicAPI.Shipped.txt is empty everywhere, nothing has been
+      released, so there is no consumer whose call could become ambiguous. Obeying them would mean
+      redesigning public overloads — a breaking change for no one's benefit, and not what a hygiene
+      task does. RS0016/RS0017, the two rules the gate is about, stay errors.
+    -->
+    <NoWarn>$(NoWarn);RS0026;RS0027</NoWarn>
+    <!--
+      The two rules the gate is about are raised to error HERE, as an MSBuild property, and not in
+      the nested .editorconfig of each project. The nested files also carry a severity line for
+      them, and it is enough for RS0016 but not for RS0017: an .editorconfig severity is resolved
+      per syntax tree, and RS0017 is reported on a position inside PublicAPI.Unshipped.txt, which is
+      an AdditionalFile and not a syntax tree — so no section, [*.cs] or [PublicAPI.*.txt], reaches
+      it. That is how half the gate stayed a warning while the file above claimed it was an error:
+      RS0016 broke the build, RS0017 printed 23 stale entries and let it pass. WarningsAsErrors is
+      applied by the compiler to the diagnostic regardless of where it is reported, so it covers
+      both directions.
+    -->
+    <WarningsAsErrors>$(WarningsAsErrors);RS0016;RS0017</WarningsAsErrors>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.CodeAnalysis.PublicApiAnalyzers" Version="5.6.0">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers</IncludeAssets>
+    </PackageReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <AdditionalFiles Include="$(MSBuildProjectDirectory)/PublicAPI.Shipped.txt" />
+    <AdditionalFiles Include="$(MSBuildProjectDirectory)/PublicAPI.Unshipped.txt" />
+  </ItemGroup>
+
+</Project>

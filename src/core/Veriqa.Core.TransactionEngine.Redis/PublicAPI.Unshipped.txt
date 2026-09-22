@@ -1,0 +1,10 @@
+#nullable enable
+const Veriqa.Core.TransactionEngine.Store.Redis.RedisTransactionStoreOptions.DefaultKeyPrefix = "veriqa:tx:" -> string!
+static Veriqa.Core.TransactionEngine.DependencyInjection.TransactionEngineBuilderRedisExtensions.UseRedisStore(this Veriqa.Core.TransactionEngine.DependencyInjection.TransactionEngineBuilder! builder, System.Action<Veriqa.Core.TransactionEngine.Store.Redis.RedisTransactionStoreOptions!>! configure) -> Veriqa.Core.TransactionEngine.DependencyInjection.TransactionEngineBuilder!
+Veriqa.Core.TransactionEngine.DependencyInjection.TransactionEngineBuilderRedisExtensions
+Veriqa.Core.TransactionEngine.Store.Redis.RedisTransactionStoreOptions
+Veriqa.Core.TransactionEngine.Store.Redis.RedisTransactionStoreOptions.Configuration.get -> string!
+Veriqa.Core.TransactionEngine.Store.Redis.RedisTransactionStoreOptions.Configuration.set -> void
+Veriqa.Core.TransactionEngine.Store.Redis.RedisTransactionStoreOptions.KeyPrefix.get -> string!
+Veriqa.Core.TransactionEngine.Store.Redis.RedisTransactionStoreOptions.KeyPrefix.set -> void
+Veriqa.Core.TransactionEngine.Store.Redis.RedisTransactionStoreOptions.RedisTransactionStoreOptions() -> void

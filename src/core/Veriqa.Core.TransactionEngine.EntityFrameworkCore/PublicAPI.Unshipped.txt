@@ -1,0 +1,5 @@
+#nullable enable
+static Veriqa.Core.TransactionEngine.DependencyInjection.TransactionEngineBuilderEntityFrameworkCoreExtensions.UseEfCoreStore(this Veriqa.Core.TransactionEngine.DependencyInjection.TransactionEngineBuilder! engine, System.Action<Microsoft.EntityFrameworkCore.DbContextOptionsBuilder!>! configure) -> Veriqa.Core.TransactionEngine.DependencyInjection.TransactionEngineBuilder!
+Veriqa.Core.TransactionEngine.DependencyInjection.TransactionEngineBuilderEntityFrameworkCoreExtensions
+Veriqa.Core.TransactionEngine.Store.EfCore.TransactionDbContext
+Veriqa.Core.TransactionEngine.Store.EfCore.TransactionDbContext.TransactionDbContext(Microsoft.EntityFrameworkCore.DbContextOptions<Veriqa.Core.TransactionEngine.Store.EfCore.TransactionDbContext!>! options) -> void

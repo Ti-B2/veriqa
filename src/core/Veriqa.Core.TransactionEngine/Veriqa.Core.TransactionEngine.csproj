@@ -1,0 +1,79 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Veriqa.Core.TransactionEngine</RootNamespace>
+    <!-- TASK-030: part of the core NuGet supply chain (consumed by external solutions from a local feed) -->
+    <IsPackable>true</IsPackable>
+    <PackageId>Veriqa.Core.TransactionEngine</PackageId>
+    <Authors>Veriqa</Authors>
+    <Description>Veriqa Transaction Engine — authentication transaction lifecycle, a pluggable store (InMemory in the box) and in-process event publishing; the EF Core and Redis stores and the RabbitMQ publisher live in satellite packages.</Description>
+    <PackageTags>veriqa;authentication;transactions</PackageTags>
+    <!-- Licensing: the server core and its satellites ship under the Mozilla Public License 2.0.
+         MPL-2.0 is OSI-approved, so nuget.org takes it as a license expression and no license
+         file has to travel inside the package. -->
+    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <!-- Shared package metadata: XML docs, repository metadata, embedded symbols, readme, validation. -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\build\Packaging.props" />
+
+  <!-- Declared inventory of the public surface (PublicAPI.*.txt + RS0016/RS0017 as errors). -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\build\PublicApi.props" />
+
+  <ItemGroup>
+    <!-- The message declarations the product ships (SPEC-036 §4.6). A configuration file INSIDE the
+         assembly, the same way the locale files are shipped: the core values of the two message
+         settings are read from it instead of being compiled into a handwritten table. Embedded so a
+         deployment cannot lose it and cannot edit it in place — what a deployment states goes into
+         Veriqa:MessageTemplates and overrides this file address by address. -->
+    <EmbeddedResource Include="MessageTemplates\ShippedMessageTemplates.json" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Named one by one instead of pulled in wholesale with the ASP.NET Core shared framework: not
+         a single type of that framework appears in this assembly, and a package that pulls the
+         shared framework in is consumable only by a host running on it — which rules out the
+         non-web hosts the engine is meant for. The rest of the Microsoft.Extensions.*
+         surface this assembly compiles against arrives through the project reference below, which
+         lists it for the same reason; only the binder overload of Configure<T>(IConfiguration) has
+         no other source. IHostedService is not a tie to ASP.NET Core either — it lives in
+         Microsoft.Extensions.Hosting.Abstractions.
+         The version is pinned to the floor of the net10.0 band, so a host always runs on the shared
+         framework's own (never older) assemblies and the package can never drag a newer one in. -->
+    <PackageReference Include="Microsoft.Extensions.Options.ConfigurationExtensions" Version="10.0.0" />
+    <!-- IMeterFactory in DI: AddMetrics() lives here, and the engine's composition root calls it so
+         that a deployment consuming this package without ServiceDefaults still resolves a factory.
+         Pinned to the floor of the net10.0 band for the same reason as the reference above. -->
+    <PackageReference Include="Microsoft.Extensions.Diagnostics" Version="10.0.0" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Veriqa.Core.Configuration\Veriqa.Core.Configuration.csproj" />
+    <ProjectReference Include="..\Veriqa.Core.Contracts\Veriqa.Core.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- Satellite provider packages see internal types (store entity/mapper, builder seam).
+         Every store implementation shipped out of this package sits behind the same seam: it maps
+         through the internal store entity and raises the internal StoreRegistered flag of the
+         builder. The EF Core store joined them (its own package since the ORM has no place in the
+         graph of a deployment that does not use it); the migrations assembly follows its DbContext
+         and is granted access by that satellite instead of by the core. -->
+    <InternalsVisibleTo Include="Veriqa.Core.TransactionEngine.EntityFrameworkCore" />
+    <InternalsVisibleTo Include="Veriqa.Core.TransactionEngine.Redis" />
+    <InternalsVisibleTo Include="Veriqa.Core.TransactionEngine.RabbitMq" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The channel-processing assembly reads the internal table of the displayable initiator context
+         fields (InitiatorContextFieldTable): the start-up validator here and the display filter and
+         slot assembly there must share one list of fields, and publishing the table would put a
+         product-internal shape into the public surface. -->
+    <InternalsVisibleTo Include="Veriqa.Core.ChannelAdapter" />
+  </ItemGroup>
+
+</Project>

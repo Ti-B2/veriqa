@@ -1,0 +1,19 @@
+<Project>
+
+  <PropertyGroup>
+    <!-- Single source of the chain version. A package that has to ship on its own sets
+         <Version> in its own .csproj and wins over this default.
+         This file lives outside Directory.Build.props on purpose: that file is a copy from
+         the .ai-shared subtree and is overwritten by `git subtree pull`. -->
+    <VeriqaCoreVersion>0.6.0</VeriqaCoreVersion>
+
+    <!-- Default version for every project of the repository. The mapping is kept here rather
+         than in Directory.Build.props so that the overwritable file carries a single
+         version-scheme line (the Import) and the fix prescribed by VERIQA0001 restores both
+         the value and this mapping. A project that has to ship on its own declares <Version>
+         in its own .csproj: the project body is evaluated after this file, so the local value
+         wins. -->
+    <Version>$(VeriqaCoreVersion)</Version>
+  </PropertyGroup>
+
+</Project>

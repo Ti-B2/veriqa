@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Helio — Support</title>
+  <!-- The ?v suffix changes whenever app.js or styles.css does. The server sends them with
+       Cache-Control: no-cache, but a proxy in front may rewrite that header — a tunnel's edge does
+       — and a browser would then run an old app.js against a new page. A new name is the one thing
+       no cache in between can serve stale. -->
+  <link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body>
+  <header class="site-header">
+    <p class="brand">HELIO</p>
+    <div class="site-header-right" id="header-right" hidden>
+      <div class="avatar avatar-s" id="header-avatar"></div>
+      <span class="header-name" id="header-name"></span>
+      <a class="button button-ghost" href="/signout">Sign out</a>
+    </div>
+  </header>
+
+  <main class="page">
+
+    <!-- [1] Before sign-in: an ordinary page of the support section. Anyone may read it; only the
+         ticket list needs a name, so nobody is redirected away on arrival. -->
+    <section id="section-public" class="section" hidden>
+      <h1 class="headline">Support</h1>
+      <p class="lede">
+        Ask us anything — we answer in the channel you already use. No password to remember, and no
+        form asking for your e-mail address twice.
+      </p>
+
+      <!-- Generated inline, like everything else here: the sample loads nothing from outside its
+           own origin, so there are no image files and no web fonts anywhere in wwwroot. -->
+      <div class="infographic" id="infographic"></div>
+
+      <p><a class="button button-primary" href="/signin">Sign in to see your tickets</a></p>
+
+      <div class="faq">
+        <h2 class="faq-title">Before you write to us</h2>
+        <ul class="faq-list">
+          <li>Billing questions are answered within one working day.</li>
+          <li>A ticket you close yourself can still be reopened by replying to it.</li>
+          <li>Deleting a ticket removes its history for good — we ask you to confirm that one.</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- [2] After sign-in: who you are, and what you have open with us. -->
+    <section id="section-account" class="section" hidden>
+      <div class="card">
+        <div class="avatar avatar-l" id="card-avatar"></div>
+        <div class="card-fields" id="card-fields"></div>
+      </div>
+
+      <h2 class="section-title">Your tickets</h2>
+      <ul class="tickets" id="tickets"></ul>
+      <p class="empty" id="tickets-empty" hidden>No tickets left. Nothing outstanding with us.</p>
+    </section>
+
+  </main>
+
+  <!-- The in-page confirmation. Not a &lt;dialog&gt; element, for the same reason as in the
+       streaming-tv sample next door: this markup is meant to be copied between the two. -->
+  <div id="confirm" class="overlay" hidden role="dialog" aria-modal="true" aria-labelledby="confirm-title">
+    <div class="overlay-box">
+      <p class="overlay-title" id="confirm-title"></p>
+      <p class="overlay-text" id="confirm-text"></p>
+      <div class="overlay-actions">
+        <button class="button button-ghost" type="button" id="confirm-cancel">Cancel</button>
+        <button class="button button-primary" type="button" id="confirm-accept"></button>
+      </div>
+    </div>
+  </div>
+
+  <!-- The step-up: the question goes to the channel, and this window waits for its answer. -->
+  <div id="stepup" class="overlay" hidden role="dialog" aria-modal="true" aria-labelledby="stepup-title">
+    <div class="overlay-box">
+      <p class="overlay-title" id="stepup-title"></p>
+      <div class="stepup-body">
+        <div class="stepup-qr" id="stepup-qr"></div>
+        <div class="stepup-copy">
+          <p class="stepup-status" id="stepup-status"></p>
+        </div>
+      </div>
+      <div class="overlay-actions" id="stepup-actions"></div>
+    </div>
+  </div>
+
+  <script src="app.js?v=4"></script>
+</body>
+</html>

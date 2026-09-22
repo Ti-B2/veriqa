@@ -1,0 +1,88 @@
+# .editorconfig — severity mapping for the .NET code of the repository
+#
+# Raises the critical rules to error level so a violation shows up in the build output and is
+# fixed before the change lands. This is a severity mapping, not a full style guide: formatting
+# style lives in the nested .editorconfig files; only non-negotiable rules are here.
+
+root = false
+
+[*.cs]
+
+#### Line endings — LF on every platform ####
+# Without an explicit end_of_line `dotnet format` takes the platform default (CRLF on Windows) and
+# asks to rewrite LF files to CRLF, while the same run on Linux is green. The value pairs with the
+# `*.cs text eol=lf` rule in `.gitattributes`: git normalizes a written CRLF back to LF, so the
+# mismatch is removed only here. A repository WITHOUT that `.gitattributes` rule must add both —
+# otherwise a Windows checkout with `core.autocrlf=true` arrives in CRLF and the formatter goes red.
+end_of_line = lf
+
+#### Banned APIs (BannedApiAnalyzers) — MediatR, DateTime.Now/UtcNow/Today, etc. ####
+dotnet_diagnostic.RS0030.severity = error
+
+#### Async suffix on asynchronous methods (VS Threading Analyzers, VSTHRD200) ####
+dotnet_diagnostic.VSTHRD200.severity = error
+
+#### No sync-over-async: .Result / .Wait() / .GetAwaiter().GetResult() (VSTHRD002) ####
+# Async all the way.
+dotnet_diagnostic.VSTHRD002.severity = error
+
+#### is null / is not null instead of == null / != null (IDE0041 — use null check) ####
+# Pattern matching is preferred over reference comparison.
+dotnet_style_prefer_is_null_check_over_reference_equality_check = true:error
+dotnet_diagnostic.IDE0150.severity = warning
+
+#### Pattern matching ####
+csharp_style_prefer_pattern_matching = true:warning
+csharp_style_prefer_not_pattern = true:warning
+dotnet_diagnostic.IDE0078.severity = warning   # use pattern matching
+dotnet_diagnostic.IDE0083.severity = warning   # use 'not' pattern
+
+#### Nullable — possible-null warnings are treated strictly ####
+dotnet_diagnostic.CS8600.severity = error
+dotnet_diagnostic.CS8602.severity = error
+dotnet_diagnostic.CS8603.severity = error
+dotnet_diagnostic.CS8604.severity = error
+
+#### Style: var when the type is apparent ####
+csharp_style_var_when_type_is_apparent = true:suggestion
+
+#### Private fields with the _ prefix (camelCase) ####
+# Broad rule: ALL private fields (instance and mutable static) are _camelCase.
+# The exception for constant-like fields is set below by a more specific rule.
+dotnet_naming_rule.private_fields_underscore.severity = warning
+dotnet_naming_rule.private_fields_underscore.symbols = private_fields
+dotnet_naming_rule.private_fields_underscore.style = underscore_camel_case
+
+dotnet_naming_symbols.private_fields.applicable_kinds = field
+dotnet_naming_symbols.private_fields.applicable_accessibilities = private
+
+dotnet_naming_style.underscore_camel_case.required_prefix = _
+dotnet_naming_style.underscore_camel_case.capitalization = camel_case
+
+#### Exception: private static readonly and private const — PascalCase (like constants) ####
+# These fields are conceptually immutable constants (a cached JsonSerializerOptions, a
+# FrozenDictionary, AsReadOnly() catalogs and the like), so they are PascalCase WITHOUT the "_"
+# prefix. Without these rules the broad private_fields_underscore demands "_" on PascalCase fields
+# (IDE1006: "Missing prefix: '_'").
+#
+# Line order in this file does NOT matter: Roslyn (VS2019+) sorts rules by specificity, and the
+# rule with required_modifiers overrides the modifier-less private_fields_underscore.
+# TWO symbol sets are needed: const is not a readonly modifier, and the "static + readonly" group
+# does not cover const — so const is a separate set.
+dotnet_naming_rule.private_static_readonly_pascal.severity = warning
+dotnet_naming_rule.private_static_readonly_pascal.symbols = private_static_readonly_fields
+dotnet_naming_rule.private_static_readonly_pascal.style = pascal_case
+
+dotnet_naming_symbols.private_static_readonly_fields.applicable_kinds = field
+dotnet_naming_symbols.private_static_readonly_fields.applicable_accessibilities = private
+dotnet_naming_symbols.private_static_readonly_fields.required_modifiers = readonly, static
+
+dotnet_naming_rule.private_const_pascal.severity = warning
+dotnet_naming_rule.private_const_pascal.symbols = private_const_fields
+dotnet_naming_rule.private_const_pascal.style = pascal_case
+
+dotnet_naming_symbols.private_const_fields.applicable_kinds = field
+dotnet_naming_symbols.private_const_fields.applicable_accessibilities = private
+dotnet_naming_symbols.private_const_fields.required_modifiers = const
+
+dotnet_naming_style.pascal_case.capitalization = pascal_case

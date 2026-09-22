@@ -1,0 +1,182 @@
+{
+  "Veriqa": {
+    "MessageTemplates": {
+      "confirmation-prompt": {
+        "Contract": {
+          "Slots": [
+            { "Name": "app", "Type": "string", "Source": "ServerInitiatorContext", "Guaranteed": true },
+            { "Name": "browser", "Type": "string", "Source": "ServerInitiatorContext" },
+            { "Name": "os", "Type": "string", "Source": "ServerInitiatorContext" },
+            { "Name": "region", "Type": "string", "Source": "ServerInitiatorContext" }
+          ]
+        },
+        "Templates": [
+          "Confirm sign-in to \"{app}\" — request from {browser} on {os}, {region}",
+          "Confirm sign-in to \"{app}\" — request from {browser} on {os}",
+          "Confirm sign-in to \"{app}\""
+        ]
+      },
+      "sign-in-mail": {
+        "Contract": {
+          "Slots": [
+            { "Name": "app", "Type": "string", "Source": "ServerInitiatorContext", "Guaranteed": true },
+            { "Name": "valid_until", "Type": "datetime", "Source": "ServerSystem", "Guaranteed": true },
+            { "Name": "link", "Type": "string", "Source": "ServerSystem", "Guaranteed": true },
+            { "Name": "lang", "Type": "string", "Source": "ServerSystem", "Guaranteed": true },
+            { "Name": "browser", "Type": "string", "Source": "ServerInitiatorContext" },
+            { "Name": "os", "Type": "string", "Source": "ServerInitiatorContext" },
+            { "Name": "region", "Type": "string", "Source": "ServerInitiatorContext" },
+            { "Name": "qr_url", "Type": "string", "Source": "ServerSystem" },
+            { "Name": "qr_cid", "Type": "string", "Source": "ServerSystem" },
+            { "Name": "button", "Type": "string", "Source": "LocalizedText", "NaturalKey": "Approve sign-in" },
+            { "Name": "qr_instruction", "Type": "string", "Source": "LocalizedText", "NaturalKey": "Or scan the QR code to finish signing in on another device:" },
+            { "Name": "qr_alt", "Type": "string", "Source": "LocalizedText", "NaturalKey": "Sign-in QR code" },
+            { "Name": "text_intro", "Type": "string", "Source": "LocalizedText", "NaturalKey": "You requested sign-in via Veriqa." },
+            { "Name": "open_link_hint", "Type": "string", "Source": "LocalizedText", "NaturalKey": "To confirm, open the following link:" },
+            { "Name": "forward_warning", "Type": "string", "Source": "LocalizedText", "NaturalKey": "Do not forward this mail: the link grants sign-in access to your account." },
+            { "Name": "ignore_notice", "Type": "string", "Source": "LocalizedText", "NaturalKey": "If you did not request sign-in, simply ignore this mail." },
+            { "Name": "direct_link_label", "Type": "string", "Source": "LocalizedText", "NaturalKey": "Direct link:" }
+          ]
+        },
+        "Templates": [
+          {
+            "Subject": "Sign in to {app}",
+            "Html": "<!DOCTYPE html>\n<html lang=\"{lang}\">\n<head>\n  <meta charset=\"utf-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Sign in to {app}</title>\n</head>\n<body style=\"margin:0;padding:0;background:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;\">\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f5f5f5;padding:40px 0;\">\n    <tr>\n      <td align=\"center\">\n        <table width=\"520\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#ffffff;border-radius:12px;padding:40px;box-shadow:0 4px 20px rgba(0,0,0,0.08);\">\n          <tr>\n            <td align=\"center\" style=\"padding-bottom:24px;\">\n              <h1 style=\"margin:0;font-size:24px;color:#333;\">Sign in to {app}</h1>\n            </td>\n          </tr>\n          <tr>\n            <td style=\"color:#555;font-size:16px;line-height:1.6;padding-bottom:32px;\">\n              <p style=\"margin:0 0 16px;\">You requested sign-in to {app} via Veriqa.</p>\n              <p style=\"margin:0 0 16px;color:#777;\">Confirm sign-in to &quot;{app}&quot; — request from {browser} on {os}, {region}</p>\n              <p style=\"margin:0;\">Press the button below to confirm sign-in. The link is valid until {valid_until}.</p>\n            </td>\n          </tr>\n          <tr>\n            <td align=\"center\" style=\"padding-bottom:32px;\">\n              <a href=\"{link}\"\n                 style=\"display:inline-block;background:#111827;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:8px;font-size:16px;font-weight:600;\">\n                {button}\n              </a>\n            </td>\n          </tr>\n          <tr>\n            <td align=\"center\" style=\"color:#555;font-size:14px;line-height:1.6;padding-bottom:32px;\">\n              <p style=\"margin:0 0 12px;\">{qr_instruction}</p>\n              <img src=\"cid:{qr_cid}\" alt=\"{qr_alt}\" width=\"220\" height=\"220\" style=\"display:block;margin:0 auto;\" />\n            </td>\n          </tr>\n          <tr>\n            <td style=\"color:#888;font-size:13px;border-top:1px solid #eee;padding-top:24px;\">\n              <p style=\"margin:0 0 8px;\"><strong>{forward_warning}</strong></p>\n              <p style=\"margin:0 0 8px;\">{ignore_notice}</p>\n              <p style=\"margin:0;word-break:break-all;\">{direct_link_label} <a href=\"{link}\" style=\"color:#111827;\">{link}</a></p>\n            </td>\n          </tr>\n        </table>\n      </td>\n    </tr>\n  </table>\n</body>\n</html>",
+            "Plain": "Sign in to {app}\n\n{text_intro}\nConfirm sign-in to \"{app}\" — request from {browser} on {os}, {region}\n\n{open_link_hint}\n\n{link}\n\nThe link is valid until {valid_until}.\n\n{forward_warning}\n{ignore_notice}"
+          },
+          {
+            "Subject": "Sign in to {app}",
+            "Html": "<!DOCTYPE html>\n<html lang=\"{lang}\">\n<head>\n  <meta charset=\"utf-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Sign in to {app}</title>\n</head>\n<body style=\"margin:0;padding:0;background:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;\">\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f5f5f5;padding:40px 0;\">\n    <tr>\n      <td align=\"center\">\n        <table width=\"520\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#ffffff;border-radius:12px;padding:40px;box-shadow:0 4px 20px rgba(0,0,0,0.08);\">\n          <tr>\n            <td align=\"center\" style=\"padding-bottom:24px;\">\n              <h1 style=\"margin:0;font-size:24px;color:#333;\">Sign in to {app}</h1>\n            </td>\n          </tr>\n          <tr>\n            <td style=\"color:#555;font-size:16px;line-height:1.6;padding-bottom:32px;\">\n              <p style=\"margin:0 0 16px;\">You requested sign-in to {app} via Veriqa.</p>\n              <p style=\"margin:0;\">Press the button below to confirm sign-in. The link is valid until {valid_until}.</p>\n            </td>\n          </tr>\n          <tr>\n            <td align=\"center\" style=\"padding-bottom:32px;\">\n              <a href=\"{link}\"\n                 style=\"display:inline-block;background:#111827;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:8px;font-size:16px;font-weight:600;\">\n                {button}\n              </a>\n            </td>\n          </tr>\n          <tr>\n            <td align=\"center\" style=\"color:#555;font-size:14px;line-height:1.6;padding-bottom:32px;\">\n              <p style=\"margin:0 0 12px;\">{qr_instruction}</p>\n              <img src=\"cid:{qr_cid}\" alt=\"{qr_alt}\" width=\"220\" height=\"220\" style=\"display:block;margin:0 auto;\" />\n            </td>\n          </tr>\n          <tr>\n            <td style=\"color:#888;font-size:13px;border-top:1px solid #eee;padding-top:24px;\">\n              <p style=\"margin:0 0 8px;\"><strong>{forward_warning}</strong></p>\n              <p style=\"margin:0 0 8px;\">{ignore_notice}</p>\n              <p style=\"margin:0;word-break:break-all;\">{direct_link_label} <a href=\"{link}\" style=\"color:#111827;\">{link}</a></p>\n            </td>\n          </tr>\n        </table>\n      </td>\n    </tr>\n  </table>\n</body>\n</html>"
+          },
+          {
+            "Subject": "Sign in to {app}",
+            "Html": "<!DOCTYPE html>\n<html lang=\"{lang}\">\n<head>\n  <meta charset=\"utf-8\" />\n  <meta name=\"viewport\" content=\"width=device-width, initial-scale=1.0\" />\n  <title>Sign in to {app}</title>\n</head>\n<body style=\"margin:0;padding:0;background:#f5f5f5;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Roboto,sans-serif;\">\n  <table width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#f5f5f5;padding:40px 0;\">\n    <tr>\n      <td align=\"center\">\n        <table width=\"520\" cellpadding=\"0\" cellspacing=\"0\" style=\"background:#ffffff;border-radius:12px;padding:40px;box-shadow:0 4px 20px rgba(0,0,0,0.08);\">\n          <tr>\n            <td align=\"center\" style=\"padding-bottom:24px;\">\n              <h1 style=\"margin:0;font-size:24px;color:#333;\">Sign in to {app}</h1>\n            </td>\n          </tr>\n          <tr>\n            <td style=\"color:#555;font-size:16px;line-height:1.6;padding-bottom:32px;\">\n              <p style=\"margin:0 0 16px;\">You requested sign-in to {app} via Veriqa.</p>\n              <p style=\"margin:0;\">Press the button below to confirm sign-in. The link is valid until {valid_until}.</p>\n            </td>\n          </tr>\n          <tr>\n            <td align=\"center\" style=\"padding-bottom:32px;\">\n              <a href=\"{link}\"\n                 style=\"display:inline-block;background:#111827;color:#ffffff;text-decoration:none;padding:14px 32px;border-radius:8px;font-size:16px;font-weight:600;\">\n                {button}\n              </a>\n            </td>\n          </tr>\n          <tr>\n            <td style=\"color:#888;font-size:13px;border-top:1px solid #eee;padding-top:24px;\">\n              <p style=\"margin:0 0 8px;\"><strong>{forward_warning}</strong></p>\n              <p style=\"margin:0 0 8px;\">{ignore_notice}</p>\n              <p style=\"margin:0;word-break:break-all;\">{direct_link_label} <a href=\"{link}\" style=\"color:#111827;\">{link}</a></p>\n            </td>\n          </tr>\n        </table>\n      </td>\n    </tr>\n  </table>\n</body>\n</html>",
+            "Plain": "Sign in to {app}\n\n{text_intro}\n{open_link_hint}\n\n{link}\n\nThe link is valid until {valid_until}.\n\n{forward_warning}\n{ignore_notice}"
+          }
+        ]
+      },
+      "deeplink-prefill": {
+        "Contract": {
+          "Slots": [
+            { "Name": "app", "Type": "string", "Source": "ServerSystem" },
+            { "Name": "code", "Type": "string", "Source": "ServerSystem" },
+            { "Name": "token", "Type": "string", "Source": "ServerSystem" },
+            { "Name": "prefill_intro", "Type": "string", "Source": "LocalizedText", "NaturalKey": "This mail confirms sign-in to Veriqa. Do not change the subject or the body of the mail." }
+          ]
+        },
+        "Templates": [
+          "Send this message to sign in."
+        ],
+        "BySurface": {
+          "in-channel": {
+            "ByChannel": {
+              "whatsapp": {
+                "Templates": [
+                  "Sign in to {app}\nSend this message to sign in.\n\nAccess code\n{code}",
+                  "Send this message to sign in.\n\nAccess code\n{code}",
+                  "Send this message to sign in."
+                ]
+              },
+              "email": {
+                "Templates": [
+                  { "Subject": "Veriqa login {token}", "Plain": "{prefill_intro}\n\nToken: {token}" },
+                  { "Subject": "Sign in", "Plain": "Send this message to sign in." }
+                ]
+              }
+            }
+          }
+        }
+      },
+      "outcome-receipt-confirmed": {
+        "Contract": {
+          "Slots": []
+        },
+        "Templates": [
+          "Confirmed ✅"
+        ],
+        "ByType": {
+          "login": {
+            "BySurface": {
+              "in-channel-messenger": {
+                "Templates": [
+                  "Sign-in confirmed ✅"
+                ]
+              },
+              "in-channel-plain": {
+                "Templates": [
+                  "Sign-in confirmed"
+                ]
+              },
+              "email-confirm-page": {
+                "Templates": [
+                  "Sign-in confirmed! You can close this tab."
+                ]
+              }
+            }
+          }
+        }
+      },
+      "outcome-receipt-declined": {
+        "Contract": {
+          "Slots": []
+        },
+        "Templates": [
+          "Declined ❌"
+        ],
+        "ByType": {
+          "login": {
+            "BySurface": {
+              "in-channel-messenger": {
+                "Templates": [
+                  "Sign-in declined ❌"
+                ]
+              },
+              "in-channel-plain": {
+                "Templates": [
+                  "Sign-in declined"
+                ]
+              },
+              "email-confirm-page": {
+                "Templates": [
+                  "Sign-in declined. You can close this tab."
+                ]
+              }
+            }
+          }
+        }
+      },
+      "outcome-receipt-expired": {
+        "Contract": {
+          "Slots": []
+        },
+        "Templates": [
+          "Time expired ⌛"
+        ],
+        "ByType": {
+          "login": {
+            "Templates": [
+              "Sign-in time expired ⌛"
+            ],
+            "BySurface": {
+              "in-channel-messenger": {
+                "Templates": [
+                  "Sign-in time expired ⌛ Go back to the sign-in page and start again."
+                ]
+              },
+              "in-channel-plain": {
+                "Templates": [
+                  "Sign-in time expired. Go back to the sign-in page and start again."
+                ]
+              },
+              "email-confirm-page": {
+                "Templates": [
+                  "Sign-in time expired. Start the sign-in again from the application."
+                ]
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+}

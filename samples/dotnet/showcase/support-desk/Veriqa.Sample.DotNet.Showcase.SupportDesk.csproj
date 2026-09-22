@@ -1,0 +1,35 @@
+<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Veriqa.Sample.DotNet.Showcase.SupportDesk</RootNamespace>
+    <AssemblyName>Veriqa.Sample.DotNet.Showcase.SupportDesk</AssemblyName>
+    <!-- The showcase sample is not a public package -->
+    <IsPackable>false</IsPackable>
+    <!-- Channel credentials are passed through user secrets, never through a committed file -->
+    <UserSecretsId>veriqa-sample-dotnet-showcase-support-desk</UserSecretsId>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <!-- Dependency on the Veriqa AuthServer library (library mode, MODE-NET-1 inproc) -->
+    <ProjectReference Include="..\..\..\..\src\core\Veriqa.Core.AuthServer\Veriqa.Core.AuthServer.csproj" />
+    <ProjectReference Include="..\..\..\..\src\core\Veriqa.Core.ChannelAdapter\Veriqa.Core.ChannelAdapter.csproj" />
+    <!-- Channel satellites: the three channels this sample offers. The base package carries the
+         contour, each channel arrives in its own package (and brings its own SDK). MAX is not
+         referenced at all — the sample does not offer it. -->
+    <ProjectReference Include="..\..\..\..\src\core\Veriqa.Core.ChannelAdapter.Email\Veriqa.Core.ChannelAdapter.Email.csproj" />
+    <ProjectReference Include="..\..\..\..\src\core\Veriqa.Core.ChannelAdapter.Telegram\Veriqa.Core.ChannelAdapter.Telegram.csproj" />
+    <ProjectReference Include="..\..\..\..\src\core\Veriqa.Core.ChannelAdapter.WhatsApp\Veriqa.Core.ChannelAdapter.WhatsApp.csproj" />
+    <ProjectReference Include="..\..\..\..\src\core\Veriqa.Core.TransactionEngine\Veriqa.Core.TransactionEngine.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The relying-party half needs the standard OIDC handler: the sample signs its customer in
+         against the very issuer it hosts, over plain OpenID Connect. -->
+    <PackageReference Include="Microsoft.AspNetCore.Authentication.OpenIdConnect" Version="10.0.9" />
+  </ItemGroup>
+
+</Project>

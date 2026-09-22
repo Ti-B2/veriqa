@@ -1,0 +1,127 @@
+<Project>
+
+  <!--
+    Packaging.props — the package metadata every packable project of the repository shares:
+    XML documentation, repository metadata, embedded symbols, readme and package validation.
+    Source Link is not part of that set today — see the switch below. A project
+    that ships as a NuGet package imports this file with a single line; a project that does not
+    (the AuthServer host, the AppHosts, samples, tests) does not import it and therefore carries
+    no package metadata. The set of importers is the pack list of build/pack-core.sh and
+    build/pack-core.ps1 — a package opts in, it is not selected by a path mask.
+
+    Why the import sits in the projects and not in Directory.Build.props or
+    Directory.Build.targets:
+      * Directory.Build.props is evaluated before a project body, so it cannot tell a package
+        from a host — IsPackable and PackageId are not stated yet, and the SDK default for
+        IsPackable is true, which would sweep in every host and sample;
+      * Directory.Build.targets can tell them apart but comes too late for the XML documentation:
+        the SDK derives DocumentationFile from GenerateDocumentationFile in
+        Microsoft.NET.Sdk.BeforeCommon.targets, which runs earlier — the compiler would still
+        write the .xml, but nothing would copy it to the output or pack it (measured, not
+        assumed).
+    This file also stays out of Directory.Build.props because that one is a copy from the
+    .ai-shared subtree and is overwritten by `git subtree pull` (the same reason build/Versions.props
+    lives here).
+  -->
+
+  <PropertyGroup>
+
+    <!-- The XML documentation ships next to the assembly: on a compiled package it is the only
+         thing an integrator's IntelliSense can show about a type. -->
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+
+    <!-- The home page of every package: the product site. It is deliberately not a repository
+         address — the public repository of the product (veriqa/veriqa, decided 2026-09-03) does
+         not exist yet, it is created by TASK-081, and the repository URL below is not a
+         hand-written value at all. -->
+    <PackageProjectUrl>https://veriqa.app</PackageProjectUrl>
+
+    <!-- SourceLink is part of the SDK since .NET 8 (Microsoft.SourceLink.GitHub is imported by
+         Microsoft.NET.Sdk.SourceLink.targets), so it needs no PackageReference — only the switch
+         below, which copies the URL of the actual origin remote into the nuspec `repository`
+         element. It is OFF while origin is a private self-hosted forge: the element would carry
+         that private address, the branch name and the commit hash into a public nuspec, and a
+         push to nuget.org cannot be taken back (a version is never deleted, and `unlist` does
+         not hide the manifest). Deriving the URL rather than hard-coding it is still the right
+         mechanism — turn the switch back on once the build moves to the public repository, and
+         the metadata becomes true by itself.
+         EmbedUntrackedSources is the SDK default today; it is stated because the package contract
+         must not depend on that default staying what it is. -->
+    <PublishRepositoryUrl>false</PublishRepositoryUrl>
+    <EmbedUntrackedSources>true</EmbedUntrackedSources>
+    <!-- Deterministic source paths belong to CI builds only: on a developer machine the switch
+         would rewrite local paths for no benefit. Packages built by pack-core get the same /_/
+         prefix anyway — the scripts pass an explicit PathMap, which also works without .git. -->
+    <ContinuousIntegrationBuild Condition=" '$(GITHUB_ACTIONS)' == 'true' ">true</ContinuousIntegrationBuild>
+
+    <!-- The symbols travel inside the assembly, not as a separate symbol package. Source Link is
+         not in play today — the switch above is off and the origin host is not one the SDK
+         providers recognise, so no document map is produced and the package promises no stepping
+         into sources. Embedded symbols earn their place anyway: the SDK default for a Release
+         build is a portable PDB written next to the assembly, and `dotnet pack` puts it nowhere
+         near the .nupkg, so without this the integrator gets stack traces with no line numbers at
+         all. When the build moves to the public repository and the switch goes back on, this is
+         also what makes the map travel with the package.
+         Why embedded and not IncludeSymbols + SymbolPackageFormat=snupkg: a .snupkg is only
+         consumable through a symbol server (nuget.org), and this repository has no publishing job
+         at all — the release mode of pack-core only writes .nupkg files into artifacts/packages/.
+         A folder feed and a private on-premise feed, which is how an integrator of this product
+         receives the chain, serve no symbols, so the symbol package would be produced and never
+         reach anyone. An embedded PDB is part of the assembly and therefore arrives wherever the
+         package does, at the price of a larger .dll. -->
+    <DebugType>embedded</DebugType>
+
+    <!-- Package validation. PackageValidationBaselineVersion is deliberately NOT set: there is no
+         published version to compare against yet, so validation runs against the package itself
+         (framework and compatibility checks). The baseline is added after the first release. -->
+    <EnablePackageValidation>true</EnablePackageValidation>
+
+    <!-- Every package carries its own README.md from its project directory: nuget.org shows it on
+         the package page, and `dotnet pack` warns about a package without one. -->
+    <PackageReadmeFile>README.md</PackageReadmeFile>
+
+    <!-- The brand mark as an embedded icon, shared by every package of the chain. Embedded and not
+         iconUrl: iconUrl is deprecated, and the ID prefix reservation review on nuget.org checks
+         for the embedded form explicitly. The image is the product mark of design-rules §8 —
+         the rounded square of wwwroot/favicon.svg rotated 45 degrees, rendered at 128x128 on the
+         same background as the site's apple-touch-icon, so the brand has one geometry everywhere
+         rather than a rounded mark on the site and a sharp-cornered one on nuget.org. -->
+    <PackageIcon>icon.png</PackageIcon>
+
+    <!-- The copyright line of the nuspec repeats the one in the SPDX file headers verbatim: the
+         package page and the source files must not disagree about the holder. No year — a year
+         here would have to be maintained on every package for no legal gain. -->
+    <Copyright>Copyright (c) Dmitrii Erusov</Copyright>
+
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Include="$(MSBuildProjectDirectory)/README.md" Pack="true" PackagePath="\" />
+    <None Include="$(MSBuildThisFileDirectory)assets/icon.png" Pack="true" PackagePath="\" Visible="false" />
+    <!-- The third-party notices ship inside every package: a package is a distribution of the
+         compiled code, and the notice-retention clauses of the incorporated packages (Apache-2.0 §4,
+         MIT) travel with it. The product license itself needs no file here — it is stated by
+         PackageLicenseExpression. -->
+    <None Include="$(MSBuildThisFileDirectory)../THIRD-PARTY-NOTICES.md" Pack="true" PackagePath="\" Visible="false" />
+  </ItemGroup>
+
+  <!-- PublishRepositoryUrl=false withholds the repository URL and the branch, but not the commit: the
+       SDK fills two more places from SourceRevisionId regardless of that switch — the nuspec
+       `repository commit` attribute (RepositoryCommit falls back to it in
+       _InitializeNuspecRepositoryInformationProperties, NuGet.Build.Tasks.Pack.targets) and the
+       `+<hash>` suffix of AssemblyInformationalVersion (AddSourceRevisionToInformationalVersion,
+       Microsoft.NET.GenerateAssemblyInfo.targets). While origin is private, that hash names a commit
+       of a repository nobody outside can open. SourceRevisionId cannot be blanked by a static
+       property — the git provider fills it whenever it is empty — so it is cleared right after
+       source control information is gathered, which is before both consumers read it. The SourceRoot
+       items, and with them PathMap and Source Link, do not use this property. Tied to the same switch:
+       once it is back on, the commit is published together with the URL. -->
+  <Target Name="WithholdSourceRevisionWhileRepositoryIsPrivate"
+          AfterTargets="InitializeSourceControlInformation"
+          Condition=" '$(PublishRepositoryUrl)' != 'true' ">
+    <PropertyGroup>
+      <SourceRevisionId></SourceRevisionId>
+    </PropertyGroup>
+  </Target>
+
+</Project>

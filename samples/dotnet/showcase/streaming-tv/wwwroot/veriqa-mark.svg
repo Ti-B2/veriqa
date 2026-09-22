@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" role="img" aria-label="Veriqa">
+  <!-- The mark of the product the sign-in page belongs to: the same rounded square on its corner,
+       in the same red, that the core draws inline when a deployment names no logo of its own. It
+       lives here as a file because the page takes a logo by URL, and the shop's name stands beside
+       it - so the row reads "Veriqa's mark, this shop's name". -->
+  <rect x="5" y="5" width="14" height="14" rx="2" transform="rotate(45 12 12)" fill="#e53837"/>
+</svg>

@@ -1,0 +1,43 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <RootNamespace>Veriqa.Core.AuditTrail.Migrations.PostgreSql</RootNamespace>
+    <!-- TASK-131: shipped as a package — a host taking the core from NuGet cannot create
+         the audit journal otherwise: the migrations its EF Core options name by assembly
+         name live here. -->
+    <IsPackable>true</IsPackable>
+    <PackageId>Veriqa.Core.AuditTrail.Migrations.PostgreSql</PackageId>
+    <Authors>Veriqa</Authors>
+    <Description>PostgreSQL migrations for the Veriqa audit journal (host-referenced migrations assembly).</Description>
+    <PackageTags>veriqa;authentication;audit;efcore;migrations;postgresql</PackageTags>
+    <!-- Licensing: the server core and its satellites ship under the Mozilla Public License 2.0.
+         MPL-2.0 is OSI-approved, so nuget.org takes it as a license expression and no license
+         file has to travel inside the package. -->
+    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <!-- Shared package metadata: XML docs, repository metadata, embedded symbols, readme, validation. -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\build\Packaging.props" />
+
+  <ItemGroup>
+    <!-- Audit journal migration assembly for PostgreSQL: the official EF Core path for
+         multi-provider — a separate migrations assembly per provider. -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="10.0.12">
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+      <PrivateAssets>all</PrivateAssets>
+    </PackageReference>
+    <PackageReference Include="Npgsql.EntityFrameworkCore.PostgreSQL" Version="10.0.1" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- The migrations follow their DbContext: it lives in the EF Core satellite (the audit trail
+         package carries no ORM), and the package identifier of this assembly stays as it was — a
+         host names it by string in MigrationsAssembly. -->
+    <ProjectReference Include="..\Veriqa.Core.AuditTrail.EntityFrameworkCore\Veriqa.Core.AuditTrail.EntityFrameworkCore.csproj" />
+  </ItemGroup>
+
+</Project>

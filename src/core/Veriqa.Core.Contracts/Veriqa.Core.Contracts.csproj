@@ -1,0 +1,27 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- No RootNamespace: this project intentionally hosts several existing namespaces
+         (Veriqa.Core.ChannelAdapter.*, Veriqa.Core.TransactionEngine.*); new code lives
+         in Veriqa.Core.Contracts. -->
+    <!--: MIT-licensed contracts package of the core NuGet supply chain
+         (consumed by embedded solutions and third-party channel adapters). -->
+    <IsPackable>true</IsPackable>
+    <PackageId>Veriqa.Core.Contracts</PackageId>
+    <Authors>Veriqa</Authors>
+    <Description>Veriqa Core Contracts — MIT-licensed contracts for building channel adapters against the Veriqa authentication core (IChannelAdapter, Result, TransactionId).</Description>
+    <PackageTags>veriqa;authentication;contracts;channel-adapter</PackageTags>
+    <PackageLicenseExpression>MIT</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <!-- Shared package metadata: XML docs, repository metadata, embedded symbols, readme, validation. -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\build\Packaging.props" />
+
+  <!-- Declared inventory of the public surface (PublicAPI.*.txt + RS0016/RS0017 as errors). -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\build\PublicApi.props" />
+
+</Project>

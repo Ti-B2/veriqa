@@ -1,0 +1,5 @@
+# samples/** are MIT: runnable examples meant to be copied into consumer code.
+
+[*.cs]
+file_header_template = Copyright (c) Dmitrii Erusov\nSPDX-License-Identifier: MIT
+dotnet_diagnostic.IDE0073.severity = error

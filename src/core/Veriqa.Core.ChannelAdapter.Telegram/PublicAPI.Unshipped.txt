@@ -1,0 +1,48 @@
+#nullable enable
+const Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptions.SectionName = "Veriqa:Channels:Telegram" -> string!
+override Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials.Equals(object? obj) -> bool
+override Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials.GetHashCode() -> int
+override Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials.ToString() -> string!
+static Veriqa.Core.ChannelAdapter.DependencyInjection.ChannelAdapterBuilderTelegramExtensions.AddTelegram(this Veriqa.Core.ChannelAdapter.DependencyInjection.ChannelAdapterBuilder! adapters) -> Veriqa.Core.ChannelAdapter.DependencyInjection.ChannelAdapterBuilder!
+static Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramConfigKeys.Credentials.get -> Veriqa.Core.Configuration.ConfigKey<Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials!>!
+static Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramConfigKeys.Catalog.get -> Veriqa.Core.Configuration.ConfigKeyCatalog!
+static Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials.operator !=(Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials? left, Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials? right) -> bool
+static Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials.operator ==(Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials? left, Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials? right) -> bool
+Veriqa.Core.ChannelAdapter.DependencyInjection.ChannelAdapterBuilderTelegramExtensions
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramConfigKeys
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptions
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptions.BotToken.get -> string!
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptions.BotToken.set -> void
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptions.BotUsername.get -> string!
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptions.BotUsername.set -> void
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptions.DeepLinkBaseUrl.get -> string!
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptions.DeepLinkBaseUrl.set -> void
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptions.Enabled.get -> bool
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptions.Enabled.set -> void
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptions.GetTenantCredentials() -> Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials!
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptions.TelegramOptions() -> void
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptions.UpdateMode.get -> Veriqa.Core.ChannelAdapter.Telegram.Enums.TelegramUpdateMode
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptions.UpdateMode.set -> void
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptions.WebhookBaseUrl.get -> string!
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptions.WebhookBaseUrl.set -> void
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptions.WebhookSecretToken.get -> string!
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptions.WebhookSecretToken.set -> void
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptionsValidator
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptionsValidator.TelegramOptionsValidator() -> void
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptionsValidator.Validate(string? name, Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramOptions! options) -> Microsoft.Extensions.Options.ValidateOptionsResult!
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials.<Clone>$() -> Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials!
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials.BotToken.get -> string!
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials.BotToken.init -> void
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials.BotUsername.get -> string!
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials.BotUsername.init -> void
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials.Deconstruct(out string! BotToken, out string! WebhookSecretToken, out string! BotUsername, out string! DeepLinkBaseUrl) -> void
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials.DeepLinkBaseUrl.get -> string!
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials.DeepLinkBaseUrl.init -> void
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials.Equals(Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials? other) -> bool
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials.TelegramTenantCredentials(string! BotToken, string! WebhookSecretToken, string! BotUsername, string! DeepLinkBaseUrl) -> void
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials.WebhookSecretToken.get -> string!
+Veriqa.Core.ChannelAdapter.Telegram.Configuration.TelegramTenantCredentials.WebhookSecretToken.init -> void
+Veriqa.Core.ChannelAdapter.Telegram.Enums.TelegramUpdateMode
+Veriqa.Core.ChannelAdapter.Telegram.Enums.TelegramUpdateMode.Polling = 1 -> Veriqa.Core.ChannelAdapter.Telegram.Enums.TelegramUpdateMode
+Veriqa.Core.ChannelAdapter.Telegram.Enums.TelegramUpdateMode.Webhook = 0 -> Veriqa.Core.ChannelAdapter.Telegram.Enums.TelegramUpdateMode

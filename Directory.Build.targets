@@ -1,0 +1,39 @@
+<!--
+  Directory.Build.targets — Veriqa-owned file (NOT a copy from .ai-shared/tooling/dotnet/,
+  so `git subtree pull` does not overwrite it).
+
+  Two purposes, both of which need a root file that a subtree sync cannot overwrite: guarding the
+  chain version, and suppressing Veriqa's own experimental-API diagnostics for this repository.
+
+  1. Version guard. Both the value (VeriqaCoreVersion) and its mapping
+  onto <Version> live in build/Versions.props, but the <Import> that brings that file in lives
+  in Directory.Build.props, which IS overwritten by a subtree sync. Because that Import is the
+  only version-scheme line of the overwritable file, an empty VeriqaCoreVersion is an exact
+  detector of the loss, and restoring the Import is a complete fix for the version scheme —
+  but only for it: that file carries other local edits too (analyzer settings, the path to
+  BannedSymbols.txt), which this guard does not watch. Without the guard such a sync would
+  silently drop the version scheme and every package would be released under the SDK default
+  version 1.0.0.
+
+  2. Experimental-API diagnostics. Veriqa marks the extension points whose shape has not settled
+  with [Experimental], and that marker is a compile error at every use site — which is the whole
+  point of it for an integrator. This repository is not an integrator: it owns those types, and its
+  own projects (core, tests, samples, sandbox) use them everywhere. So the suppression lives here,
+  once, instead of a NoWarn in thirty project files or a #pragma around every use — and here rather
+  than in Directory.Build.props, which `git subtree pull` overwrites.
+-->
+<Project>
+
+  <PropertyGroup>
+    <!-- See purpose 2 in the header above. What the identifier marks and what it buys:
+         build/README.md, "Public surface that has not settled yet". -->
+    <NoWarn>$(NoWarn);VERIQAEXP0001</NoWarn>
+  </PropertyGroup>
+
+  <Target Name="VeriqaValidateCoreVersion" BeforeTargets="Build;Pack">
+    <Error Condition=" '$(VeriqaCoreVersion)' == '' "
+           Code="VERIQA0001"
+           Text="VeriqaCoreVersion is not defined: build/Versions.props was not imported. Restore the &lt;Import Project=&quot;%24(MSBuildThisFileDirectory)build/Versions.props&quot; /&gt; line in the root Directory.Build.props — it is dropped by `git subtree pull` of .ai-shared. That line is the whole fix for the version scheme: build/Versions.props carries both VeriqaCoreVersion and the &lt;Version&gt; it feeds. It is not the only local edit of Directory.Build.props though, so merge the sync as a diff of that whole file. Without the Import every package would ship the SDK default version 1.0.0." />
+  </Target>
+
+</Project>

@@ -1,0 +1,55 @@
+<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFramework>net10.0</TargetFramework>
+    <LangVersion>preview</LangVersion>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <!-- Satellite package — the EF Core audit sink. Keeps Microsoft.EntityFrameworkCore out of the
+         audit trail package's transitive graph: the sink shipped in the box is the in-process one,
+         and a deployment that keeps it never receives an ORM. -->
+    <IsPackable>true</IsPackable>
+    <PackageId>Veriqa.Core.AuditTrail.EntityFrameworkCore</PackageId>
+    <Authors>Veriqa</Authors>
+    <Description>EF Core audit sink for the Veriqa audit trail (satellite package). The provider (Npgsql etc.) and the migrations assembly belong to the host.</Description>
+    <PackageTags>veriqa;authentication;audit;efcore</PackageTags>
+    <!-- Licensing: the server core and its satellites ship under the Mozilla Public License 2.0.
+         MPL-2.0 is OSI-approved, so nuget.org takes it as a license expression and no license
+         file has to travel inside the package. -->
+    <PackageLicenseExpression>MPL-2.0</PackageLicenseExpression>
+  </PropertyGroup>
+
+  <!-- Shared package metadata: XML docs, repository metadata, embedded symbols, readme, validation. -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\build\Packaging.props" />
+
+  <!-- Declared inventory of the public surface (PublicAPI.*.txt + RS0016/RS0017 as errors). -->
+  <Import Project="$(MSBuildThisFileDirectory)..\..\..\build\PublicApi.props" />
+
+  <ItemGroup>
+    <!-- Provider-agnostic, like the audit trail itself: only the base EF Core packages. The
+         provider package (Npgsql) lives in the migrations assembly and in the host. -->
+    <PackageReference Include="Microsoft.EntityFrameworkCore" Version="10.0.12" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Relational" Version="10.0.12" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\Veriqa.Core.AuditTrail\Veriqa.Core.AuditTrail.csproj" />
+    <ProjectReference Include="..\Veriqa.Core.Contracts\Veriqa.Core.Contracts.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <!-- No InternalsVisibleTo to migrations assemblies: AuditDbContext is public, so a migrations
+         assembly for any provider anchors on it without a grant. The deletion side of a shipped
+         sink (IAuditRetentionStore) stays internal to the audit trail package and is reached through
+         its own InternalsVisibleTo to this satellite — the retention sweep must keep resolving
+         exactly the store the records go to. -->
+    <!-- The tests read the stored rows back. The sink is write-only by contract (IAuditSink appends,
+         IAuditRetentionStore deletes), so what a row actually holds is not observable through any
+         public surface — and a column the mapping forgets is invisible in exactly that blind spot.
+         The relational-store tests do the same against real PostgreSQL and SQL Server databases. -->
+    <!-- Test friends stay out of the packed assemblies: build/pack-core passes VeriqaPackaging=true. -->
+    <InternalsVisibleTo Include="Veriqa.Core.AuditTrail.Tests" Condition="'$(VeriqaPackaging)' != 'true'" />
+    <InternalsVisibleTo Include="Veriqa.Core.RelationalStores.Tests" Condition="'$(VeriqaPackaging)' != 'true'" />
+  </ItemGroup>
+
+</Project>

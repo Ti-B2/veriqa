@@ -1,0 +1,11 @@
+#nullable enable
+const Veriqa.ServiceDefaults.HostBootstrap.FatalErrorExitCode = 1 -> int
+const Veriqa.ServiceDefaults.HostBootstrap.SuccessExitCode = 0 -> int
+const Veriqa.ServiceDefaults.RateLimitingExtensions.NoQueue = 0 -> int
+static Veriqa.ServiceDefaults.Extensions.AddServiceDefaults(this Microsoft.Extensions.Hosting.IHostApplicationBuilder! builder) -> Microsoft.Extensions.Hosting.IHostApplicationBuilder!
+static Veriqa.ServiceDefaults.Extensions.ConfigureForwardedHeadersForProxy(this Microsoft.Extensions.DependencyInjection.IServiceCollection! services, Microsoft.Extensions.Configuration.IConfiguration! configuration) -> Microsoft.Extensions.DependencyInjection.IServiceCollection!
+static Veriqa.ServiceDefaults.Extensions.MapDefaultEndpoints(this Microsoft.AspNetCore.Builder.WebApplication! app) -> Microsoft.AspNetCore.Builder.WebApplication!
+static Veriqa.ServiceDefaults.HostBootstrap.Run(string! fatalErrorMessage, System.Action! buildAndRunHost) -> int
+Veriqa.ServiceDefaults.Extensions
+Veriqa.ServiceDefaults.HostBootstrap
+Veriqa.ServiceDefaults.RateLimitingExtensions
