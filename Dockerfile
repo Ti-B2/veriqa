@@ -2,6 +2,8 @@
 # Target platforms: linux/amd64 (default) and linux/arm64
 # Usage: docker build -t veriqa-authserver .
 #        docker run -p 8080:8080 veriqa-authserver
+# Release builds also pass the product version for the version label (see the final stage):
+#        docker build --build-arg VERIQA_VERSION="$(sed -n 's:.*<VeriqaCoreVersion>\(.*\)</VeriqaCoreVersion>.*:\1:p' build/Versions.props)" -t veriqa-authserver .
 
 # ── Stage 1: Restore inputs ────────────────────────────────────────────────────
 # The restore layer needs every MSBuild input of the host graph: the project file of each
@@ -81,6 +83,12 @@ LABEL org.opencontainers.image.url="https://veriqa.app"
 # is that notice in the form an image scanner reads. The same tree is mirrored to other forges,
 # the product site lists them all.
 LABEL org.opencontainers.image.source="https://gitlab.com/veriqa/veriqa"
+# The version of the product, not of the base image: the aspnet base image is Ubuntu and declares
+# org.opencontainers.image.version=24.04, and every label not set here is inherited from it. The value
+# is build/Versions.props VeriqaCoreVersion, passed as a build argument (usage at the top); a build
+# without the argument gets an empty label rather than the version of the base image.
+ARG VERIQA_VERSION=""
+LABEL org.opencontainers.image.version="${VERIQA_VERSION}"
 
 WORKDIR /app
 
