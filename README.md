@@ -6,13 +6,13 @@
 
 <p align="center"><em>OpenID Connect · Any stack · Open Source</em></p>
 
-<p align="center"><strong>Sign-in and approvals through messaging apps for your website or app. No passwords, forms or SMS codes — zero typing.</strong></p>
+<p align="center"><strong>Sign-in and approvals through messaging apps for your website or app. No passwords, no forms, no SMS codes — zero typing, even on screens without a keyboard.</strong></p>
 
 <p align="center">
-  The user scans a QR code on a computer or TV screen, or presses a button on their phone, and
-  confirms with a tap in a messaging channel they already trust — their own Telegram, WhatsApp
-  or another supported channel. Veriqa plugs into your application as a standard OIDC provider,
-  with no frontend SDK.
+  The user scans a QR code shown on a computer, TV or any other screen — or taps a button on
+  their phone — and confirms with a single tap in a messaging app they already trust: Telegram,
+  WhatsApp or another supported channel. Veriqa plugs into your application as a standard OIDC
+  provider, with no frontend SDK.
 </p>
 
 <p align="center">
