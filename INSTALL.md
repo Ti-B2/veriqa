@@ -102,9 +102,18 @@ A runnable sample: [`samples/dotnet/inproc/login/`](./samples/dotnet/inproc/logi
 
 ## Standalone (Docker)
 
-### 1. Build the image
+### 1. Get the image
 
-The `Dockerfile` in the repository root publishes the standalone host:
+The image of every release is published to the container registry of this repository:
+
+```bash
+docker pull registry.gitlab.com/veriqa/veriqa
+```
+
+Without a tag Docker takes `latest` — the newest release. To pin a release in production, add its
+version as the tag (`registry.gitlab.com/veriqa/veriqa:<version>`). The published image is `linux/amd64`; on
+another architecture, build it from the repository root instead — the `Dockerfile` there publishes
+the same host — and use your local tag in place of the image name below:
 
 ```bash
 docker build -t veriqa-authserver .
@@ -125,7 +134,7 @@ in an env-file rather than on the command line:
 docker run -d --name veriqa -p 8080:8080 \
   -v "$(pwd)/appsettings.Production.json:/app/appsettings.Production.json:ro" \
   --env-file veriqa.env \
-  veriqa-authserver
+  registry.gitlab.com/veriqa/veriqa
 ```
 
 Three things are mandatory for anything real, and the container refuses to start without them:
