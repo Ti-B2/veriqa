@@ -30,11 +30,17 @@
          thing an integrator's IntelliSense can show about a type. -->
     <GenerateDocumentationFile>true</GenerateDocumentationFile>
 
-    <!-- The home page of every package: the product site. It is deliberately not a repository
-         address — the public repository of the product (veriqa/veriqa, decided 2026-09-03) does
-         not exist yet, it is created by TASK-081, and the repository URL below is not a
-         hand-written value at all. -->
+    <!-- The home page of every package: the product site, which links the documentation and every
+         forge the source is mirrored to. The repository address is a separate element below. -->
     <PackageProjectUrl>https://veriqa.app</PackageProjectUrl>
+
+    <!-- The public repository of the product, written into the nuspec `repository` element and into
+         the RepositoryUrl assembly metadata. It is stated rather than derived: the build runs in a
+         private repository whose tree is exported to the public one, so the origin remote of the
+         build is not the address a package consumer can open. GitLab is the primary public forge;
+         Bitbucket and Codeberg carry the same commits. -->
+    <RepositoryUrl>https://gitlab.com/veriqa/veriqa</RepositoryUrl>
+    <RepositoryType>git</RepositoryType>
 
     <!-- SourceLink is part of the SDK since .NET 8 (Microsoft.SourceLink.GitHub is imported by
          Microsoft.NET.Sdk.SourceLink.targets), so it needs no PackageReference — only the switch
@@ -42,9 +48,9 @@
          element. It is OFF while origin is a private self-hosted forge: the element would carry
          that private address, the branch name and the commit hash into a public nuspec, and a
          push to nuget.org cannot be taken back (a version is never deleted, and `unlist` does
-         not hide the manifest). Deriving the URL rather than hard-coding it is still the right
-         mechanism — turn the switch back on once the build moves to the public repository, and
-         the metadata becomes true by itself.
+         not hide the manifest). The explicit RepositoryUrl above does not depend on it — the
+         switch only fills RepositoryUrl when it is empty. Turn it on only if the build itself
+         moves to the public repository; the explicit value then becomes redundant.
          EmbedUntrackedSources is the SDK default today; it is stated because the package contract
          must not depend on that default staying what it is. -->
     <PublishRepositoryUrl>false</PublishRepositoryUrl>
